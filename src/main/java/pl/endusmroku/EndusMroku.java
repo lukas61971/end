@@ -18,7 +18,7 @@ public class EndusMroku implements ModInitializer {
             Registries.BLOCK,
             Identifier.of(MOD_ID, "ciemne_nylium"),
             new Block(AbstractBlock.Settings.copy(Blocks.WARPED_NYLIUM)
-                    .mapColor(MapColor.DARK_PURPLE))
+                    .mapColor(MapColor.PURPLE))
     );
 
     public static final Item CIEMNE_NYLIUM_ITEM = Registry.register(

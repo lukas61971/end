@@ -1,14 +1,14 @@
 package pl.endusmroku.worldgen;
 
 /**
- * Deterministic, irregular polygon regions used by the Dark Forest biome.
- * The same geometry is shared by biome selection and terrain shaping.
+ * Smooth, organic regions used by the Dark Forest biome.
+ * The same deterministic shape is shared by biome selection and terrain shaping.
  */
 public final class DarkForestRegion {
     private static final int PATCH_SPACING = 2000;
     private static final double CENTER_JITTER = 320.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
-    private static final double EDGE_BLEND_WIDTH = 48.0;
+    private static final double EDGE_BLEND_WIDTH = 96.0;
 
     private DarkForestRegion() {
     }
@@ -34,12 +34,16 @@ public final class DarkForestRegion {
 
         for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
             for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
-                if (!isValidPatch(gx, gz) || !isInsidePatch(x, z, gx, gz)) {
+                if (!isValidPatch(gx, gz)) {
                     continue;
                 }
 
-                double edgeDistance = distanceToPatchEdge(x, z, gx, gz);
-                double t = Math.max(0.0, Math.min(1.0, edgeDistance / EDGE_BLEND_WIDTH));
+                double distance = signedEdgeDistance(x, z, gx, gz);
+                if (distance <= 0.0) {
+                    continue;
+                }
+
+                double t = Math.max(0.0, Math.min(1.0, distance / EDGE_BLEND_WIDTH));
                 double fade = t * t * (3.0 - 2.0 * t);
                 best = Math.max(best, fade);
             }
@@ -48,69 +52,51 @@ public final class DarkForestRegion {
     }
 
     private static boolean isValidPatch(int gx, int gz) {
-        double centerX = gx * (double) PATCH_SPACING + hash(gx + 17, gz - 31) * CENTER_JITTER;
-        double centerZ = gz * (double) PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
+        double centerX = centerX(gx, gz);
+        double centerZ = centerZ(gx, gz);
         return centerX * centerX + centerZ * centerZ
                 >= MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN;
     }
 
     private static boolean isInsidePatch(double x, double z, int gx, int gz) {
+        return signedEdgeDistance(x, z, gx, gz) >= 0.0;
+    }
+
+    /**
+     * Positive values are inside the region. A smooth radial contour avoids
+     * straight polygon edges, sharp corners and self-intersecting outlines.
+     */
+    private static double signedEdgeDistance(double x, double z, int gx, int gz) {
         if (!isValidPatch(gx, gz)) {
-            return false;
+            return -Double.MAX_VALUE;
         }
 
-        int count = vertexCount(gx, gz);
-        boolean inside = false;
+        double aspect = aspect(gx, gz);
+        double dx = x - centerX(gx, gz);
+        double dz = z - centerZ(gx, gz);
 
-        double previousX = vertexX(gx, gz, count - 1, count);
-        double previousZ = vertexZ(gx, gz, count - 1, count);
+        double normalizedX = dx / aspect;
+        double normalizedZ = dz * aspect;
+        double radius = Math.sqrt(normalizedX * normalizedX + normalizedZ * normalizedZ);
+        double angle = Math.atan2(normalizedZ, normalizedX);
+        double boundary = boundaryRadius(gx, gz, angle);
 
-        for (int i = 0; i < count; i++) {
-            double currentX = vertexX(gx, gz, i, count);
-            double currentZ = vertexZ(gx, gz, i, count);
-
-            if ((currentZ > z) != (previousZ > z)
-                    && x < (previousX - currentX) * (z - currentZ)
-                    / (previousZ - currentZ) + currentX) {
-                inside = !inside;
-            }
-
-            previousX = currentX;
-            previousZ = currentZ;
-        }
-        return inside;
+        // Convert normalized radial distance back to an approximate block distance.
+        return (boundary - radius) * Math.min(aspect, 1.0 / aspect);
     }
 
-    private static double distanceToPatchEdge(double x, double z, int gx, int gz) {
-        int count = vertexCount(gx, gz);
-        double minimumSquared = Double.MAX_VALUE;
-        double previousX = vertexX(gx, gz, count - 1, count);
-        double previousZ = vertexZ(gx, gz, count - 1, count);
+    private static double boundaryRadius(int gx, int gz, double angle) {
+        double phase1 = hash(gx + 101, gz - 203) * Math.PI;
+        double phase2 = hash(gx - 307, gz + 409) * Math.PI;
+        double phase3 = hash(gx + 503, gz + 601) * Math.PI;
+        double phase4 = hash(gx - 701, gz - 809) * Math.PI;
 
-        for (int i = 0; i < count; i++) {
-            double currentX = vertexX(gx, gz, i, count);
-            double currentZ = vertexZ(gx, gz, i, count);
-            double segmentX = currentX - previousX;
-            double segmentZ = currentZ - previousZ;
-            double lengthSquared = segmentX * segmentX + segmentZ * segmentZ;
-            double projection = lengthSquared == 0.0 ? 0.0
-                    : ((x - previousX) * segmentX + (z - previousZ) * segmentZ) / lengthSquared;
-            projection = Math.max(0.0, Math.min(1.0, projection));
-
-            double nearestX = previousX + projection * segmentX;
-            double nearestZ = previousZ + projection * segmentZ;
-            double dx = x - nearestX;
-            double dz = z - nearestZ;
-            minimumSquared = Math.min(minimumSquared, dx * dx + dz * dz);
-
-            previousX = currentX;
-            previousZ = currentZ;
-        }
-        return Math.sqrt(minimumSquared);
-    }
-
-    private static int vertexCount(int gx, int gz) {
-        return 5 + (int) Math.floor((hash(gx + 311, gz + 719) + 1.0) * 12.0);
+        // Broad lobes define the overall silhouette; smaller waves add natural variation.
+        return 255.0
+                + Math.sin(angle * 2.0 + phase1) * 42.0
+                + Math.sin(angle * 3.0 + phase2) * 25.0
+                + Math.sin(angle * 5.0 + phase3) * 14.0
+                + Math.sin(angle * 8.0 + phase4) * 7.0;
     }
 
     private static double centerX(int gx, int gz) {
@@ -121,29 +107,8 @@ public final class DarkForestRegion {
         return gz * (double) PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
     }
 
-    private static double vertexX(int gx, int gz, int index, int count) {
-        double angle = vertexAngle(gx, gz, index, count);
-        double radius = vertexRadius(gx, gz, index);
-        double aspect = 0.72 + (hash(gx + 911, gz - 613) + 1.0) * 0.24;
-        return centerX(gx, gz) + Math.cos(angle) * radius * aspect;
-    }
-
-    private static double vertexZ(int gx, int gz, int index, int count) {
-        double angle = vertexAngle(gx, gz, index, count);
-        double radius = vertexRadius(gx, gz, index);
-        double aspect = 0.72 + (hash(gx + 911, gz - 613) + 1.0) * 0.24;
-        return centerZ(gx, gz) + Math.sin(angle) * radius / aspect;
-    }
-
-    private static double vertexAngle(int gx, int gz, int index, int count) {
-        double rotation = hash(gx + 101, gz - 203) * Math.PI;
-        double step = Math.PI * 2.0 / count;
-        double jitter = hash(gx + index * 37 + 401, gz - index * 53 - 809) * 0.16;
-        return rotation + index * step + jitter;
-    }
-
-    private static double vertexRadius(int gx, int gz, int index) {
-        return 235.0 + hash(gx + index * 67 + 1201, gz - index * 43 - 1601) * 105.0;
+    private static double aspect(int gx, int gz) {
+        return 0.82 + (hash(gx + 911, gz - 613) + 1.0) * 0.16;
     }
 
     private static double hash(int x, int z) {

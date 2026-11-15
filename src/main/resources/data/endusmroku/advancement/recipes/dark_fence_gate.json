@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dark_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:dark_planks"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dark_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "endusmroku:dark_fence_gate"
+    ]
+  }
+}

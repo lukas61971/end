@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#endusmroku:dark_wood_sources"
+  ],
+  "result": {
+    "id": "endusmroku:dark_planks",
+    "count": 4
+  }
+}

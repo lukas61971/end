@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dark_hyphae": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:dark_hyphae"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_dark_hyphae"]
+  ],
+  "rewards": {
+    "recipes": [
+      "endusmroku:dark_planks_from_dark_hyphae"
+    ]
+  }
+}

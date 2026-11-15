@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "endusmroku:block/dark_wall_hanging_sign"
+    },
+    "facing=east": {
+      "model": "endusmroku:block/dark_wall_hanging_sign"
+    },
+    "facing=south": {
+      "model": "endusmroku:block/dark_wall_hanging_sign"
+    },
+    "facing=west": {
+      "model": "endusmroku:block/dark_wall_hanging_sign"
+    }
+  }
+}

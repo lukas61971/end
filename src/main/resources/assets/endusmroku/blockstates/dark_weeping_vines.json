@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "endusmroku:block/dark_weeping_vines"
+      }
+    }
+  ]
+}

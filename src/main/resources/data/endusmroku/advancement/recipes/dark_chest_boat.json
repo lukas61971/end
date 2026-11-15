@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:chest"
+          }
+        ]
+      }
+    },
+    "has_dark_boat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:dark_boat"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chest",
+      "has_dark_boat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "endusmroku:dark_chest_boat"
+    ]
+  }
+}

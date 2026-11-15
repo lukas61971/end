@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": "endusmroku:dark_planks"
+  },
+  "result": {
+    "id": "endusmroku:dark_boat",
+    "count": 1
+  }
+}

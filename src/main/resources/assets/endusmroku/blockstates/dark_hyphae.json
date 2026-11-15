@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "endusmroku:block/dark_hyphae",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "endusmroku:block/dark_hyphae"
+    },
+    "axis=z": {
+      "model": "endusmroku:block/dark_hyphae",
+      "x": 90
+    }
+  }
+}

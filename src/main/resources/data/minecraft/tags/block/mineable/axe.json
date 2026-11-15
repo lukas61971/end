@@ -1,0 +1,23 @@
+
+{
+  "replace": false,
+  "values": [
+    "endusmroku:dark_stem",
+    "endusmroku:stripped_dark_stem",
+    "endusmroku:dark_planks",
+    "endusmroku:dark_hyphae",
+    "endusmroku:stripped_dark_hyphae",
+    "endusmroku:dark_slab",
+    "endusmroku:dark_fence",
+    "endusmroku:dark_fence_gate",
+    "endusmroku:dark_button",
+    "endusmroku:dark_pressure_plate",
+    "endusmroku:dark_stairs",
+    "endusmroku:dark_sign",
+    "endusmroku:dark_wall_sign",
+    "endusmroku:dark_trapdoor",
+    "endusmroku:dark_door",
+    "endusmroku:dark_hanging_sign",
+    "endusmroku:dark_wall_hanging_sign"
+  ]
+}

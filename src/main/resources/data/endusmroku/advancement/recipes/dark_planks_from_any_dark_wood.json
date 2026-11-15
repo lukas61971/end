@@ -1,0 +1,58 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_dark_stem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:dark_stem"
+          }
+        ]
+      }
+    },
+    "has_stripped_dark_stem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:stripped_dark_stem"
+          }
+        ]
+      }
+    },
+    "has_dark_hyphae": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:dark_hyphae"
+          }
+        ]
+      }
+    },
+    "has_stripped_dark_hyphae": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:stripped_dark_hyphae"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_dark_stem",
+      "has_stripped_dark_stem",
+      "has_dark_hyphae",
+      "has_stripped_dark_hyphae"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "endusmroku:dark_planks_from_any_dark_wood"
+    ]
+  }
+}

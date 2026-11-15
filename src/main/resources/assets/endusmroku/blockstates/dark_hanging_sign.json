@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "attached=false": {
+      "model": "endusmroku:block/dark_hanging_sign"
+    },
+    "attached=true": {
+      "model": "endusmroku:block/dark_hanging_sign"
+    }
+  }
+}

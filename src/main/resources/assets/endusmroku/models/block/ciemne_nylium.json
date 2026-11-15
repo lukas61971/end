@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "endusmroku:block/ciemne_nylium_top",
+    "bottom": "minecraft:block/end_stone",
+    "side": "endusmroku:block/ciemne_nylium_side"
+  }
+}

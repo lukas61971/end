@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "endusmroku:block/dark_slab"
+    },
+    "type=top": {
+      "model": "endusmroku:block/dark_slab_top"
+    },
+    "type=double": {
+      "model": "endusmroku:block/dark_slab_double"
+    }
+  }
+}

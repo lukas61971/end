@@ -1,0 +1,24 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_dark_stem": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "endusmroku:stripped_dark_stem"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_stripped_dark_stem"]
+  ],
+  "rewards": {
+    "recipes": [
+      "endusmroku:stripped_dark_hyphae",
+      "endusmroku:dark_planks_from_stripped_dark_stem"
+    ]
+  }
+}

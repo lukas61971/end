@@ -1,17 +1,16 @@
 package pl.endusmroku.worldgen;
 
 /**
- * Deterministic, noise-warped regions used by the Dark Forest biome.
- *
- * The outline is built from a warped distance field instead of polygon vertices
- * or repeating angular waves. Biome selection and terrain blending use this
- * exact same field.
+ * Deterministic irregular polygon regions for the Dark Forest biome.
+ * Each patch gets its own independently chosen width, height and outline.
  */
 public final class DarkForestRegion {
     private static final int PATCH_SPACING = 2000;
     private static final double CENTER_JITTER = 260.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
     private static final double EDGE_BLEND_WIDTH = 128.0;
+    private static final int MIN_VERTICES = 5;
+    private static final int MAX_VERTICES = 10;
 
     private DarkForestRegion() {
     }
@@ -31,8 +30,8 @@ public final class DarkForestRegion {
     }
 
     /**
-     * Returns 0 at the biome border and smoothly rises to 1 inside the biome.
-     * This is used for terrain shaping, not for blending biome registry IDs.
+     * Smooth terrain fade measured inward from the exact same polygon boundary
+     * used by biome selection. The biome registry itself still has a discrete edge.
      */
     public static double edgeFade(double x, double z) {
         int cellX = (int) Math.floor(x / PATCH_SPACING);
@@ -54,40 +53,63 @@ public final class DarkForestRegion {
         return best;
     }
 
-    /**
-     * Positive values are inside. Low-frequency domain warping creates broad,
-     * asymmetrical bays and peninsulas; smaller noise layers add restrained
-     * natural variation without producing sharp polygon corners.
-     */
     private static double signedDistance(double x, double z, int gx, int gz) {
         if (!isValidPatch(gx, gz)) {
             return -Double.MAX_VALUE;
         }
 
+        int count = vertexCount(gx, gz);
+        double[] vx = new double[count];
+        double[] vz = new double[count];
+
+        double halfWidth = dimension(gx, gz, true) * 0.5;
+        double halfHeight = dimension(gx, gz, false) * 0.5;
+        double maxX = 0.0;
+        double maxZ = 0.0;
+
+        for (int i = 0; i < count; i++) {
+            double angle = vertexAngle(gx, gz, i, count);
+            double radius = vertexRadius(gx, gz, i);
+            vx[i] = Math.cos(angle) * radius;
+            vz[i] = Math.sin(angle) * radius;
+            maxX = Math.max(maxX, Math.abs(vx[i]));
+            maxZ = Math.max(maxZ, Math.abs(vz[i]));
+        }
+
         double cx = centerX(gx, gz);
         double cz = centerZ(gx, gz);
-        double aspect = aspect(gx, gz);
-        double dx = (x - cx) / aspect;
-        double dz = (z - cz) * aspect;
+        for (int i = 0; i < count; i++) {
+            vx[i] = cx + vx[i] / maxX * halfWidth;
+            vz[i] = cz + vz[i] / maxZ * halfHeight;
+        }
 
-        double seedX = gx * 173.0 + gz * 59.0;
-        double seedZ = gz * 197.0 - gx * 83.0;
+        boolean inside = false;
+        double minDistanceSquared = Double.MAX_VALUE;
 
-        // Warp the coordinates before measuring the distance. This breaks the
-        // circular silhouette into large, smoothly connected organic lobes.
-        double warpX = valueNoise(dx * 0.0028 + seedX, dz * 0.0028 + seedZ) * 62.0;
-        double warpZ = valueNoise(dx * 0.0028 + seedX + 37.4, dz * 0.0028 + seedZ - 19.6) * 62.0;
+        for (int i = 0, j = count - 1; i < count; j = i++) {
+            double ax = vx[j];
+            double az = vz[j];
+            double bx = vx[i];
+            double bz = vz[i];
 
-        double wx = dx + warpX;
-        double wz = dz + warpZ;
-        double radius = Math.sqrt(wx * wx + wz * wz);
+            if ((az > z) != (bz > z)
+                    && x < (bx - ax) * (z - az) / (bz - az) + ax) {
+                inside = !inside;
+            }
 
-        double broad = valueNoise(wx * 0.0038 + seedX + 101.0, wz * 0.0038 + seedZ - 71.0);
-        double medium = valueNoise(wx * 0.0090 + seedX - 211.0, wz * 0.0090 + seedZ + 163.0);
-        double detail = valueNoise(wx * 0.0190 + seedX + 307.0, wz * 0.0190 + seedZ - 251.0);
+            double abx = bx - ax;
+            double abz = bz - az;
+            double lengthSquared = abx * abx + abz * abz;
+            double t = lengthSquared == 0.0 ? 0.0
+                    : ((x - ax) * abx + (z - az) * abz) / lengthSquared;
+            t = Math.max(0.0, Math.min(1.0, t));
+            double dx = x - (ax + t * abx);
+            double dz = z - (az + t * abz);
+            minDistanceSquared = Math.min(minDistanceSquared, dx * dx + dz * dz);
+        }
 
-        double boundary = 265.0 + broad * 38.0 + medium * 13.0 + detail * 4.0;
-        return boundary - radius;
+        double distance = Math.sqrt(minDistanceSquared);
+        return inside ? distance : -distance;
     }
 
     private static boolean isValidPatch(int gx, int gz) {
@@ -95,6 +117,29 @@ public final class DarkForestRegion {
         double cz = centerZ(gx, gz);
         return cx * cx + cz * cz
                 >= MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN;
+    }
+
+    private static int vertexCount(int gx, int gz) {
+        double value = (hash(gx + 101, gz - 211) + 1.0) * 0.5;
+        return MIN_VERTICES + (int) Math.floor(value * (MAX_VERTICES - MIN_VERTICES + 1));
+    }
+
+    private static double dimension(int gx, int gz, boolean width) {
+        double value = width ? hash(gx + 307, gz + 419) : hash(gx - 521, gz + 613);
+        return 200.0 + (value + 1.0) * 225.0;
+    }
+
+    private static double vertexAngle(int gx, int gz, int index, int count) {
+        double base = (Math.PI * 2.0 * index) / count;
+        double jitter = hash(gx + index * 37 + 701, gz - index * 53 - 809)
+                * (Math.PI / count) * 0.48;
+        return base + jitter;
+    }
+
+    private static double vertexRadius(int gx, int gz, int index) {
+        // Unequal radii and uneven angular spacing create corners, bays and
+        // long protrusions instead of a circular outline.
+        return 0.62 + (hash(gx + index * 97 + 907, gz - index * 71 - 1009) + 1.0) * 0.19;
     }
 
     private static double centerX(int gx, int gz) {
@@ -105,37 +150,10 @@ public final class DarkForestRegion {
         return gz * (double) PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
     }
 
-    private static double aspect(int gx, int gz) {
-        return 0.78 + (hash(gx + 911, gz - 613) + 1.0) * 0.22;
-    }
-
-    /**
-     * Smooth value noise with quintic interpolation. Coordinates are local to
-     * the patch and seeded per patch, so every region has a different outline.
-     */
-    private static double valueNoise(double x, double z) {
-        int x0 = (int) Math.floor(x);
-        int z0 = (int) Math.floor(z);
-        double tx = smootherStep(x - x0);
-        double tz = smootherStep(z - z0);
-
-        double a = lerp(hash(x0, z0), hash(x0 + 1, z0), tx);
-        double b = lerp(hash(x0, z0 + 1), hash(x0 + 1, z0 + 1), tx);
-        return lerp(a, b, tz);
-    }
-
     private static double hash(int x, int z) {
         long n = (long) x * 341873128712L + (long) z * 132897987541L;
         n = (n ^ (n >> 13)) * 1274126177L;
         n ^= n >> 16;
         return ((n & 0x7fffffffL) / 1073741823.5) - 1.0;
-    }
-
-    private static double smootherStep(double value) {
-        return value * value * value * (value * (value * 6.0 - 15.0) + 10.0);
-    }
-
-    private static double lerp(double a, double b, double delta) {
-        return a + (b - a) * delta;
     }
 }

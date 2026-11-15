@@ -1,16 +1,23 @@
 package pl.endusmroku.worldgen;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
 /**
- * Deterministic irregular polygon regions for the Dark Forest biome.
- * Each patch gets its own independently chosen width, height and outline.
+ * Deterministic organic biome patches. Each patch is a closed Catmull-Rom
+ * spline through irregular control points, scaled to independently selected
+ * width and height. The same cached outline drives biome selection and terrain.
  */
 public final class DarkForestRegion {
     private static final int PATCH_SPACING = 2000;
     private static final double CENTER_JITTER = 260.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
     private static final double EDGE_BLEND_WIDTH = 128.0;
-    private static final int MIN_VERTICES = 5;
-    private static final int MAX_VERTICES = 10;
+    private static final int MIN_CONTROL_POINTS = 5;
+    private static final int MAX_CONTROL_POINTS = 9;
+    private static final int CURVE_STEPS = 12;
+
+    private static final ConcurrentMap<Long, Patch> PATCH_CACHE = new ConcurrentHashMap<>();
 
     private DarkForestRegion() {
     }
@@ -21,7 +28,7 @@ public final class DarkForestRegion {
 
         for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
             for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
-                if (signedDistance(x, z, gx, gz) >= 0.0) {
+                if (patch(gx, gz).signedDistance(x, z) >= 0.0) {
                     return true;
                 }
             }
@@ -30,8 +37,8 @@ public final class DarkForestRegion {
     }
 
     /**
-     * Smooth terrain fade measured inward from the exact same polygon boundary
-     * used by biome selection. The biome registry itself still has a discrete edge.
+     * Smooth terrain fade measured inward from the exact same curved boundary
+     * used by biome selection. Biome registry IDs themselves remain discrete.
      */
     public static double edgeFade(double x, double z) {
         int cellX = (int) Math.floor(x / PATCH_SPACING);
@@ -40,7 +47,7 @@ public final class DarkForestRegion {
 
         for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
             for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
-                double distance = signedDistance(x, z, gx, gz);
+                double distance = patch(gx, gz).signedDistance(x, z);
                 if (distance <= 0.0) {
                     continue;
                 }
@@ -53,75 +60,84 @@ public final class DarkForestRegion {
         return best;
     }
 
-    private static double signedDistance(double x, double z, int gx, int gz) {
-        if (!isValidPatch(gx, gz)) {
-            return -Double.MAX_VALUE;
+    private static Patch patch(int gx, int gz) {
+        long key = ((long) gx << 32) ^ (gz & 0xffffffffL);
+        return PATCH_CACHE.computeIfAbsent(key, ignored -> createPatch(gx, gz));
+    }
+
+    private static Patch createPatch(int gx, int gz) {
+        double cx = centerX(gx, gz);
+        double cz = centerZ(gx, gz);
+
+        if (cx * cx + cz * cz
+                < MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN) {
+            return Patch.EMPTY;
         }
 
-        int count = vertexCount(gx, gz);
-        double[] vx = new double[count];
-        double[] vz = new double[count];
-
-        double halfWidth = dimension(gx, gz, true) * 0.5;
-        double halfHeight = dimension(gx, gz, false) * 0.5;
+        int count = controlPointCount(gx, gz);
+        double[] controlX = new double[count];
+        double[] controlZ = new double[count];
         double maxX = 0.0;
         double maxZ = 0.0;
 
+        // Points are angularly ordered so the closed curve does not cross itself.
+        // Their radii vary strongly and independently, producing asymmetric bays,
+        // broad shoulders and occasional long peninsulas.
         for (int i = 0; i < count; i++) {
-            double angle = vertexAngle(gx, gz, i, count);
-            double radius = vertexRadius(gx, gz, i);
-            vx[i] = Math.cos(angle) * radius;
-            vz[i] = Math.sin(angle) * radius;
-            maxX = Math.max(maxX, Math.abs(vx[i]));
-            maxZ = Math.max(maxZ, Math.abs(vz[i]));
+            double baseAngle = Math.PI * 2.0 * i / count;
+            double angleJitter = hash(gx + 37 * i + 701, gz - 53 * i - 809)
+                    * (Math.PI / count) * 0.42;
+            double angle = baseAngle + angleJitter;
+            double radius = 0.48 + (hash(gx + 97 * i + 907, gz - 71 * i - 1009) + 1.0) * 0.26;
+
+            controlX[i] = Math.cos(angle) * radius;
+            controlZ[i] = Math.sin(angle) * radius;
+            maxX = Math.max(maxX, Math.abs(controlX[i]));
+            maxZ = Math.max(maxZ, Math.abs(controlZ[i]));
         }
 
-        double cx = centerX(gx, gz);
-        double cz = centerZ(gx, gz);
+        // Independent dimensions: neither axis is derived from the other.
+        double width = dimension(gx, gz, true);
+        double height = dimension(gx, gz, false);
+        double halfWidth = width * 0.5;
+        double halfHeight = height * 0.5;
+
         for (int i = 0; i < count; i++) {
-            vx[i] = cx + vx[i] / maxX * halfWidth;
-            vz[i] = cz + vz[i] / maxZ * halfHeight;
+            controlX[i] = cx + controlX[i] / maxX * halfWidth;
+            controlZ[i] = cz + controlZ[i] / maxZ * halfHeight;
         }
 
-        boolean inside = false;
-        double minDistanceSquared = Double.MAX_VALUE;
+        // Sample the smooth closed spline into a fine outline. The collision
+        // shape is curved, not the straight-edged control polygon.
+        int samples = count * CURVE_STEPS;
+        double[] outlineX = new double[samples];
+        double[] outlineZ = new double[samples];
 
-        for (int i = 0, j = count - 1; i < count; j = i++) {
-            double ax = vx[j];
-            double az = vz[j];
-            double bx = vx[i];
-            double bz = vz[i];
+        for (int i = 0; i < count; i++) {
+            double x0 = controlX[(i - 1 + count) % count];
+            double z0 = controlZ[(i - 1 + count) % count];
+            double x1 = controlX[i];
+            double z1 = controlZ[i];
+            double x2 = controlX[(i + 1) % count];
+            double z2 = controlZ[(i + 1) % count];
+            double x3 = controlX[(i + 2) % count];
+            double z3 = controlZ[(i + 2) % count];
 
-            if ((az > z) != (bz > z)
-                    && x < (bx - ax) * (z - az) / (bz - az) + ax) {
-                inside = !inside;
+            for (int step = 0; step < CURVE_STEPS; step++) {
+                double t = step / (double) CURVE_STEPS;
+                int index = i * CURVE_STEPS + step;
+                outlineX[index] = catmullRom(x0, x1, x2, x3, t);
+                outlineZ[index] = catmullRom(z0, z1, z2, z3, t);
             }
-
-            double abx = bx - ax;
-            double abz = bz - az;
-            double lengthSquared = abx * abx + abz * abz;
-            double t = lengthSquared == 0.0 ? 0.0
-                    : ((x - ax) * abx + (z - az) * abz) / lengthSquared;
-            t = Math.max(0.0, Math.min(1.0, t));
-            double dx = x - (ax + t * abx);
-            double dz = z - (az + t * abz);
-            minDistanceSquared = Math.min(minDistanceSquared, dx * dx + dz * dz);
         }
 
-        double distance = Math.sqrt(minDistanceSquared);
-        return inside ? distance : -distance;
+        return new Patch(outlineX, outlineZ);
     }
 
-    private static boolean isValidPatch(int gx, int gz) {
-        double cx = centerX(gx, gz);
-        double cz = centerZ(gx, gz);
-        return cx * cx + cz * cz
-                >= MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN;
-    }
-
-    private static int vertexCount(int gx, int gz) {
+    private static int controlPointCount(int gx, int gz) {
         double value = (hash(gx + 101, gz - 211) + 1.0) * 0.5;
-        return MIN_VERTICES + (int) Math.floor(value * (MAX_VERTICES - MIN_VERTICES + 1));
+        return MIN_CONTROL_POINTS
+                + (int) Math.floor(value * (MAX_CONTROL_POINTS - MIN_CONTROL_POINTS + 1));
     }
 
     private static double dimension(int gx, int gz, boolean width) {
@@ -129,17 +145,13 @@ public final class DarkForestRegion {
         return 200.0 + (value + 1.0) * 225.0;
     }
 
-    private static double vertexAngle(int gx, int gz, int index, int count) {
-        double base = (Math.PI * 2.0 * index) / count;
-        double jitter = hash(gx + index * 37 + 701, gz - index * 53 - 809)
-                * (Math.PI / count) * 0.48;
-        return base + jitter;
-    }
-
-    private static double vertexRadius(int gx, int gz, int index) {
-        // Unequal radii and uneven angular spacing create corners, bays and
-        // long protrusions instead of a circular outline.
-        return 0.62 + (hash(gx + index * 97 + 907, gz - index * 71 - 1009) + 1.0) * 0.19;
+    private static double catmullRom(double p0, double p1, double p2, double p3, double t) {
+        double t2 = t * t;
+        double t3 = t2 * t;
+        return 0.5 * ((2.0 * p1)
+                + (-p0 + p2) * t
+                + (2.0 * p0 - 5.0 * p1 + 4.0 * p2 - p3) * t2
+                + (-p0 + 3.0 * p1 - 3.0 * p2 + p3) * t3);
     }
 
     private static double centerX(int gx, int gz) {
@@ -155,5 +167,51 @@ public final class DarkForestRegion {
         n = (n ^ (n >> 13)) * 1274126177L;
         n ^= n >> 16;
         return ((n & 0x7fffffffL) / 1073741823.5) - 1.0;
+    }
+
+    private static final class Patch {
+        private static final Patch EMPTY = new Patch(new double[0], new double[0]);
+
+        private final double[] x;
+        private final double[] z;
+
+        private Patch(double[] x, double[] z) {
+            this.x = x;
+            this.z = z;
+        }
+
+        private double signedDistance(double px, double pz) {
+            if (x.length == 0) {
+                return -Double.MAX_VALUE;
+            }
+
+            boolean inside = false;
+            double minDistanceSquared = Double.MAX_VALUE;
+
+            for (int i = 0, j = x.length - 1; i < x.length; j = i++) {
+                double ax = x[j];
+                double az = z[j];
+                double bx = x[i];
+                double bz = z[i];
+
+                if ((az > pz) != (bz > pz)
+                        && px < (bx - ax) * (pz - az) / (bz - az) + ax) {
+                    inside = !inside;
+                }
+
+                double abx = bx - ax;
+                double abz = bz - az;
+                double lengthSquared = abx * abx + abz * abz;
+                double t = lengthSquared == 0.0 ? 0.0
+                        : ((px - ax) * abx + (pz - az) * abz) / lengthSquared;
+                t = Math.max(0.0, Math.min(1.0, t));
+                double dx = px - (ax + t * abx);
+                double dz = pz - (az + t * abz);
+                minDistanceSquared = Math.min(minDistanceSquared, dx * dx + dz * dz);
+            }
+
+            double distance = Math.sqrt(minDistanceSquared);
+            return inside ? distance : -distance;
+        }
     }
 }

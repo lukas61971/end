@@ -59,15 +59,15 @@ public abstract class TheEndBiomeSourceMixin {
     }
 
     @Unique
-    public static boolean endusmroku$isInsideDarkForest(double x, double z) {
-        int cellX = (int) Math.floor(x / ENDURO_SPACING);
-        int cellZ = (int) Math.floor(z / ENDURO_SPACING);
+    private static boolean endusmroku$isInsideDarkForest(double x, double z) {
+        int cellX = (int) Math.floor(x / endusmroku$PATCH_SPACING);
+        int cellZ = (int) Math.floor(z / endusmroku$PATCH_SPACING);
 
         for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
             for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
                 double seed = endusmroku$hash(gx, gz);
-                double centerX = gx * (double) ENDURO_SPACING + endusmroku$hash(gx + 17, gz - 31) * 320.0;
-                double centerZ = gz * (double) ENDURO_SPACING + endusmroku$hash(gx - 47, gz + 11) * 320.0;
+                double centerX = gx * (double) endusmroku$PATCH_SPACING + endusmroku$hash(gx + 17, gz - 31) * 320.0;
+                double centerZ = gz * (double) endusmroku$PATCH_SPACING + endusmroku$hash(gx - 47, gz + 11) * 320.0;
 
                 // Keep the patches away from the central End island.
                 if (centerX * centerX + centerZ * centerZ < 1100.0 * 1100.0) {
@@ -91,9 +91,6 @@ public abstract class TheEndBiomeSourceMixin {
         }
         return false;
     }
-
-    @Unique
-    private static final int ENDURO_SPACING = 2000;
 
     @Unique
     private static double endusmroku$hash(int x, int z) {

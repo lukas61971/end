@@ -46,8 +46,8 @@ public abstract class DarkForestTerrainMixin {
     ) {
         int startX = chunk.getPos().getStartX();
         int startZ = chunk.getPos().getStartZ();
-        int bottomY = chunk.getBottomY();
-        int topY = bottomY + 128;
+        int bottomY = heightContext.getMinY();
+        int topY = bottomY + heightContext.getHeight();
         BlockPos.Mutable pos = new BlockPos.Mutable();
 
         for (int localX = 0; localX < 16; localX++) {
@@ -113,6 +113,8 @@ public abstract class DarkForestTerrainMixin {
                 }
             }
         }
+
+        chunk.refreshSurfaceY();
     }
 
     @Unique

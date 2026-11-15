@@ -7,6 +7,9 @@
   "authors": ["Endus Mroku contributors"],
   "license": "MIT",
   "environment": "*",
+  "mixins": [
+    "endusmroku.mixins.json"
+  ],
   "entrypoints": {
     "main": ["pl.endusmroku.EndusMroku"],
     "client": ["pl.endusmroku.EndusMrokuClient"]

@@ -112,7 +112,7 @@ public final class DarkForestRegion {
     }
 
     private static int vertexCount(int gx, int gz) {
-        return 7 + (int) Math.floor((hash(gx + 311, gz + 719) + 1.0) * 4.5);
+        return 5 + (int) Math.floor((hash(gx + 311, gz + 719) + 1.0) * 12.0);
     }
 
     private static double centerX(int gx, int gz) {

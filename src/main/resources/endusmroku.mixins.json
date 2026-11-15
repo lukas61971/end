@@ -3,7 +3,8 @@
   "package": "pl.endusmroku.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "TheEndBiomeSourceMixin"
+    "TheEndBiomeSourceMixin",
+    "DarkForestTerrainMixin"
   ],
   "injectors": {
     "defaultRequire": 1

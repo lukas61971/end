@@ -20,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.endusmroku.EndusMroku;
+import pl.endusmroku.worldgen.DarkForestRegion;
 
 @Mixin(NoiseChunkGenerator.class)
 public abstract class DarkForestTerrainMixin {
@@ -59,7 +60,7 @@ public abstract class DarkForestTerrainMixin {
                     continue;
                 }
 
-                double fade = endusmroku$edgeFade(x, z);
+                double fade = DarkForestRegion.edgeFade(x, z);
                 if (fade <= 0.001) {
                     continue;
                 }
@@ -118,38 +119,6 @@ public abstract class DarkForestTerrainMixin {
             }
         }
         return bottomY - 1;
-    }
-
-    @Unique
-    private static double endusmroku$edgeFade(int x, int z) {
-        int cellX = (int) Math.floor(x / 2000.0);
-        int cellZ = (int) Math.floor(z / 2000.0);
-        double best = 0.0;
-
-        for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
-            for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
-                double seed = endusmroku$hash(gx, gz);
-                double centerX = gx * 2000.0 + endusmroku$hash(gx + 17, gz - 31) * 320.0;
-                double centerZ = gz * 2000.0 + endusmroku$hash(gx - 47, gz + 11) * 320.0;
-                if (centerX * centerX + centerZ * centerZ < 1100.0 * 1100.0) {
-                    continue;
-                }
-
-                double dx = x - centerX;
-                double dz = z - centerZ;
-                double angle = Math.atan2(dz, dx);
-                double radius = 235.0 + seed * 22.0
-                        + 42.0 * Math.sin(angle * 2.0 + seed * 4.0)
-                        + 27.0 * Math.sin(angle * 5.0 - seed * 7.0)
-                        + 17.0 * Math.sin(angle * 9.0 + seed * 11.0)
-                        + 11.0 * Math.sin(angle * 13.0 - seed * 3.0);
-                double distanceToEdge = radius - Math.sqrt(dx * dx + dz * dz);
-                double t = Math.max(0.0, Math.min(1.0, distanceToEdge / 48.0));
-                double fade = t * t * (3.0 - 2.0 * t);
-                best = Math.max(best, fade);
-            }
-        }
-        return best;
     }
 
     @Unique

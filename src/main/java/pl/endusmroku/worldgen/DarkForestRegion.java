@@ -60,8 +60,6 @@ public final class DarkForestRegion {
         }
 
         int count = vertexCount(gx, gz);
-        double centerX = centerX(gx, gz);
-        double centerZ = centerZ(gx, gz);
         boolean inside = false;
 
         double previousX = vertexX(gx, gz, count - 1, count);

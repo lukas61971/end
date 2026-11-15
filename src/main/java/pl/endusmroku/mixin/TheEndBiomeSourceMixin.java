@@ -67,8 +67,8 @@ public abstract class TheEndBiomeSourceMixin {
         double blockZ = biomeZ * 4.0;
 
         // The first test area is on the outer End islands, away from the central island.
-        double dx = blockX - 4096.0;
-        double dz = blockZ - 4096.0;
+        double dx = blockX - 1500.0;
+        double dz = blockZ;
         double angle = Math.atan2(dz, dx);
 
         // A gently irregular boundary, approximately 500 blocks across.

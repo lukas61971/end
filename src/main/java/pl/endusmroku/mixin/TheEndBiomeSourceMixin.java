@@ -14,11 +14,13 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(TheEndBiomeSource.class)
 public abstract class TheEndBiomeSourceMixin {
+    @Unique
+    private static final int endusmroku$PATCH_SPACING = 2000;
+
     @Unique
     private static RegistryEntry<Biome> endusmroku$darkForestBiome;
 
@@ -31,7 +33,6 @@ public abstract class TheEndBiomeSourceMixin {
                 RegistryKeys.BIOME,
                 Identifier.of("endusmroku", "dark_forest")
         );
-
         endusmroku$darkForestBiome = biomeLookup.getOrThrow(key);
     }
 
@@ -40,10 +41,7 @@ public abstract class TheEndBiomeSourceMixin {
             CallbackInfoReturnable<Stream<RegistryEntry<Biome>>> cir
     ) {
         if (endusmroku$darkForestBiome != null) {
-            cir.setReturnValue(Stream.concat(
-                    cir.getReturnValue(),
-                    Stream.of(endusmroku$darkForestBiome)
-            ));
+            cir.setReturnValue(Stream.concat(cir.getReturnValue(), Stream.of(endusmroku$darkForestBiome)));
         }
     }
 
@@ -55,28 +53,53 @@ public abstract class TheEndBiomeSourceMixin {
             MultiNoiseUtil.MultiNoiseSampler noise,
             CallbackInfoReturnable<RegistryEntry<Biome>> cir
     ) {
-        if (endusmroku$darkForestBiome != null && endusmroku$isInsideDarkForest(x, z)) {
+        if (endusmroku$darkForestBiome != null && endusmroku$isInsideDarkForest(x * 4.0, z * 4.0)) {
             cir.setReturnValue(endusmroku$darkForestBiome);
         }
     }
 
     @Unique
-    private static boolean endusmroku$isInsideDarkForest(int biomeX, int biomeZ) {
-        // Biome source coordinates are in quart units (4 blocks).
-        double blockX = biomeX * 4.0;
-        double blockZ = biomeZ * 4.0;
+    public static boolean endusmroku$isInsideDarkForest(double x, double z) {
+        int cellX = (int) Math.floor(x / ENDURO_SPACING);
+        int cellZ = (int) Math.floor(z / ENDURO_SPACING);
 
-        // The first test area is on the outer End islands, away from the central island.
-        double dx = blockX - 1500.0;
-        double dz = blockZ;
-        double angle = Math.atan2(dz, dx);
+        for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
+            for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
+                double seed = endusmroku$hash(gx, gz);
+                double centerX = gx * (double) ENDURO_SPACING + endusmroku$hash(gx + 17, gz - 31) * 320.0;
+                double centerZ = gz * (double) ENDURO_SPACING + endusmroku$hash(gx - 47, gz + 11) * 320.0;
 
-        // A gently irregular boundary, approximately 500 blocks across.
-        double radius = 250.0
-                + 14.0 * Math.sin(angle * 3.0 + 0.4)
-                + 9.0 * Math.sin(angle * 7.0 - 1.2)
-                + 6.0 * Math.sin(angle * 11.0 + 0.9);
+                // Keep the patches away from the central End island.
+                if (centerX * centerX + centerZ * centerZ < 1100.0 * 1100.0) {
+                    continue;
+                }
 
-        return dx * dx + dz * dz <= radius * radius;
+                double dx = x - centerX;
+                double dz = z - centerZ;
+                double distance = Math.sqrt(dx * dx + dz * dz);
+                double angle = Math.atan2(dz, dx);
+                double radius = 235.0 + seed * 22.0
+                        + 42.0 * Math.sin(angle * 2.0 + seed * 4.0)
+                        + 27.0 * Math.sin(angle * 5.0 - seed * 7.0)
+                        + 17.0 * Math.sin(angle * 9.0 + seed * 11.0)
+                        + 11.0 * Math.sin(angle * 13.0 - seed * 3.0);
+
+                if (distance <= radius) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    @Unique
+    private static final int ENDURO_SPACING = 2000;
+
+    @Unique
+    private static double endusmroku$hash(int x, int z) {
+        long n = (long) x * 341873128712L + (long) z * 132897987541L;
+        n = (n ^ (n >> 13)) * 1274126177L;
+        n ^= n >> 16;
+        return ((n & 0x7fffffffL) / 1073741823.5) - 1.0;
     }
 }

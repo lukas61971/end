@@ -19,7 +19,7 @@ public class DarkWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
         StructureWorldAccess world = context.getWorld();
         var random = context.getRandom();
         int minY = world.getBottomY() + 12;
-        int maxY = world.getTopY() - 8;
+        int maxY = world.getTopYInclusive() - 8;
         if (maxY <= minY) {
             return false;
         }

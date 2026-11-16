@@ -5,17 +5,20 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * Deterministic organic biome patches. Each patch is a closed Catmull-Rom
- * spline through irregular control points, scaled to independently selected
- * width and height. The same cached outline drives biome selection and terrain.
+ * spline through many irregular control points, scaled to independently
+ * selected width and height. The same outline drives biome selection and terrain.
  */
 public final class DarkForestRegion {
     private static final int PATCH_SPACING = 2000;
     private static final double CENTER_JITTER = 260.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
     private static final double EDGE_BLEND_WIDTH = 128.0;
-    private static final int MIN_CONTROL_POINTS = 5;
-    private static final int MAX_CONTROL_POINTS = 9;
-    private static final int CURVE_STEPS = 12;
+
+    // A large number of unevenly spaced points prevents the outline from
+    // collapsing into a simple circle, oval or low-sided polygon.
+    private static final int MIN_CONTROL_POINTS = 44;
+    private static final int MAX_CONTROL_POINTS = 58;
+    private static final int CURVE_STEPS = 5;
 
     private static final ConcurrentMap<Long, Patch> PATCH_CACHE = new ConcurrentHashMap<>();
 
@@ -36,10 +39,7 @@ public final class DarkForestRegion {
         return false;
     }
 
-    /**
-     * Smooth terrain fade measured inward from the exact same curved boundary
-     * used by biome selection. Biome registry IDs themselves remain discrete.
-     */
+    /** Smooth terrain fade measured inward from the exact same curved boundary. */
     public static double edgeFade(double x, double z) {
         int cellX = (int) Math.floor(x / PATCH_SPACING);
         int cellZ = (int) Math.floor(z / PATCH_SPACING);
@@ -80,15 +80,27 @@ public final class DarkForestRegion {
         double maxX = 0.0;
         double maxZ = 0.0;
 
-        // Points are angularly ordered so the closed curve does not cross itself.
-        // Their radii vary strongly and independently, producing asymmetric bays,
-        // broad shoulders and occasional long peninsulas.
+        // Keep the points in angular order to form one continuous landmass,
+        // but vary both the angle spacing and radius heavily. The wide radius
+        // range creates deep bays, narrow necks, bulges and long protrusions.
+        double angle = hash(gx + 1301, gz - 1709) * Math.PI;
         for (int i = 0; i < count; i++) {
-            double baseAngle = Math.PI * 2.0 * i / count;
-            double angleJitter = hash(gx + 37 * i + 701, gz - 53 * i - 809)
-                    * (Math.PI / count) * 0.42;
-            double angle = baseAngle + angleJitter;
-            double radius = 0.48 + (hash(gx + 97 * i + 907, gz - 71 * i - 1009) + 1.0) * 0.26;
+            double baseStep = Math.PI * 2.0 / count;
+            double angleVariation = hash(gx + 37 * i + 701, gz - 53 * i - 809)
+                    * baseStep * 0.72;
+            angle += baseStep + angleVariation;
+
+            double broadShape = hash(gx * 3 + i / 5 + 1901, gz * 3 - i / 5 - 2017);
+            double localShape = hash(gx + 97 * i + 907, gz - 71 * i - 1009);
+            double fineShape = hash(gx - 131 * i - 2203, gz + 113 * i + 2309);
+
+            // Combine slower lobes with sharp local variation. This is
+            // intentionally much less circular than a conventional radial mask.
+            double radius = 0.16
+                    + (broadShape + 1.0) * 0.20
+                    + (localShape + 1.0) * 0.22
+                    + (fineShape + 1.0) * 0.12;
+            radius = Math.max(0.12, Math.min(1.0, radius));
 
             controlX[i] = Math.cos(angle) * radius;
             controlZ[i] = Math.sin(angle) * radius;
@@ -107,8 +119,8 @@ public final class DarkForestRegion {
             controlZ[i] = cz + controlZ[i] / maxZ * halfHeight;
         }
 
-        // Sample the smooth closed spline into a fine outline. The collision
-        // shape is curved, not the straight-edged control polygon.
+        // Sample the smooth closed spline densely enough that point-in-polygon
+        // and distance checks follow the curved outline rather than its controls.
         int samples = count * CURVE_STEPS;
         double[] outlineX = new double[samples];
         double[] outlineZ = new double[samples];

@@ -16,7 +16,11 @@
     [],
     [],
     [],
-    [],
+    [
+      "endusmroku:dark_fungus_patch",
+      "endusmroku:dark_roots_patch",
+      "endusmroku:dark_sprouts_patch"
+    ],
     []
   ],
   "has_precipitation": false,

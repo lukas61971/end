@@ -4,21 +4,15 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Deterministic organic biome patches. Each patch is a closed Catmull-Rom
- * spline through many irregular control points, scaled to independently
- * selected width and height. The same outline drives biome selection and terrain.
+ * Deterministic, noise-shaped dark forest regions. Each patch has independently
+ * randomized dimensions and an irregular implicit boundary made from warped,
+ * multi-scale noise rather than a polygon or a fixed radial outline.
  */
 public final class DarkForestRegion {
     private static final int PATCH_SPACING = 2000;
     private static final double CENTER_JITTER = 260.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
     private static final double EDGE_BLEND_WIDTH = 128.0;
-
-    // A large number of unevenly spaced points prevents the outline from
-    // collapsing into a simple circle, oval or low-sided polygon.
-    private static final int MIN_CONTROL_POINTS = 44;
-    private static final int MAX_CONTROL_POINTS = 58;
-    private static final int CURVE_STEPS = 5;
 
     private static final ConcurrentMap<Long, Patch> PATCH_CACHE = new ConcurrentHashMap<>();
 
@@ -39,7 +33,7 @@ public final class DarkForestRegion {
         return false;
     }
 
-    /** Smooth terrain fade measured inward from the exact same curved boundary. */
+    /** Smooth terrain fade measured inward from the same noise-defined boundary. */
     public static double edgeFade(double x, double z) {
         int cellX = (int) Math.floor(x / PATCH_SPACING);
         int cellZ = (int) Math.floor(z / PATCH_SPACING);
@@ -74,96 +68,17 @@ public final class DarkForestRegion {
             return Patch.EMPTY;
         }
 
-        int count = controlPointCount(gx, gz);
-        double[] controlX = new double[count];
-        double[] controlZ = new double[count];
-        double maxX = 0.0;
-        double maxZ = 0.0;
-
-        // Keep the points in angular order to form one continuous landmass,
-        // but vary both the angle spacing and radius heavily. The wide radius
-        // range creates deep bays, narrow necks, bulges and long protrusions.
-        double angle = hash(gx + 1301, gz - 1709) * Math.PI;
-        for (int i = 0; i < count; i++) {
-            double baseStep = Math.PI * 2.0 / count;
-            double angleVariation = hash(gx + 37 * i + 701, gz - 53 * i - 809)
-                    * baseStep * 0.72;
-            angle += baseStep + angleVariation;
-
-            double broadShape = hash(gx * 3 + i / 5 + 1901, gz * 3 - i / 5 - 2017);
-            double localShape = hash(gx + 97 * i + 907, gz - 71 * i - 1009);
-            double fineShape = hash(gx - 131 * i - 2203, gz + 113 * i + 2309);
-
-            // Combine slower lobes with sharp local variation. This is
-            // intentionally much less circular than a conventional radial mask.
-            double radius = 0.16
-                    + (broadShape + 1.0) * 0.20
-                    + (localShape + 1.0) * 0.22
-                    + (fineShape + 1.0) * 0.12;
-            radius = Math.max(0.12, Math.min(1.0, radius));
-
-            controlX[i] = Math.cos(angle) * radius;
-            controlZ[i] = Math.sin(angle) * radius;
-            maxX = Math.max(maxX, Math.abs(controlX[i]));
-            maxZ = Math.max(maxZ, Math.abs(controlZ[i]));
-        }
-
-        // Independent dimensions: neither axis is derived from the other.
         double width = dimension(gx, gz, true);
         double height = dimension(gx, gz, false);
-        double halfWidth = width * 0.5;
-        double halfHeight = height * 0.5;
+        int seedX = gx * 734287 + gz * 912931 + 173;
+        int seedZ = gz * 438289 - gx * 651731 - 419;
 
-        for (int i = 0; i < count; i++) {
-            controlX[i] = cx + controlX[i] / maxX * halfWidth;
-            controlZ[i] = cz + controlZ[i] / maxZ * halfHeight;
-        }
-
-        // Sample the smooth closed spline densely enough that point-in-polygon
-        // and distance checks follow the curved outline rather than its controls.
-        int samples = count * CURVE_STEPS;
-        double[] outlineX = new double[samples];
-        double[] outlineZ = new double[samples];
-
-        for (int i = 0; i < count; i++) {
-            double x0 = controlX[(i - 1 + count) % count];
-            double z0 = controlZ[(i - 1 + count) % count];
-            double x1 = controlX[i];
-            double z1 = controlZ[i];
-            double x2 = controlX[(i + 1) % count];
-            double z2 = controlZ[(i + 1) % count];
-            double x3 = controlX[(i + 2) % count];
-            double z3 = controlZ[(i + 2) % count];
-
-            for (int step = 0; step < CURVE_STEPS; step++) {
-                double t = step / (double) CURVE_STEPS;
-                int index = i * CURVE_STEPS + step;
-                outlineX[index] = catmullRom(x0, x1, x2, x3, t);
-                outlineZ[index] = catmullRom(z0, z1, z2, z3, t);
-            }
-        }
-
-        return new Patch(outlineX, outlineZ);
-    }
-
-    private static int controlPointCount(int gx, int gz) {
-        double value = (hash(gx + 101, gz - 211) + 1.0) * 0.5;
-        return MIN_CONTROL_POINTS
-                + (int) Math.floor(value * (MAX_CONTROL_POINTS - MIN_CONTROL_POINTS + 1));
+        return new Patch(cx, cz, width * 0.5, height * 0.5, seedX, seedZ);
     }
 
     private static double dimension(int gx, int gz, boolean width) {
         double value = width ? hash(gx + 307, gz + 419) : hash(gx - 521, gz + 613);
         return 200.0 + (value + 1.0) * 225.0;
-    }
-
-    private static double catmullRom(double p0, double p1, double p2, double p3, double t) {
-        double t2 = t * t;
-        double t3 = t2 * t;
-        return 0.5 * ((2.0 * p1)
-                + (-p0 + p2) * t
-                + (2.0 * p0 - 5.0 * p1 + 4.0 * p2 - p3) * t2
-                + (-p0 + 3.0 * p1 - 3.0 * p2 + p3) * t3);
     }
 
     private static double centerX(int gx, int gz) {
@@ -174,6 +89,19 @@ public final class DarkForestRegion {
         return gz * (double) PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
     }
 
+    private static double valueNoise2D(double x, double z, int seedX, int seedZ) {
+        int x0 = (int) Math.floor(x);
+        int z0 = (int) Math.floor(z);
+        double tx = smooth(x - x0);
+        double tz = smooth(z - z0);
+
+        double a = lerp(hash(x0 + seedX, z0 + seedZ),
+                hash(x0 + 1 + seedX, z0 + seedZ), tx);
+        double b = lerp(hash(x0 + seedX, z0 + 1 + seedZ),
+                hash(x0 + 1 + seedX, z0 + 1 + seedZ), tx);
+        return lerp(a, b, tz);
+    }
+
     private static double hash(int x, int z) {
         long n = (long) x * 341873128712L + (long) z * 132897987541L;
         n = (n ^ (n >> 13)) * 1274126177L;
@@ -181,49 +109,68 @@ public final class DarkForestRegion {
         return ((n & 0x7fffffffL) / 1073741823.5) - 1.0;
     }
 
+    private static double smooth(double value) {
+        return value * value * (3.0 - 2.0 * value);
+    }
+
+    private static double lerp(double a, double b, double delta) {
+        return a + (b - a) * delta;
+    }
+
     private static final class Patch {
-        private static final Patch EMPTY = new Patch(new double[0], new double[0]);
+        private static final Patch EMPTY = new Patch(0.0, 0.0, 0.0, 0.0, 0, 0);
 
-        private final double[] x;
-        private final double[] z;
+        private final double centerX;
+        private final double centerZ;
+        private final double halfWidth;
+        private final double halfHeight;
+        private final double distanceScale;
+        private final int seedX;
+        private final int seedZ;
+        private final boolean empty;
 
-        private Patch(double[] x, double[] z) {
-            this.x = x;
-            this.z = z;
+        private Patch(double centerX, double centerZ, double halfWidth, double halfHeight,
+                      int seedX, int seedZ) {
+            this.centerX = centerX;
+            this.centerZ = centerZ;
+            this.halfWidth = halfWidth;
+            this.halfHeight = halfHeight;
+            this.distanceScale = (halfWidth + halfHeight) * 0.5;
+            this.seedX = seedX;
+            this.seedZ = seedZ;
+            this.empty = halfWidth == 0.0 || halfHeight == 0.0;
         }
 
-        private double signedDistance(double px, double pz) {
-            if (x.length == 0) {
+        private double signedDistance(double x, double z) {
+            if (empty) {
                 return -Double.MAX_VALUE;
             }
 
-            boolean inside = false;
-            double minDistanceSquared = Double.MAX_VALUE;
+            double u = (x - centerX) / halfWidth;
+            double v = (z - centerZ) / halfHeight;
 
-            for (int i = 0, j = x.length - 1; i < x.length; j = i++) {
-                double ax = x[j];
-                double az = z[j];
-                double bx = x[i];
-                double bz = z[i];
+            // Warp the coordinates before sampling the boundary noise. This
+            // creates irregular coves and protrusions instead of a simple oval.
+            double warpX = valueNoise2D(u * 2.7 + 13.0, v * 2.7 - 29.0,
+                    seedX + 101, seedZ - 211) * 0.27;
+            double warpZ = valueNoise2D(u * 2.7 - 37.0, v * 2.7 + 53.0,
+                    seedX - 307, seedZ + 419) * 0.27;
+            double warpedU = u + warpX;
+            double warpedV = v + warpZ;
 
-                if ((az > pz) != (bz > pz)
-                        && px < (bx - ax) * (pz - az) / (bz - az) + ax) {
-                    inside = !inside;
-                }
+            double broad = valueNoise2D(warpedU * 3.1 + 17.0, warpedV * 3.1 - 31.0,
+                    seedX + 701, seedZ - 809);
+            double medium = valueNoise2D(warpedU * 6.4 - 43.0, warpedV * 6.4 + 59.0,
+                    seedX + 907, seedZ - 1009);
+            double fine = valueNoise2D(warpedU * 12.8 + 71.0, warpedV * 12.8 - 89.0,
+                    seedX - 1103, seedZ + 1201);
 
-                double abx = bx - ax;
-                double abz = bz - az;
-                double lengthSquared = abx * abx + abz * abz;
-                double t = lengthSquared == 0.0 ? 0.0
-                        : ((px - ax) * abx + (pz - az) * abz) / lengthSquared;
-                t = Math.max(0.0, Math.min(1.0, t));
-                double dx = px - (ax + t * abx);
-                double dz = pz - (az + t * abz);
-                minDistanceSquared = Math.min(minDistanceSquared, dx * dx + dz * dz);
-            }
-
-            double distance = Math.sqrt(minDistanceSquared);
-            return inside ? distance : -distance;
+            // A weak central falloff keeps each patch one landmass. Strong,
+            // differently scaled noise overwhelms the smooth oval outline,
+            // producing asymmetric inlets, narrow necks and uneven lobes.
+            double base = 1.0 - Math.sqrt(warpedU * warpedU + warpedV * warpedV);
+            double field = base + broad * 0.30 + medium * 0.15 + fine * 0.055;
+            return field * distanceScale;
         }
     }
 }

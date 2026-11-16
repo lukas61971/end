@@ -44,6 +44,7 @@ import pl.endusmroku.block.DarkTwistingVinesBlock;
 import pl.endusmroku.block.DarkTwistingVinesPlantBlock; 
 import pl.endusmroku.block.DarkWeepingVinesBlock;
 import pl.endusmroku.block.DarkWeepingVinesPlantBlock;
+import pl.endusmroku.worldgen.DarkVinesFeatures;
 
 public class EndusMroku implements ModInitializer {
     public static final String MOD_ID = "endusmroku";
@@ -839,6 +840,12 @@ public static final Item DARK_WEEPING_VINES_ITEM =
                 )
         );
 
+
+    static {
+        // Register custom world-generation features after all mod blocks exist.
+        DarkVinesFeatures.DARK_TWISTING_VINES.getCodec();
+        DarkVinesFeatures.DARK_WEEPING_VINES.getCodec();
+    }
 
     @Override
 public void onInitialize() {

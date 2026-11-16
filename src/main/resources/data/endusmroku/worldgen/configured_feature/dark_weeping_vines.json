@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:weeping_vines",
+  "config": {
+    "spread_width": 4,
+    "spread_height": 3,
+    "max_height": 3
+  }
+}

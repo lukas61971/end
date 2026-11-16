@@ -29,8 +29,10 @@ public class DarkWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
 
         // Search multiple positions in this chunk for real underground ceilings.
         for (int attempt = 0; attempt < 48; attempt++) {
-            int x = origin.getX() + random.nextInt(16);
-            int z = origin.getZ() + random.nextInt(16);
+            int chunkX = origin.getX() & ~15;
+            int chunkZ = origin.getZ() & ~15;
+            int x = chunkX + random.nextInt(16);
+            int z = chunkZ + random.nextInt(16);
             int y = minY + random.nextInt(maxY - minY);
             BlockPos ceilingPos = new BlockPos(x, y, z);
             BlockPos topVinePos = ceilingPos.down();

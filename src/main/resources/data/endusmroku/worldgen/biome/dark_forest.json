@@ -24,8 +24,10 @@
       "endusmroku:dark_forest_huge_fungus"
     ],
     [
+      "endusmroku:dark_weeping_vines",
       "endusmroku:dark_weeping_vines"
-    ]
+    ],
+    []
   ],
   "has_precipitation": false,
   "spawn_costs": {},

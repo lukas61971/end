@@ -123,11 +123,22 @@ public abstract class DarkForestTerrainMixin {
 
     @Unique
     private static double endusmroku$rawHeightChange(int x, int z) {
-        double broad = endusmroku$valueNoise2D(x * 0.009, z * 0.009);
-        double detail = endusmroku$valueNoise2D(x * 0.024 + 173.0, z * 0.024 - 91.0);
-        double ridgeNoise = endusmroku$valueNoise2D(x * 0.014 - 307.0, z * 0.014 + 419.0);
-        double ridge = 1.0 - Math.abs(ridgeNoise);
-        double change = broad * 10.0 + detail * 3.0 + ridge * ridge * 8.0 - 3.0;
+        // Large-scale noise creates broad plains, basins and long valleys.
+        double continental = endusmroku$valueNoise2D(x * 0.0045 + 41.0, z * 0.0045 - 73.0);
+        // Medium noise breaks the terrain into rolling hills and mountain groups.
+        double hills = endusmroku$valueNoise2D(x * 0.011 + 173.0, z * 0.011 - 91.0);
+        // Fine noise adds smaller unevenness without making the surface jagged.
+        double detail = endusmroku$valueNoise2D(x * 0.032 - 257.0, z * 0.032 + 139.0);
+
+        double mountainNoise = endusmroku$valueNoise2D(x * 0.0065 - 307.0, z * 0.0065 + 419.0);
+        double ridge = 1.0 - Math.abs(mountainNoise);
+        double mountainMask = endusmroku$smooth((mountainNoise + 0.15) / 1.15);
+        double mountains = ridge * ridge * mountainMask * 11.0;
+
+        // Negative continental values form broad lowlands; positive values
+        // allow occasional higher ground. Heights remain deliberately moderate.
+        double change = continental * 8.0 + hills * 5.0 + detail * 1.8
+                + mountains - 1.5;
         return Math.max(-14.0, Math.min(18.0, change));
     }
 

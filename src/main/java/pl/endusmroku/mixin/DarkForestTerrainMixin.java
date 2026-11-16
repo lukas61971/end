@@ -55,7 +55,9 @@ public abstract class DarkForestTerrainMixin {
                 int x = startX + localX;
                 int z = startZ + localZ;
 
-                if (!biomeAccess.getBiomeForNoiseGen(x >> 2, 0, z >> 2)
+                // Read the biome stored in this chunk directly. This avoids
+                // relying on a separate BiomeAccess lookup during surface generation.
+                if (!chunk.getBiomeForNoiseGen(x >> 2, 0, z >> 2)
                         .matchesKey(ENDURO_DARK_FOREST_KEY)) {
                     continue;
                 }
@@ -70,7 +72,6 @@ public abstract class DarkForestTerrainMixin {
                     continue;
                 }
 
-                // Smooth the height field over neighbouring columns to avoid isolated spikes and pits.
                 double smoothedChange = 0.0;
                 int totalWeight = 0;
                 for (int ox = -1; ox <= 1; ox++) {
@@ -82,7 +83,7 @@ public abstract class DarkForestTerrainMixin {
                 }
 
                 int heightChange = (int) Math.round((smoothedChange / totalWeight) * fade);
-                heightChange = Math.max(-14, Math.min(18, heightChange));
+                heightChange = Math.max(-18, Math.min(22, heightChange));
                 int newSurfaceY = Math.max(bottomY + 8, Math.min(topY - 3, surfaceY + heightChange));
 
                 if (newSurfaceY > surfaceY) {
@@ -97,7 +98,6 @@ public abstract class DarkForestTerrainMixin {
                     }
                 }
 
-                // Keep this stage free of artificial cave carving; it caused thin, unnatural holes.
                 pos.set(x, newSurfaceY, z);
                 if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
                     chunk.setBlockState(pos, EndusMroku.CIEMNE_NYLIUM.getDefaultState());
@@ -123,23 +123,18 @@ public abstract class DarkForestTerrainMixin {
 
     @Unique
     private static double endusmroku$rawHeightChange(int x, int z) {
-        // Large-scale noise creates broad plains, basins and long valleys.
         double continental = endusmroku$valueNoise2D(x * 0.0045 + 41.0, z * 0.0045 - 73.0);
-        // Medium noise breaks the terrain into rolling hills and mountain groups.
         double hills = endusmroku$valueNoise2D(x * 0.011 + 173.0, z * 0.011 - 91.0);
-        // Fine noise adds smaller unevenness without making the surface jagged.
         double detail = endusmroku$valueNoise2D(x * 0.032 - 257.0, z * 0.032 + 139.0);
 
         double mountainNoise = endusmroku$valueNoise2D(x * 0.0065 - 307.0, z * 0.0065 + 419.0);
         double ridge = 1.0 - Math.abs(mountainNoise);
         double mountainMask = endusmroku$smooth((mountainNoise + 0.15) / 1.15);
-        double mountains = ridge * ridge * mountainMask * 11.0;
+        double mountains = ridge * ridge * mountainMask * 14.0;
 
-        // Negative continental values form broad lowlands; positive values
-        // allow occasional higher ground. Heights remain deliberately moderate.
-        double change = continental * 8.0 + hills * 5.0 + detail * 1.8
-                + mountains - 1.5;
-        return Math.max(-14.0, Math.min(18.0, change));
+        double change = continental * 12.0 + hills * 7.0 + detail * 2.0
+                + mountains - 2.0;
+        return Math.max(-18.0, Math.min(22.0, change));
     }
 
     @Unique

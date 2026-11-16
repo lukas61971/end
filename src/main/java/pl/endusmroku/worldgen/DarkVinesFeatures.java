@@ -22,6 +22,10 @@ public final class DarkVinesFeatures {
                     new DarkWeepingVinesFeature()
             );
 
+    public static void register() {
+        // Calling this method initializes and registers both feature entries.
+    }
+
     private DarkVinesFeatures() {
     }
 }

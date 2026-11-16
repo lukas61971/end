@@ -1,5 +1,7 @@
 {
-  "carvers": [],
+  "carvers": [
+    "endusmroku:dark_forest_caves"
+  ],
   "downfall": 0.5,
   "effects": {
     "water_color": "#3f76e4"

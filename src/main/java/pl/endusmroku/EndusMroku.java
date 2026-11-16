@@ -843,8 +843,7 @@ public static final Item DARK_WEEPING_VINES_ITEM =
 
     static {
         // Register custom world-generation features after all mod blocks exist.
-        DarkVinesFeatures.DARK_TWISTING_VINES.getCodec();
-        DarkVinesFeatures.DARK_WEEPING_VINES.getCodec();
+        DarkVinesFeatures.register();
     }
 
     @Override

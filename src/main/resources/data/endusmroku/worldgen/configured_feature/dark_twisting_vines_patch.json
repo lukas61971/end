@@ -1,4 +1,11 @@
 {
-  "type": "endusmroku:dark_twisting_vines",
-  "config": {}
+  "type": "minecraft:simple_block",
+  "config": {
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "endusmroku:dark_twisting_vines_plant"
+      }
+    }
+  }
 }

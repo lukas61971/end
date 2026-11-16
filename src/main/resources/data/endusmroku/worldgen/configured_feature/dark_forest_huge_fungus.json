@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:huge_fungus",
+  "config": {
+    "planted": false,
+    "valid_base_block": {
+      "Name": "endusmroku:ciemne_nylium"
+    },
+    "stem_state": {
+      "Name": "endusmroku:dark_stem",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "hat_state": {
+      "Name": "endusmroku:dark_wart_block"
+    },
+    "decor_state": {
+      "Name": "endusmroku:dark_wart_block"
+    },
+    "replaceable_blocks": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:air",
+        "minecraft:end_stone",
+        "endusmroku:dark_fungus",
+        "endusmroku:dark_twisting_vines",
+        "endusmroku:dark_twisting_vines_plant"
+      ]
+    }
+  }
+}

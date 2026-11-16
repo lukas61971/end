@@ -45,8 +45,7 @@ public class DarkTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
 
         BlockPos headPos = base.up(height - 1);
         if (height == 1) {
-            // A one-block vine uses its head block; the nylium below is its support.
-            return world.setBlockState(headPos, head, Block.NOTIFY_LISTENERS);
+            return world.setBlockState(headPos, plant, Block.NOTIFY_LISTENERS);
         }
 
         if (!head.canPlaceAt(world, headPos)) {

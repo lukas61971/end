@@ -4,6 +4,7 @@
   ],
   "downfall": 0.5,
   "effects": {
+    "fog_color": 3282498,
     "water_color": "#3f76e4"
   },
   "features": [

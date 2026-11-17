@@ -55,7 +55,7 @@ public class EnderFungusBlock extends PlantBlock implements Fertilizable {
             BlockView world,
             BlockPos pos
     ) {
-        return floor.isOf(Enderwilds.CIEMNE_NYLIUM);
+        return floor.isOf(Enderwilds.ENDER_NYLIUM);
     }
 
     // MĄCZKA KOSTNA
@@ -67,7 +67,7 @@ public class EnderFungusBlock extends PlantBlock implements Fertilizable {
             BlockState state
     ) {
         return world.getBlockState(pos.down())
-                .isOf(Enderwilds.CIEMNE_NYLIUM);
+                .isOf(Enderwilds.ENDER_NYLIUM);
     }
 
     @Override
@@ -104,7 +104,7 @@ public class EnderFungusBlock extends PlantBlock implements Fertilizable {
 
         HugeFungusFeatureConfig config =
                 new HugeFungusFeatureConfig(
-                        Enderwilds.CIEMNE_NYLIUM.getDefaultState(),
+                        Enderwilds.ENDER_NYLIUM.getDefaultState(),
                         Enderwilds.ENDER_STEM.getDefaultState(),
                         Enderwilds.ENDER_WART_BLOCK.getDefaultState(),
                         Blocks.AIR.getDefaultState(),

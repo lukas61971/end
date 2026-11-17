@@ -3,7 +3,7 @@
   "category": "building",
   "group": "wooden_stairs",
   "key": {
-    "P": "endusmroku:dark_planks"
+    "P": "endusmroku:ender_planks"
   },
   "pattern": [
     "P  ",
@@ -11,7 +11,7 @@
     "PPP"
   ],
   "result": {
-    "id": "endusmroku:dark_stairs",
+    "id": "endusmroku:ender_stairs",
     "count": 4
   }
 }

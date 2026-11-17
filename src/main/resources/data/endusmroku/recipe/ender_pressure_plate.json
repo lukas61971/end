@@ -3,13 +3,13 @@
   "category": "redstone",
   "group": "wooden_pressure_plate",
   "key": {
-    "#": "endusmroku:dark_planks"
+    "#": "endusmroku:ender_planks"
   },
   "pattern": [
     "##"
   ],
   "result": {
     "count": 1,
-    "id": "endusmroku:dark_pressure_plate"
+    "id": "endusmroku:ender_pressure_plate"
   }
 }

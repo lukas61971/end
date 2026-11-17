@@ -3,7 +3,7 @@
   "category": "redstone",
   "group": "wooden_trapdoor",
   "key": {
-    "#": "endusmroku:dark_planks"
+    "#": "endusmroku:ender_planks"
   },
   "pattern": [
     "###",
@@ -11,6 +11,6 @@
   ],
   "result": {
     "count": 2,
-    "id": "endusmroku:dark_trapdoor"
+    "id": "endusmroku:ender_trapdoor"
   }
 }

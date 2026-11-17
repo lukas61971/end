@@ -3,13 +3,13 @@
   "category": "building",
   "group": "wooden_slab",
   "key": {
-    "#": "endusmroku:dark_planks"
+    "#": "endusmroku:ender_planks"
   },
   "pattern": [
     "###"
   ],
   "result": {
     "count": 4,
-    "id": "endusmroku:dark_slab"
+    "id": "endusmroku:ender_slab"
   }
 }

@@ -15,44 +15,44 @@ import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import pl.enderwilds.worldgen.DarkForestRegion;
+import pl.enderwilds.worldgen.EndergroveRegion;
 
 @Mixin(TheEndBiomeSource.class)
 public abstract class TheEndBiomeSourceMixin {
     @Unique
-    private static RegistryEntry<Biome> enderwilds$darkForestBiome;
+    private static RegistryEntry<Biome> enderwilds$enderGroveBiome;
 
     @Inject(method = "createVanilla", at = @At("RETURN"))
-    private static void enderwilds$loadDarkForest(
+    private static void enderwilds$loadEndergrove(
             RegistryEntryLookup<Biome> biomeLookup,
             CallbackInfoReturnable<TheEndBiomeSource> cir
     ) {
         RegistryKey<Biome> key = RegistryKey.of(
                 RegistryKeys.BIOME,
-                Identifier.of("enderwilds", "dark_forest")
+                Identifier.of("enderwilds", "endergrove")
         );
-        enderwilds$darkForestBiome = biomeLookup.getOrThrow(key);
+        enderwilds$enderGroveBiome = biomeLookup.getOrThrow(key);
     }
 
     @Inject(method = "biomeStream", at = @At("RETURN"), cancellable = true)
-    private void enderwilds$includeDarkForest(
+    private void enderwilds$includeEndergrove(
             CallbackInfoReturnable<Stream<RegistryEntry<Biome>>> cir
     ) {
-        if (enderwilds$darkForestBiome != null) {
-            cir.setReturnValue(Stream.concat(cir.getReturnValue(), Stream.of(enderwilds$darkForestBiome)));
+        if (enderwilds$enderGroveBiome != null) {
+            cir.setReturnValue(Stream.concat(cir.getReturnValue(), Stream.of(enderwilds$enderGroveBiome)));
         }
     }
 
     @Inject(method = "getBiome", at = @At("RETURN"), cancellable = true)
-    private void enderwilds$selectDarkForest(
+    private void enderwilds$selectEndergrove(
             int x,
             int y,
             int z,
             MultiNoiseUtil.MultiNoiseSampler noise,
             CallbackInfoReturnable<RegistryEntry<Biome>> cir
     ) {
-        if (enderwilds$darkForestBiome != null && DarkForestRegion.isInside(x * 4.0, z * 4.0)) {
-            cir.setReturnValue(enderwilds$darkForestBiome);
+        if (enderwilds$enderGroveBiome != null && EndergroveRegion.isInside(x * 4.0, z * 4.0)) {
+            cir.setReturnValue(enderwilds$enderGroveBiome);
         }
     }
 }

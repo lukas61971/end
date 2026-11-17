@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/crimson_stem",
+  "textures": {
+    "side": "endusmroku:block/ender_stem",
+    "end": "endusmroku:block/ender_stem_top"
+  }
+}

@@ -24,8 +24,8 @@ public abstract class DarkFungusVinesMixin {
             ),
             index = 4
     )
-    private int endusmroku$limitStemHeight(int stemHeight) {
-        return Math.min(stemHeight, 17);
+    private int endusmroku$removeDoubledStemHeight(int stemHeight) {
+        return Math.min(stemHeight, 7);
     }
 
     @ModifyArg(
@@ -36,32 +36,8 @@ public abstract class DarkFungusVinesMixin {
             ),
             index = 4
     )
-    private int endusmroku$limitHatHeight(int hatHeight) {
-        return Math.min(hatHeight, 17);
-    }
-
-    @ModifyArg(
-            method = "generate(Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/gen/feature/HugeFungusFeature;generateStem(Lnet/minecraft/world/StructureWorldAccess;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/world/gen/feature/HugeFungusFeatureConfig;Lnet/minecraft/util/math/BlockPos;IZ)V"
-            ),
-            index = 5
-    )
-    private boolean endusmroku$disableThickStem(boolean thickStem) {
-        return false;
-    }
-
-    @ModifyArg(
-            method = "generate(Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z",
-            at = @At(
-                    value = "INVOKE",
-                    target = "Lnet/minecraft/world/gen/feature/HugeFungusFeature;generateHat(Lnet/minecraft/world/StructureWorldAccess;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/world/gen/feature/HugeFungusFeatureConfig;Lnet/minecraft/util/math/BlockPos;IZ)V"
-            ),
-            index = 5
-    )
-    private boolean endusmroku$disableThickHat(boolean thickStem) {
-        return false;
+    private int endusmroku$removeDoubledHatHeight(int hatHeight) {
+        return Math.min(hatHeight, 6);
     }
 
     @Inject(

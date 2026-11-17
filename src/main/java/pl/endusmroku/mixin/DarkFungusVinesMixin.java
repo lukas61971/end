@@ -28,7 +28,7 @@ public abstract class DarkFungusVinesMixin {
             CallbackInfo ci
     ) {
         // Only decorate our own fungus trees.
-        if (!config.hatState().isOf(EndusMroku.DARK_WART_BLOCK)) {
+        if (!config.hatState.isOf(EndusMroku.DARK_WART_BLOCK)) {
             return;
         }
 

@@ -44,13 +44,27 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
 
             BlockPos topVinePos = ceilingPos.down();
 
-            // Do not generate vines in the open space underneath the island.
-            // Keep them only where the position is enclosed from the sky (caves).
+            // Require a cave-like space: a ceiling above and solid ground
+            // reasonably close below. Floating islands can block sky visibility,
+            // so sky visibility alone does not distinguish them from caves.
             if (world.isSkyVisible(topVinePos)) {
                 continue;
             }
 
             int length = 1 + random.nextInt(4);
+            BlockPos bottomVinePos = topVinePos.down(length - 1);
+
+            boolean hasFloor = false;
+            for (int distance = 1; distance <= 16; distance++) {
+                BlockPos below = bottomVinePos.down(distance);
+                if (world.getBlockState(below).isSolidBlock(world, below)) {
+                    hasFloor = true;
+                    break;
+                }
+            }
+            if (!hasFloor) {
+                continue;
+            }
             boolean clear = true;
             for (int i = 0; i < length; i++) {
                 if (!world.getBlockState(topVinePos.down(i)).isAir()) {
@@ -64,8 +78,6 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
 
             BlockState head = Enderwilds.ENDER_WEEPING_VINES.getDefaultState();
             BlockState plant = Enderwilds.ENDER_WEEPING_VINES_PLANT.getDefaultState();
-            BlockPos bottomVinePos = topVinePos.down(length - 1);
-
             // Match the proven placement used by the fungus-cap vine mixin:
             // plant segments above, the vine head at the bottom.
             for (int i = 0; i < length - 1; i++) {

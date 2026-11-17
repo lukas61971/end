@@ -9,11 +9,25 @@ import net.minecraft.world.gen.feature.HugeFungusFeatureConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.endusmroku.EndusMroku;
 
 @Mixin(targets = "net.minecraft.world.gen.feature.HugeFungusFeature")
 public abstract class DarkFungusVinesMixin {
+
+    @ModifyArg(
+            method = "generate(Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/world/gen/feature/HugeFungusFeature;generateHat(Lnet/minecraft/world/StructureWorldAccess;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/world/gen/feature/HugeFungusFeatureConfig;Lnet/minecraft/util/math/BlockPos;IZ)V"
+            ),
+            index = 4
+    )
+    private int endusmroku$limitTreeHeight(int hatHeight) {
+        return Math.min(hatHeight, 17);
+    }
+
     @Inject(
             method = "generateHat(Lnet/minecraft/world/StructureWorldAccess;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/world/gen/feature/HugeFungusFeatureConfig;Lnet/minecraft/util/math/BlockPos;IZ)V",
             at = @At("RETURN")

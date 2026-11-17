@@ -1,35 +1,8 @@
 {
-  "type": "minecraft:block_column",
+  "type": "minecraft:weeping_vines",
   "config": {
-    "direction": "down",
-    "allowed_placement": {
-      "type": "minecraft:matching_blocks",
-      "blocks": "minecraft:air"
-    },
-    "prioritize_tip": false,
-    "layers": [
-      {
-        "height": 1,
-        "provider": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "endusmroku:dark_weeping_vines"
-          }
-        }
-      },
-      {
-        "height": {
-          "type": "minecraft:uniform",
-          "min_inclusive": 1,
-          "max_inclusive": 3
-        },
-        "provider": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "endusmroku:dark_weeping_vines_plant"
-          }
-        }
-      }
-    ]
+    "spread_width": 4,
+    "spread_height": 3,
+    "max_height": 3
   }
 }

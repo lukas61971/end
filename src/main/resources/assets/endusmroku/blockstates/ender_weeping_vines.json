@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "endusmroku:block/dark_weeping_vines"
+        "model": "endusmroku:block/ender_weeping_vines"
       }
     }
   ]

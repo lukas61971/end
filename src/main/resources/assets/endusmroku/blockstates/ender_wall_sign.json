@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": {"facing": "north"},
+      "apply": {"model": "endusmroku:block/ender_wall_sign"}
+    },
+    {
+      "when": {"facing": "south"},
+      "apply": {"model": "endusmroku:block/ender_wall_sign"}
+    },
+    {
+      "when": {"facing": "east"},
+      "apply": {"model": "endusmroku:block/ender_wall_sign"}
+    },
+    {
+      "when": {"facing": "west"},
+      "apply": {"model": "endusmroku:block/ender_wall_sign"}
+    }
+  ]
+}

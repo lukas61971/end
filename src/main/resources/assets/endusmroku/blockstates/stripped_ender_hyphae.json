@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "endusmroku:block/stripped_ender_hyphae"
+    },
+    "axis=y": {
+      "model": "endusmroku:block/stripped_ender_hyphae"
+    },
+    "axis=z": {
+      "model": "endusmroku:block/stripped_ender_hyphae"
+    }
+  }
+}

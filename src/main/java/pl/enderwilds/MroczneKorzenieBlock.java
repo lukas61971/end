@@ -7,12 +7,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.util.shape.VoxelShape;
 
-public class MroczneKorzenieBlock extends RootsBlock {
+public class EnderRootsBlock extends RootsBlock {
 
     private static final VoxelShape SHAPE =
             createCuboidShape(3, 0, 3, 13, 8, 13);
 
-    public MroczneKorzenieBlock(Settings settings) {
+    public EnderRootsBlock(Settings settings) {
         super(settings);
     }
 
@@ -28,6 +28,6 @@ public class MroczneKorzenieBlock extends RootsBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isOf(Enderwilds.CIEMNE_NYLIUM);
+        return floor.isOf(Enderwilds.ENDER_NYLIUM);
     }
 }

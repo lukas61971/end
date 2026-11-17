@@ -5,6 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.feature.util.FeatureContext;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import net.minecraft.world.gen.feature.HugeFungusFeatureConfig;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -70,6 +72,42 @@ public abstract class DarkFungusVinesMixin {
                                 : EndusMroku.DARK_WEEPING_VINES_PLANT.getDefaultState();
 
                         world.setBlockState(vinePos, vineState, Block.NOTIFY_ALL);
+                    }
+                }
+            }
+        }
+    }
+
+    @Inject(
+            method = "generate(Lnet/minecraft/world/gen/feature/util/FeatureContext;)Z",
+            at = @At("RETURN")
+    )
+    private void endusmroku$limitDarkFungusHeight(
+            FeatureContext<HugeFungusFeatureConfig> context,
+            CallbackInfoReturnable<Boolean> cir
+    ) {
+        HugeFungusFeatureConfig config = context.getConfig();
+        if (!config.hatState.isOf(EndusMroku.DARK_WART_BLOCK)) {
+            return;
+        }
+
+        StructureWorldAccess world = context.getWorld();
+        BlockPos origin = context.getOrigin();
+        int firstTooHighY = origin.getY() + 17;
+        int maxY = Math.min(world.getBottomY() + world.getHeight() - 1, origin.getY() + 40);
+        BlockPos.Mutable pos = new BlockPos.Mutable();
+
+        // The base block is counted as block 1, so blocks at baseY + 17 and above are removed.
+        for (int x = origin.getX() - 8; x <= origin.getX() + 8; x++) {
+            for (int z = origin.getZ() - 8; z <= origin.getZ() + 8; z++) {
+                for (int y = firstTooHighY; y <= maxY; y++) {
+                    pos.set(x, y, z);
+                    BlockState state = world.getBlockState(pos);
+                    if (state.isOf(EndusMroku.DARK_STEM)
+                            || state.isOf(EndusMroku.DARK_WART_BLOCK)
+                            || state.isOf(EndusMroku.DARK_WEEPING_VINES)
+                            || state.isOf(EndusMroku.DARK_WEEPING_VINES_PLANT)) {
+                        world.setBlockState(pos, net.minecraft.block.Blocks.AIR.getDefaultState(), Block.NOTIFY_ALL);
                     }
                 }
             }

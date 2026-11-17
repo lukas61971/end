@@ -3,7 +3,7 @@
   "config": {
     "planted": false,
     "valid_base_block": {
-      "Name": "enderwilds:ciemne_nylium"
+      "Name": "enderwilds:ender_nylium"
     },
     "stem_state": {
       "Name": "enderwilds:ender_stem",

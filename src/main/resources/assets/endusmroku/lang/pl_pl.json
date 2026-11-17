@@ -24,7 +24,6 @@
   "block.endusmroku.ender_fence": "Endowy płot",
   "item.endusmroku.ender_fence": "Endowy płot",
   "block.endusmroku.ender_fence_gate": "Endowa furtka",
-  "tem.endusmroku.ender_fence_gate": "Endowa furtka",
   "block.endusmroku.ender_button": "Endowy przycisk",
   "item.endusmroku.ender_button": "Endowy przycisk",
   "block.endusmroku.ender_pressure_plate": "Endowa płytka naciskowa",
@@ -51,5 +50,6 @@
   "block.endusmroku.ender_weeping_vines": "Endowe płaczące pnącza",
   "block.endusmroku.ender_weeping_vines_plant": "Endowe płaczące pnącza",
   "item.endusmroku.ender_weeping_vines": "Endowe płaczące pnącza",
-  "item.endusmroku.ender_weeping_vines_plant": "Endowe płaczące pnącza"
+  "item.endusmroku.ender_weeping_vines_plant": "Endowe płaczące pnącza",
+  "item.endusmroku.ender_fence_gate": "Endowa furtka"
 }

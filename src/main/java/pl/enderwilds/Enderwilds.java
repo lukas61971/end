@@ -48,60 +48,60 @@ public class Enderwilds implements ModInitializer {
 
     // CIEMNE NYLIUM
 
-    private static final Identifier CIEMNE_NYLIUM_ID =
-            Identifier.of(MOD_ID, "ciemne_nylium");
+    private static final Identifier ENDER_NYLIUM_ID =
+            Identifier.of(MOD_ID, "ender_nylium");
 
-    public static final RegistryKey<Block> CIEMNE_NYLIUM_KEY =
-            RegistryKey.of(RegistryKeys.BLOCK, CIEMNE_NYLIUM_ID);
+    public static final RegistryKey<Block> ENDER_NYLIUM_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDER_NYLIUM_ID);
 
-    public static final RegistryKey<Item> CIEMNE_NYLIUM_ITEM_KEY =
-            RegistryKey.of(RegistryKeys.ITEM, CIEMNE_NYLIUM_ID);
+    public static final RegistryKey<Item> ENDER_NYLIUM_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDER_NYLIUM_ID);
 
-    public static final Block CIEMNE_NYLIUM = Registry.register(
+    public static final Block ENDER_NYLIUM = Registry.register(
             Registries.BLOCK,
-            CIEMNE_NYLIUM_ID,
-            new CiemneNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
+            ENDER_NYLIUM_ID,
+            new EnderNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
                     .ticksRandomly()
                     .strength(3.0F, 9.0F)
                     .requiresTool()
-                    .registryKey(CIEMNE_NYLIUM_KEY)
+                    .registryKey(ENDER_NYLIUM_KEY)
                     .mapColor(MapColor.PURPLE))
     );
 
-    public static final Item CIEMNE_NYLIUM_ITEM = Registry.register(
+    public static final Item ENDER_NYLIUM_ITEM = Registry.register(
             Registries.ITEM,
-            CIEMNE_NYLIUM_ID,
-            new BlockItem(CIEMNE_NYLIUM, new Item.Settings()
-                    .registryKey(CIEMNE_NYLIUM_ITEM_KEY))
+            ENDER_NYLIUM_ID,
+            new BlockItem(ENDER_NYLIUM, new Item.Settings()
+                    .registryKey(ENDER_NYLIUM_ITEM_KEY))
     );
 
     // MROCZNE KORZENIE
 
-    private static final Identifier MROCZNE_KORZENIE_ID =
-            Identifier.of(MOD_ID, "mroczne_korzenie");
+    private static final Identifier ENDER_ROOTS_ID =
+            Identifier.of(MOD_ID, "ender_roots");
 
-    public static final RegistryKey<Block> MROCZNE_KORZENIE_KEY =
-            RegistryKey.of(RegistryKeys.BLOCK, MROCZNE_KORZENIE_ID);
+    public static final RegistryKey<Block> ENDER_ROOTS_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDER_ROOTS_ID);
 
-    public static final RegistryKey<Item> MROCZNE_KORZENIE_ITEM_KEY =
-            RegistryKey.of(RegistryKeys.ITEM, MROCZNE_KORZENIE_ID);
+    public static final RegistryKey<Item> ENDER_ROOTS_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDER_ROOTS_ID);
 
-    public static final Block MROCZNE_KORZENIE = Registry.register(
+    public static final Block ENDER_ROOTS = Registry.register(
             Registries.BLOCK,
-            MROCZNE_KORZENIE_ID,
-            new MroczneKorzenieBlock(
+            ENDER_ROOTS_ID,
+            new EnderRootsBlock(
                     AbstractBlock.Settings.copy(Blocks.WARPED_ROOTS)
                             .nonOpaque()
-                            .registryKey(MROCZNE_KORZENIE_KEY)
+                            .registryKey(ENDER_ROOTS_KEY)
                             .mapColor(MapColor.PURPLE)
             )
     );
 
-    public static final Item MROCZNE_KORZENIE_ITEM = Registry.register(
+    public static final Item ENDER_ROOTS_ITEM = Registry.register(
             Registries.ITEM,
-            MROCZNE_KORZENIE_ID,
-            new BlockItem(MROCZNE_KORZENIE, new Item.Settings()
-                    .registryKey(MROCZNE_KORZENIE_ITEM_KEY))
+            ENDER_ROOTS_ID,
+            new BlockItem(ENDER_ROOTS, new Item.Settings()
+                    .registryKey(ENDER_ROOTS_ITEM_KEY))
     );
 
     // DARK SPROUTS

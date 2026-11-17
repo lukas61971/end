@@ -34,7 +34,8 @@ public abstract class DarkFungusVinesMixin {
 
         BlockPos.Mutable capPos = new BlockPos.Mutable();
         int minY = Math.max(world.getBottomY(), origin.getY() - 2);
-        int maxY = Math.min(world.getTopY() - 1, origin.getY() + hatHeight + 3);
+        int worldMaxY = world.getBottomY() + world.getHeight() - 1;
+        int maxY = Math.min(worldMaxY, origin.getY() + hatHeight + 3);
 
         // Huge fungus caps are small; this bounded scan stays local to the tree.
         for (int x = origin.getX() - 5; x <= origin.getX() + 5; x++) {

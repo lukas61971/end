@@ -3,7 +3,7 @@
   "category": "building",
   "group": "bark",
   "key": {
-    "#": "endusmroku:stripped_dark_stem"
+    "#": "endusmroku:stripped_ender_stem"
   },
   "pattern": [
     "##",
@@ -11,6 +11,6 @@
   ],
   "result": {
     "count": 3,
-    "id": "endusmroku:stripped_dark_hyphae"
+    "id": "endusmroku:stripped_ender_hyphae"
   }
 }

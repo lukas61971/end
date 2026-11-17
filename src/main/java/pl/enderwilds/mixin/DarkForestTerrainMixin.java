@@ -20,21 +20,21 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.enderwilds.Enderwilds;
-import pl.enderwilds.worldgen.DarkForestRegion;
+import pl.enderwilds.worldgen.EndergroveRegion;
 
 @Mixin(NoiseChunkGenerator.class)
-public abstract class DarkForestTerrainMixin {
+public abstract class EndergroveTerrainMixin {
     @Unique
-    private static final RegistryKey<Biome> ENDURO_DARK_FOREST_KEY = RegistryKey.of(
+    private static final RegistryKey<Biome> ENDURO_ENDERGROVE_KEY = RegistryKey.of(
             RegistryKeys.BIOME,
-            Identifier.of("enderwilds", "dark_forest")
+            Identifier.of("enderwilds", "endergrove")
     );
 
     @Inject(
             method = "buildSurface(Lnet/minecraft/world/chunk/Chunk;Lnet/minecraft/world/gen/HeightContext;Lnet/minecraft/world/gen/noise/NoiseConfig;Lnet/minecraft/world/gen/StructureAccessor;Lnet/minecraft/world/biome/source/BiomeAccess;Lnet/minecraft/registry/Registry;Lnet/minecraft/world/gen/chunk/Blender;)V",
             at = @At("TAIL")
     )
-    private void enderwilds$shapeDarkForest(
+    private void enderwilds$shapeEndergrove(
             Chunk chunk,
             HeightContext heightContext,
             NoiseConfig noiseConfig,
@@ -58,11 +58,11 @@ public abstract class DarkForestTerrainMixin {
                 // Read the biome stored in this chunk directly. This avoids
                 // relying on a separate BiomeAccess lookup during surface generation.
                 if (!chunk.getBiomeForNoiseGen(x >> 2, 0, z >> 2)
-                        .matchesKey(ENDURO_DARK_FOREST_KEY)) {
+                        .matchesKey(ENDURO_ENDERGROVE_KEY)) {
                     continue;
                 }
 
-                double fade = DarkForestRegion.edgeFade(x, z);
+                double fade = EndergroveRegion.edgeFade(x, z);
                 if (fade <= 0.001) {
                     continue;
                 }
@@ -100,7 +100,7 @@ public abstract class DarkForestTerrainMixin {
 
                 pos.set(x, newSurfaceY, z);
                 if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
-                    chunk.setBlockState(pos, Enderwilds.CIEMNE_NYLIUM.getDefaultState());
+                    chunk.setBlockState(pos, Enderwilds.ENDER_NYLIUM.getDefaultState());
                 }
             }
         }

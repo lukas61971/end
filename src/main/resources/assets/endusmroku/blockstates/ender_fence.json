@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "endusmroku:block/dark_fence_post"
+        "model": "endusmroku:block/ender_fence_post"
       }
     },
     {
@@ -10,7 +10,7 @@
         "north": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_fence_side",
+        "model": "endusmroku:block/ender_fence_side",
         "y": 0,
         "uvlock": true
       }
@@ -20,7 +20,7 @@
         "east": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_fence_side",
+        "model": "endusmroku:block/ender_fence_side",
         "y": 90,
         "uvlock": true
       }
@@ -30,7 +30,7 @@
         "south": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_fence_side",
+        "model": "endusmroku:block/ender_fence_side",
         "y": 180,
         "uvlock": true
       }
@@ -40,7 +40,7 @@
         "west": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_fence_side",
+        "model": "endusmroku:block/ender_fence_side",
         "y": 270,
         "uvlock": true
       }

@@ -2,7 +2,7 @@
   "multipart": [
     {
       "apply": {
-        "model": "endusmroku:block/dark_fungus"
+        "model": "endusmroku:block/ender_fungus"
       }
     }
   ]

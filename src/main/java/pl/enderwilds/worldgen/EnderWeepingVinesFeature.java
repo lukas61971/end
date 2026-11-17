@@ -43,6 +43,13 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
             }
 
             BlockPos topVinePos = ceilingPos.down();
+
+            // Do not generate vines in the open space underneath the island.
+            // Keep them only where the position is enclosed from the sky (caves).
+            if (world.isSkyVisible(topVinePos)) {
+                continue;
+            }
+
             int length = 1 + random.nextInt(4);
             boolean clear = true;
             for (int i = 0; i < length; i++) {

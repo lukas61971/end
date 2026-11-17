@@ -24,7 +24,7 @@ public class DarkTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
             return false;
         }
 
-        int height = 1 + random.nextInt(5);
+        int height = 1 + random.nextInt(8);
         BlockState plant = EndusMroku.DARK_TWISTING_VINES_PLANT.getDefaultState();
         BlockState head = EndusMroku.DARK_TWISTING_VINES.getDefaultState();
 

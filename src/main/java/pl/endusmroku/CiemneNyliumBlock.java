@@ -90,13 +90,13 @@ public class CiemneNyliumBlock extends Block implements Fertilizable {
             Block plant;
 
             if (choice <= 1) {
-                plant = EndusMroku.DARK_FUNGUS;
+                plant = EndusMroku.ENDER_FUNGUS;
 
             } else if (choice <= 11) {
                 plant = EndusMroku.MROCZNE_KORZENIE;
 
             } else if (choice <= 21) {
-                plant = EndusMroku.DARK_SPROUTS;
+                plant = EndusMroku.ENDER_SPROUTS;
 
             } else {
                 // Pnącze wymaga dwóch wolnych bloków
@@ -107,13 +107,13 @@ public class CiemneNyliumBlock extends Block implements Fertilizable {
                 // Dolna część pnącza
                 world.setBlockState(
                         target,
-                        EndusMroku.DARK_TWISTING_VINES_PLANT.getDefaultState()
+                        EndusMroku.ENDER_TWISTING_VINES_PLANT.getDefaultState()
                 );
 
                 // Górna część pnącza
                 world.setBlockState(
                         top,
-                        EndusMroku.DARK_TWISTING_VINES.getDefaultState()
+                        EndusMroku.ENDER_TWISTING_VINES.getDefaultState()
                 );
 
                 continue;

@@ -40,11 +40,7 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
             if (!world.getBlockState(ceilingPos).isSolidBlock(world, ceilingPos)) {
                 continue;
             }
-            if (!world.getBlockState(ceilingPos.up()).isSolidBlock(world, ceilingPos.up())) {
-                continue;
-            }
-
-            int length = 2 + random.nextInt(5);
+                        int length = 1 + random.nextInt(4);
             boolean clear = true;
             for (int i = 0; i < length; i++) {
                 if (!world.getBlockState(topVinePos.down(i)).isAir()) {

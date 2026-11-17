@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "enderwilds:block/ciemne_nylium"
+      "model": "enderwilds:block/ender_nylium"
     }
   }
 }

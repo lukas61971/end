@@ -12,7 +12,7 @@ public class EnderwildsClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BlockRenderLayerMap.putBlock(
-                Enderwilds.MROCZNE_KORZENIE,
+                Enderwilds.ENDER_ROOTS,
                 BlockRenderLayer.CUTOUT
         );
         BlockRenderLayerMap.putBlock(

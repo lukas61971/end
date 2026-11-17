@@ -1,0 +1,56 @@
+package pl.enderwilds.worldgen;
+
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.util.FeatureContext;
+import pl.enderwilds.Enderwilds;
+
+public class EnderTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
+    public EnderTwistingVinesFeature() {
+        super(DefaultFeatureConfig.CODEC);
+    }
+
+    @Override
+    public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
+        StructureWorldAccess world = context.getWorld();
+        BlockPos base = context.getOrigin();
+        var random = context.getRandom();
+
+        if (!world.getBlockState(base.down()).isOf(Enderwilds.CIEMNE_NYLIUM)) {
+            return false;
+        }
+
+        int height = 1 + random.nextInt(8);
+        BlockState plant = Enderwilds.ENDER_TWISTING_VINES_PLANT.getDefaultState();
+        BlockState head = Enderwilds.ENDER_TWISTING_VINES.getDefaultState();
+
+        for (int i = 0; i < height; i++) {
+            BlockPos pos = base.up(i);
+            if (!world.getBlockState(pos).isAir()) {
+                return false;
+            }
+        }
+
+        if (!plant.canPlaceAt(world, base)) {
+            return false;
+        }
+
+        for (int i = 0; i < height - 1; i++) {
+            world.setBlockState(base.up(i), plant, Block.NOTIFY_LISTENERS);
+        }
+
+        BlockPos headPos = base.up(height - 1);
+        if (height == 1) {
+            return world.setBlockState(headPos, plant, Block.NOTIFY_LISTENERS);
+        }
+
+        if (!head.canPlaceAt(world, headPos)) {
+            return false;
+        }
+        return world.setBlockState(headPos, head, Block.NOTIFY_LISTENERS);
+    }
+}

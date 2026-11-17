@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "pl.enderwilds.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "TheEndBiomeSourceMixin",
+    "DarkForestTerrainMixin",
+    "EnderFungusVinesMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

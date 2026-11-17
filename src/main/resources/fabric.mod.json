@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "endusmroku",
+  "id": "enderwilds",
   "version": "${version}",
-  "name": "Endus Mroku",
+  "name": "Enderwilds",
   "description": "Nowy, mroczny biom Endu i jego tajemnicze wyspy.",
-  "authors": ["Endus Mroku contributors"],
+  "authors": ["Enderwilds contributors"],
   "license": "MIT",
   "environment": "*",
   "mixins": [
-    "endusmroku.mixins.json"
+    "enderwilds.mixins.json"
   ],
   "entrypoints": {
-    "main": ["pl.endusmroku.EndusMroku"],
-    "client": ["pl.endusmroku.EndusMrokuClient"]
+    "main": ["pl.enderwilds.Enderwilds"],
+    "client": ["pl.enderwilds.EnderwildsClient"]
   },
   "depends": {
     "fabricloader": ">=0.18.0",

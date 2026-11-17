@@ -1,4 +1,4 @@
-# Endus Mroku
+# Enderwilds
 
 Mod do Minecraft Java 1.21.11 (Fabric). Projekt zaczyna się od bloku **Ciemne nylium**; kolejnym etapem będzie biom Endu i jego skaliste, pofalowane wyspy.
 

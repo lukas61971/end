@@ -1,3 +1,4 @@
+
 {
   "type": "minecraft:block",
   "pools": [
@@ -6,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "endusmroku:dark_stem"
+          "name": "endusmroku:ender_wart_block"
         }
       ],
       "conditions": [

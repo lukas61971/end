@@ -4,7 +4,7 @@
   "group": "wooden_fence_gate",
   "key": {
     "#": "minecraft:stick",
-    "W": "endusmroku:dark_planks"
+    "W": "endusmroku:ender_planks"
   },
   "pattern": [
     "#W#",
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "endusmroku:dark_fence_gate"
+    "id": "endusmroku:ender_fence_gate"
   }
 }

@@ -3,7 +3,7 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": "endusmroku:dark_planks",
+    "#": "endusmroku:ender_planks",
     "W": "minecraft:oak_planks"
   },
   "pattern": [
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 3,
-    "id": "endusmroku:dark_fence"
+    "id": "endusmroku:ender_fence"
   }
 }

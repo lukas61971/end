@@ -3,10 +3,10 @@
   "category": "redstone",
   "group": "wooden_button",
   "ingredients": [
-    "endusmroku:dark_planks"
+    "endusmroku:ender_planks"
   ],
   "result": {
     "count": 1,
-    "id": "endusmroku:dark_button"
+    "id": "endusmroku:ender_button"
   }
 }

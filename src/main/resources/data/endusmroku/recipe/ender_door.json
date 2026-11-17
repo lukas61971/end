@@ -3,7 +3,7 @@
   "category": "redstone",
   "group": "wooden_door",
   "key": {
-    "#": "endusmroku:dark_planks"
+    "#": "endusmroku:ender_planks"
   },
   "pattern": [
     "##",
@@ -13,6 +13,6 @@
   ],
   "result": {
     "count": 4,
-    "id": "endusmroku:dark_door"
+    "id": "endusmroku:ender_door"
   }
 }

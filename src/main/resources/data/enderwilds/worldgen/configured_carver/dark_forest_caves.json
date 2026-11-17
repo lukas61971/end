@@ -39,7 +39,7 @@
       "above_bottom": 8
     },
     "probability": 0.07,
-    "replaceable": "#enderwilds:dark_forest_carver_replaceables",
+    "replaceable": "#enderwilds:endergrove_carver_replaceables",
     "vertical_radius_multiplier": {
       "type": "minecraft:uniform",
       "min_inclusive": 0.8,

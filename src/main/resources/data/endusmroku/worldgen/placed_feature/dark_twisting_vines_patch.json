@@ -3,7 +3,7 @@
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 18
+      "count": 10
     },
     {
       "type": "minecraft:in_square"
@@ -11,15 +11,6 @@
     {
       "type": "minecraft:heightmap",
       "heightmap": "WORLD_SURFACE_WG"
-    },
-    {
-      "type": "minecraft:block_predicate_filter",
-      "predicate": {
-        "type": "minecraft:would_survive",
-        "state": {
-          "Name": "endusmroku:dark_twisting_vines_plant"
-        }
-      }
     },
     {
       "type": "minecraft:biome"

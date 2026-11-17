@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "endusmroku:item/dark_door_item"
+    "layer0": "endusmroku:item/ender_chest_boat"
   }
 }

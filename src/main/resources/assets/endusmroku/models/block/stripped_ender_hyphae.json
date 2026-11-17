@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "endusmroku:block/stripped_dark_hyphae"
+    "all": "endusmroku:block/stripped_ender_hyphae"
   }
 }

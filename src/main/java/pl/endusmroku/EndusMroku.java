@@ -844,6 +844,8 @@ public static final Item DARK_WEEPING_VINES_ITEM =
     @Override
 public void onInitialize() {
 
+    pl.endusmroku.worldgen.DarkVinesFeatures.register();
+
     // Okorowywanie Mrocznego Trzonu
     StrippableBlockRegistry.register(
             DARK_STEM,

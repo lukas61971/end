@@ -1,24 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stripped_dark_stem": {
+    "has_stripped_ender_stem": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:stripped_dark_stem"
+            "items": "endusmroku:stripped_ender_stem"
           }
         ]
       }
     }
   },
   "requirements": [
-    ["has_stripped_dark_stem"]
+    ["has_stripped_ender_stem"]
   ],
   "rewards": {
     "recipes": [
-      "endusmroku:stripped_dark_hyphae",
-      "endusmroku:dark_planks_from_stripped_dark_stem"
+      "endusmroku:stripped_ender_hyphae",
+      "endusmroku:ender_planks_from_stripped_ender_stem"
     ]
   }
 }

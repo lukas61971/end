@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dark_planks": {
+    "has_ender_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:dark_planks"
+            "items": "endusmroku:ender_planks"
           }
         ]
       }
@@ -14,19 +14,19 @@
     "has_the_recipe": {
       "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "recipe": "endusmroku:dark_trapdoor"
+        "recipe": "endusmroku:ender_trapdoor"
       }
     }
   },
   "requirements": [
     [
-      "has_dark_planks",
+      "has_ender_planks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "endusmroku:dark_trapdoor"
+      "endusmroku:ender_trapdoor"
     ]
   }
 }

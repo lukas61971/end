@@ -6,13 +6,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "endusmroku:dark_door"
+          "name": "endusmroku:ender_door"
         }
       ],
       "conditions": [
         {
           "condition": "minecraft:block_state_property",
-          "block": "endusmroku:dark_door",
+          "block": "endusmroku:ender_door",
           "properties": {
             "half": "lower"
           }

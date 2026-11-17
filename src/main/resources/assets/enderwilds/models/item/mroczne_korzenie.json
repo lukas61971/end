@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "enderwilds:block/mroczne_korzenie"
+    "layer0": "enderwilds:block/ender_roots"
   }
     }

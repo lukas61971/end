@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/button",
   "textures": {
-    "texture": "endusmroku:block/dark_planks"
+    "texture": "endusmroku:block/ender_planks"
   }
 }

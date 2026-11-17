@@ -13,7 +13,7 @@ public class EnderBoatEntityRenderer extends BoatEntityRenderer {
             Identifier.of("endusmroku", "textures/entity/boat/ender_boat.png");
 
     public EnderBoatEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, EntityModelLayers.ENDER_OAK_BOAT);
+        super(context, EntityModelLayers.OAK_BOAT);
     }
 
     @Override

@@ -1,23 +1,19 @@
 {
-  "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dark_planks": {
+    "has_ender_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:dark_planks"
+            "items": "endusmroku:ender_planks"
           }
         ]
       }
     }
   },
-  "requirements": [
-    ["has_dark_planks"]
-  ],
   "rewards": {
     "recipes": [
-      "endusmroku:dark_slab"
+      "endusmroku:ender_pressure_plate"
     ]
   }
 }

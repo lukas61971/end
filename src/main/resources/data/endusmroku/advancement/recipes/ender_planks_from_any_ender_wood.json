@@ -1,42 +1,42 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dark_stem": {
+    "has_ender_stem": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:dark_stem"
+            "items": "endusmroku:ender_stem"
           }
         ]
       }
     },
-    "has_stripped_dark_stem": {
+    "has_stripped_ender_stem": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:stripped_dark_stem"
+            "items": "endusmroku:stripped_ender_stem"
           }
         ]
       }
     },
-    "has_dark_hyphae": {
+    "has_ender_hyphae": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:dark_hyphae"
+            "items": "endusmroku:ender_hyphae"
           }
         ]
       }
     },
-    "has_stripped_dark_hyphae": {
+    "has_stripped_ender_hyphae": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "endusmroku:stripped_dark_hyphae"
+            "items": "endusmroku:stripped_ender_hyphae"
           }
         ]
       }
@@ -44,15 +44,15 @@
   },
   "requirements": [
     [
-      "has_dark_stem",
-      "has_stripped_dark_stem",
-      "has_dark_hyphae",
-      "has_stripped_dark_hyphae"
+      "has_ender_stem",
+      "has_stripped_ender_stem",
+      "has_ender_hyphae",
+      "has_stripped_ender_hyphae"
     ]
   ],
   "rewards": {
     "recipes": [
-      "endusmroku:dark_planks_from_any_dark_wood"
+      "endusmroku:ender_planks_from_any_ender_wood"
     ]
   }
 }

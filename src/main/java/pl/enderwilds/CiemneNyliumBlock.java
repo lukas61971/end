@@ -10,12 +10,12 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class CiemneNyliumBlock extends Block implements Fertilizable {
+public class EnderNyliumBlock extends Block implements Fertilizable {
 
-    public static final MapCodec<CiemneNyliumBlock> CODEC =
-            createCodec(CiemneNyliumBlock::new);
+    public static final MapCodec<EnderNyliumBlock> CODEC =
+            createCodec(EnderNyliumBlock::new);
 
-    public CiemneNyliumBlock(Settings settings) {
+    public EnderNyliumBlock(Settings settings) {
         super(settings);
     }
 
@@ -93,7 +93,7 @@ public class CiemneNyliumBlock extends Block implements Fertilizable {
                 plant = Enderwilds.ENDER_FUNGUS;
 
             } else if (choice <= 11) {
-                plant = Enderwilds.MROCZNE_KORZENIE;
+                plant = Enderwilds.ENDER_ROOTS;
 
             } else if (choice <= 21) {
                 plant = Enderwilds.ENDER_SPROUTS;

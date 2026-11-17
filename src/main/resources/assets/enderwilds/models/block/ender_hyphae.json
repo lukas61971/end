@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "enderwilds:block/ender_hyphae",
+    "end": "enderwilds:block/ender_hyphae"
+  }
+}

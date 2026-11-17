@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "endusmroku:block/ender_twisting_vines_plant"
-  }
-}

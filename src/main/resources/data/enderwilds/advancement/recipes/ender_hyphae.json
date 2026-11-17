@@ -1,0 +1,23 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ender_hyphae": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ender_hyphae"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_ender_hyphae"]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:ender_planks_from_ender_hyphae"
+    ]
+  }
+}

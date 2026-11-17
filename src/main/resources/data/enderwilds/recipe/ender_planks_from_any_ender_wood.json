@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#enderwilds:ender_wood_sources"
+  ],
+  "result": {
+    "id": "enderwilds:ender_planks",
+    "count": 4
+  }
+}

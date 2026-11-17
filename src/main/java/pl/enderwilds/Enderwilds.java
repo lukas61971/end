@@ -40,8 +40,6 @@ import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
 import pl.enderwilds.block.EnderTwistingVinesBlock;
 import pl.enderwilds.block.EnderTwistingVinesPlantBlock;
-import pl.enderwilds.block.EnderTwistingVinesBlock;
-import pl.enderwilds.block.EnderTwistingVinesPlantBlock; 
 import pl.enderwilds.block.EnderWeepingVinesBlock;
 import pl.enderwilds.block.EnderWeepingVinesPlantBlock;
 

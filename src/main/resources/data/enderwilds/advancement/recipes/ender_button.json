@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "has_ender_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ender_planks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "enderwilds:ender_button"
+    ]
+  }
+}

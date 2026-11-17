@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_bottom_right_open",
+  "textures": {
+    "bottom": "enderwilds:block/ender_door_bottom",
+    "top": "enderwilds:block/ender_door_top"
+  }
+}

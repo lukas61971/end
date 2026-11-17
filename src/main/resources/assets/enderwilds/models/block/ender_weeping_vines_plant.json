@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "enderwilds:block/ender_weeping_vines_plant"
+  }
+}

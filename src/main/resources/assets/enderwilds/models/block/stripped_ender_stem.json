@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "enderwilds:block/stripped_ender_stem",
+    "end": "enderwilds:block/stripped_ender_stem_top"
+  }
+}

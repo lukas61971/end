@@ -1,0 +1,31 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ender_planks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ender_planks"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    ["has_ender_planks"]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:ender_sticks",
+      "enderwilds:ender_crafting_table",
+      "enderwilds:ender_chest",
+      "enderwilds:ender_wooden_sword",
+      "enderwilds:ender_wooden_pickaxe",
+      "enderwilds:ender_wooden_shovel",
+      "enderwilds:ender_wooden_axe",
+      "enderwilds:ender_wooden_spear",
+      "enderwilds:ender_shield"
+    ]
+  }
+}

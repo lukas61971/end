@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "enderwilds:block/mroczne_korzenie"
+  }
+}

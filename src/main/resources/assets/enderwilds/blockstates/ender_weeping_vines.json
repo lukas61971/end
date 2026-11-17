@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "enderwilds:block/ender_weeping_vines"
+      }
+    }
+  ]
+}

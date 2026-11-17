@@ -1,0 +1,36 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chest": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:chest"
+          }
+        ]
+      }
+    },
+    "has_ender_boat": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ender_boat"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_chest",
+      "has_ender_boat"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:ender_chest_boat"
+    ]
+  }
+}

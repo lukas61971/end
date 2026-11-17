@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "endusmroku:block/ender_planks",
-    "side": "endusmroku:block/ender_planks",
-    "top": "endusmroku:block/ender_planks"
-  }
-}

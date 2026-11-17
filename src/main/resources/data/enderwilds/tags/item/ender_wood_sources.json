@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "enderwilds:ender_stem",
+    "enderwilds:stripped_ender_stem",
+    "enderwilds:ender_hyphae",
+    "enderwilds:stripped_ender_hyphae"
+  ]
+}

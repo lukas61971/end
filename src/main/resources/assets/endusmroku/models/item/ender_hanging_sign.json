@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "endusmroku:item/ender_hanging_sign"
-  }
-}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "endusmroku:block/dark_fungus"
+    "cross": "endusmroku:block/ender_fungus"
   }
 }

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/pressure_plate_up",
   "textures": {
-    "texture": "endusmroku:block/dark_planks"
+    "texture": "endusmroku:block/ender_planks"
   }
 }

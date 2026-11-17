@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "endusmroku:block/dark_hyphae",
-    "end": "endusmroku:block/dark_hyphae"
-  }
-}

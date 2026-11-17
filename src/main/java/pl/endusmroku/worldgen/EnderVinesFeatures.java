@@ -7,25 +7,25 @@ import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import pl.endusmroku.EndusMroku;
 
-public final class DarkVinesFeatures {
-    public static final Feature<DefaultFeatureConfig> DARK_TWISTING_VINES =
+public final class EnderVinesFeatures {
+    public static final Feature<DefaultFeatureConfig> ENDER_TWISTING_VINES =
             Registry.register(
                     Registries.FEATURE,
-                    Identifier.of(EndusMroku.MOD_ID, "dark_twisting_vines"),
-                    new DarkTwistingVinesFeature()
+                    Identifier.of(EndusMroku.MOD_ID, "ender_twisting_vines"),
+                    new EnderTwistingVinesFeature()
             );
 
-    public static final Feature<DefaultFeatureConfig> DARK_WEEPING_VINES =
+    public static final Feature<DefaultFeatureConfig> ENDER_WEEPING_VINES =
             Registry.register(
                     Registries.FEATURE,
-                    Identifier.of(EndusMroku.MOD_ID, "dark_weeping_vines"),
-                    new DarkWeepingVinesFeature()
+                    Identifier.of(EndusMroku.MOD_ID, "ender_weeping_vines"),
+                    new EnderWeepingVinesFeature()
             );
 
     public static void register() {
         // Calling this method initializes and registers both feature entries.
     }
 
-    private DarkVinesFeatures() {
+    private EnderVinesFeatures() {
     }
 }

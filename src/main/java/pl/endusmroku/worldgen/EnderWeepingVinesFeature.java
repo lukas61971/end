@@ -9,8 +9,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import pl.endusmroku.EndusMroku;
 
-public class DarkWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
-    public DarkWeepingVinesFeature() {
+public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
+    public EnderWeepingVinesFeature() {
         super(DefaultFeatureConfig.CODEC);
     }
 
@@ -56,8 +56,8 @@ public class DarkWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
                 continue;
             }
 
-            BlockState head = EndusMroku.DARK_WEEPING_VINES.getDefaultState();
-            BlockState plant = EndusMroku.DARK_WEEPING_VINES_PLANT.getDefaultState();
+            BlockState head = EndusMroku.ENDER_WEEPING_VINES.getDefaultState();
+            BlockState plant = EndusMroku.ENDER_WEEPING_VINES_PLANT.getDefaultState();
             if (!head.canPlaceAt(world, topVinePos)) {
                 continue;
             }

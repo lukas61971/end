@@ -9,8 +9,8 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
 import pl.endusmroku.EndusMroku;
 
-public class DarkTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
-    public DarkTwistingVinesFeature() {
+public class EnderTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
+    public EnderTwistingVinesFeature() {
         super(DefaultFeatureConfig.CODEC);
     }
 
@@ -25,8 +25,8 @@ public class DarkTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
         }
 
         int height = 1 + random.nextInt(8);
-        BlockState plant = EndusMroku.DARK_TWISTING_VINES_PLANT.getDefaultState();
-        BlockState head = EndusMroku.DARK_TWISTING_VINES.getDefaultState();
+        BlockState plant = EndusMroku.ENDER_TWISTING_VINES_PLANT.getDefaultState();
+        BlockState head = EndusMroku.ENDER_TWISTING_VINES.getDefaultState();
 
         for (int i = 0; i < height; i++) {
             BlockPos pos = base.up(i);

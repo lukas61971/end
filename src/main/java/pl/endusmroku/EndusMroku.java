@@ -38,12 +38,12 @@ import net.minecraft.item.BoatItem;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.vehicle.ChestBoatEntity;
-import pl.endusmroku.block.DarkTwistingVinesBlock;
-import pl.endusmroku.block.DarkTwistingVinesPlantBlock;
-import pl.endusmroku.block.DarkTwistingVinesBlock;
-import pl.endusmroku.block.DarkTwistingVinesPlantBlock; 
-import pl.endusmroku.block.DarkWeepingVinesBlock;
-import pl.endusmroku.block.DarkWeepingVinesPlantBlock;
+import pl.endusmroku.block.EnderTwistingVinesBlock;
+import pl.endusmroku.block.EnderTwistingVinesPlantBlock;
+import pl.endusmroku.block.EnderTwistingVinesBlock;
+import pl.endusmroku.block.EnderTwistingVinesPlantBlock; 
+import pl.endusmroku.block.EnderWeepingVinesBlock;
+import pl.endusmroku.block.EnderWeepingVinesPlantBlock;
 
 public class EndusMroku implements ModInitializer {
     public static final String MOD_ID = "endusmroku";
@@ -108,734 +108,734 @@ public class EndusMroku implements ModInitializer {
 
     // DARK SPROUTS
 
-    private static final Identifier DARK_SPROUTS_ID =
-            Identifier.of(MOD_ID, "dark_sprouts");
+    private static final Identifier ENDER_SPROUTS_ID =
+            Identifier.of(MOD_ID, "ender_sprouts");
 
-    public static final RegistryKey<Block> DARK_SPROUTS_KEY =
-            RegistryKey.of(RegistryKeys.BLOCK, DARK_SPROUTS_ID);
+    public static final RegistryKey<Block> ENDER_SPROUTS_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDER_SPROUTS_ID);
 
-    public static final RegistryKey<Item> DARK_SPROUTS_ITEM_KEY =
-            RegistryKey.of(RegistryKeys.ITEM, DARK_SPROUTS_ID);
+    public static final RegistryKey<Item> ENDER_SPROUTS_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDER_SPROUTS_ID);
 
-    public static final Block DARK_SPROUTS = Registry.register(
+    public static final Block ENDER_SPROUTS = Registry.register(
             Registries.BLOCK,
-            DARK_SPROUTS_ID,
-            new DarkSproutsBlock(
+            ENDER_SPROUTS_ID,
+            new EnderSproutsBlock(
                     AbstractBlock.Settings.copy(Blocks.NETHER_SPROUTS)
                             .nonOpaque()
-                            .registryKey(DARK_SPROUTS_KEY)
+                            .registryKey(ENDER_SPROUTS_KEY)
             )
     );
 
-    public static final Item DARK_SPROUTS_ITEM = Registry.register(
+    public static final Item ENDER_SPROUTS_ITEM = Registry.register(
             Registries.ITEM,
-            DARK_SPROUTS_ID,
-            new BlockItem(DARK_SPROUTS, new Item.Settings()
-                    .registryKey(DARK_SPROUTS_ITEM_KEY))
+            ENDER_SPROUTS_ID,
+            new BlockItem(ENDER_SPROUTS, new Item.Settings()
+                    .registryKey(ENDER_SPROUTS_ITEM_KEY))
     );
 
     // DARK FUNGUS
 
-    private static final Identifier DARK_FUNGUS_ID =
-            Identifier.of(MOD_ID, "dark_fungus");
+    private static final Identifier ENDER_FUNGUS_ID =
+            Identifier.of(MOD_ID, "ender_fungus");
 
-    public static final RegistryKey<Block> DARK_FUNGUS_KEY =
-            RegistryKey.of(RegistryKeys.BLOCK, DARK_FUNGUS_ID);
+    public static final RegistryKey<Block> ENDER_FUNGUS_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDER_FUNGUS_ID);
 
-    public static final RegistryKey<Item> DARK_FUNGUS_ITEM_KEY =
-            RegistryKey.of(RegistryKeys.ITEM, DARK_FUNGUS_ID);
+    public static final RegistryKey<Item> ENDER_FUNGUS_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDER_FUNGUS_ID);
 
-    public static final Block DARK_FUNGUS = Registry.register(
+    public static final Block ENDER_FUNGUS = Registry.register(
             Registries.BLOCK,
-            DARK_FUNGUS_ID,
-            new DarkFungusBlock(
+            ENDER_FUNGUS_ID,
+            new EnderFungusBlock(
                     AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM)
                             .nonOpaque()
-                            .registryKey(DARK_FUNGUS_KEY)
+                            .registryKey(ENDER_FUNGUS_KEY)
             )
     );
 
-    public static final Item DARK_FUNGUS_ITEM = Registry.register(
+    public static final Item ENDER_FUNGUS_ITEM = Registry.register(
             Registries.ITEM,
-            DARK_FUNGUS_ID,
-            new BlockItem(DARK_FUNGUS, new Item.Settings()
-                    .registryKey(DARK_FUNGUS_ITEM_KEY))
+            ENDER_FUNGUS_ID,
+            new BlockItem(ENDER_FUNGUS, new Item.Settings()
+                    .registryKey(ENDER_FUNGUS_ITEM_KEY))
     );
 
     // DARK STEM
 
-    private static final Identifier DARK_STEM_ID =
-            Identifier.of(MOD_ID, "dark_stem");
+    private static final Identifier ENDER_STEM_ID =
+            Identifier.of(MOD_ID, "ender_stem");
 
-    public static final RegistryKey<Block> DARK_STEM_KEY =
-            RegistryKey.of(RegistryKeys.BLOCK, DARK_STEM_ID);
+    public static final RegistryKey<Block> ENDER_STEM_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDER_STEM_ID);
 
-    public static final RegistryKey<Item> DARK_STEM_ITEM_KEY =
-            RegistryKey.of(RegistryKeys.ITEM, DARK_STEM_ID);
+    public static final RegistryKey<Item> ENDER_STEM_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDER_STEM_ID);
 
-    public static final Block DARK_STEM = Registry.register(
+    public static final Block ENDER_STEM = Registry.register(
             Registries.BLOCK,
-            DARK_STEM_ID,
-            new DarkStemBlock(
+            ENDER_STEM_ID,
+            new EnderStemBlock(
                     AbstractBlock.Settings.copy(Blocks.CRIMSON_STEM)
-                            .registryKey(DARK_STEM_KEY)
+                            .registryKey(ENDER_STEM_KEY)
             )
     );
 
-    public static final Item DARK_STEM_ITEM = Registry.register(
+    public static final Item ENDER_STEM_ITEM = Registry.register(
             Registries.ITEM,
-            DARK_STEM_ID,
-            new BlockItem(DARK_STEM, new Item.Settings()
-                    .registryKey(DARK_STEM_ITEM_KEY))
+            ENDER_STEM_ID,
+            new BlockItem(ENDER_STEM, new Item.Settings()
+                    .registryKey(ENDER_STEM_ITEM_KEY))
     );
 
 
     // DARK WART BLOCK
 
-    private static final Identifier DARK_WART_BLOCK_ID =
-            Identifier.of(MOD_ID, "dark_wart_block");
+    private static final Identifier ENDER_WART_BLOCK_ID =
+            Identifier.of(MOD_ID, "ender_wart_block");
 
-    public static final RegistryKey<Block> DARK_WART_BLOCK_KEY =
-            RegistryKey.of(RegistryKeys.BLOCK, DARK_WART_BLOCK_ID);
+    public static final RegistryKey<Block> ENDER_WART_BLOCK_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDER_WART_BLOCK_ID);
 
-    public static final RegistryKey<Item> DARK_WART_BLOCK_ITEM_KEY =
-            RegistryKey.of(RegistryKeys.ITEM, DARK_WART_BLOCK_ID);
+    public static final RegistryKey<Item> ENDER_WART_BLOCK_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDER_WART_BLOCK_ID);
 
-    public static final Block DARK_WART_BLOCK = Registry.register(
+    public static final Block ENDER_WART_BLOCK = Registry.register(
             Registries.BLOCK,
-            DARK_WART_BLOCK_ID,
+            ENDER_WART_BLOCK_ID,
             new Block(
                     AbstractBlock.Settings.copy(Blocks.WARPED_WART_BLOCK)
-                            .registryKey(DARK_WART_BLOCK_KEY)
+                            .registryKey(ENDER_WART_BLOCK_KEY)
             )
     );
 
-    public static final Item DARK_WART_BLOCK_ITEM = Registry.register(
+    public static final Item ENDER_WART_BLOCK_ITEM = Registry.register(
             Registries.ITEM,
-            DARK_WART_BLOCK_ID,
-            new BlockItem(DARK_WART_BLOCK, new Item.Settings()
-                    .registryKey(DARK_WART_BLOCK_ITEM_KEY))
+            ENDER_WART_BLOCK_ID,
+            new BlockItem(ENDER_WART_BLOCK, new Item.Settings()
+                    .registryKey(ENDER_WART_BLOCK_ITEM_KEY))
     );
 
     // STRIPPED DARK STEM
 
-private static final Identifier STRIPPED_DARK_STEM_ID =
-        Identifier.of(MOD_ID, "stripped_dark_stem");
+private static final Identifier STRIPPED_ENDER_STEM_ID =
+        Identifier.of(MOD_ID, "stripped_ender_stem");
 
-public static final RegistryKey<Block> STRIPPED_DARK_STEM_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, STRIPPED_DARK_STEM_ID);
+public static final RegistryKey<Block> STRIPPED_ENDER_STEM_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, STRIPPED_ENDER_STEM_ID);
 
-public static final RegistryKey<Item> STRIPPED_DARK_STEM_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, STRIPPED_DARK_STEM_ID);
+public static final RegistryKey<Item> STRIPPED_ENDER_STEM_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, STRIPPED_ENDER_STEM_ID);
 
-public static final Block STRIPPED_DARK_STEM = Registry.register(
+public static final Block STRIPPED_ENDER_STEM = Registry.register(
         Registries.BLOCK,
-        STRIPPED_DARK_STEM_ID,
-        new DarkStemBlock(
+        STRIPPED_ENDER_STEM_ID,
+        new EnderStemBlock(
                 AbstractBlock.Settings.copy(Blocks.STRIPPED_CRIMSON_STEM)
-                        .registryKey(STRIPPED_DARK_STEM_KEY)
+                        .registryKey(STRIPPED_ENDER_STEM_KEY)
         )
 );
 
-public static final Item STRIPPED_DARK_STEM_ITEM = Registry.register(
+public static final Item STRIPPED_ENDER_STEM_ITEM = Registry.register(
         Registries.ITEM,
-        STRIPPED_DARK_STEM_ID,
-        new BlockItem(STRIPPED_DARK_STEM, new Item.Settings()
-                .registryKey(STRIPPED_DARK_STEM_ITEM_KEY))
+        STRIPPED_ENDER_STEM_ID,
+        new BlockItem(STRIPPED_ENDER_STEM, new Item.Settings()
+                .registryKey(STRIPPED_ENDER_STEM_ITEM_KEY))
 );
 
 
 // DARK PLANKS
 
-private static final Identifier DARK_PLANKS_ID =
-        Identifier.of(MOD_ID, "dark_planks");
+private static final Identifier ENDER_PLANKS_ID =
+        Identifier.of(MOD_ID, "ender_planks");
 
-public static final RegistryKey<Block> DARK_PLANKS_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_PLANKS_ID);
+public static final RegistryKey<Block> ENDER_PLANKS_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_PLANKS_ID);
 
-public static final RegistryKey<Item> DARK_PLANKS_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_PLANKS_ID);
+public static final RegistryKey<Item> ENDER_PLANKS_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_PLANKS_ID);
 
-public static final Block DARK_PLANKS = Registry.register(
+public static final Block ENDER_PLANKS = Registry.register(
         Registries.BLOCK,
-        DARK_PLANKS_ID,
+        ENDER_PLANKS_ID,
         new Block(
                 AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
-                        .registryKey(DARK_PLANKS_KEY)
+                        .registryKey(ENDER_PLANKS_KEY)
         )
 );
 
-public static final Item DARK_PLANKS_ITEM = Registry.register(
+public static final Item ENDER_PLANKS_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_PLANKS_ID,
-        new BlockItem(DARK_PLANKS, new Item.Settings()
-                .registryKey(DARK_PLANKS_ITEM_KEY))
+        ENDER_PLANKS_ID,
+        new BlockItem(ENDER_PLANKS, new Item.Settings()
+                .registryKey(ENDER_PLANKS_ITEM_KEY))
 );
 
 
 // DARK HYPHAE
 
-private static final Identifier DARK_HYPHAE_ID =
-        Identifier.of(MOD_ID, "dark_hyphae");
+private static final Identifier ENDER_HYPHAE_ID =
+        Identifier.of(MOD_ID, "ender_hyphae");
 
-public static final RegistryKey<Block> DARK_HYPHAE_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_HYPHAE_ID);
+public static final RegistryKey<Block> ENDER_HYPHAE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_HYPHAE_ID);
 
-public static final RegistryKey<Item> DARK_HYPHAE_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_HYPHAE_ID);
+public static final RegistryKey<Item> ENDER_HYPHAE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_HYPHAE_ID);
 
-public static final Block DARK_HYPHAE = Registry.register(
+public static final Block ENDER_HYPHAE = Registry.register(
         Registries.BLOCK,
-        DARK_HYPHAE_ID,
+        ENDER_HYPHAE_ID,
         new PillarBlock(
                 AbstractBlock.Settings.copy(Blocks.CRIMSON_HYPHAE)
-                        .registryKey(DARK_HYPHAE_KEY)
+                        .registryKey(ENDER_HYPHAE_KEY)
         )
 );
 
-public static final Item DARK_HYPHAE_ITEM = Registry.register(
+public static final Item ENDER_HYPHAE_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_HYPHAE_ID,
-        new BlockItem(DARK_HYPHAE, new Item.Settings()
-                .registryKey(DARK_HYPHAE_ITEM_KEY))
+        ENDER_HYPHAE_ID,
+        new BlockItem(ENDER_HYPHAE, new Item.Settings()
+                .registryKey(ENDER_HYPHAE_ITEM_KEY))
 );
 
 // STRIPPED DARK HYPHAE
 
-private static final Identifier STRIPPED_DARK_HYPHAE_ID =
-        Identifier.of(MOD_ID, "stripped_dark_hyphae");
+private static final Identifier STRIPPED_ENDER_HYPHAE_ID =
+        Identifier.of(MOD_ID, "stripped_ender_hyphae");
 
-public static final RegistryKey<Block> STRIPPED_DARK_HYPHAE_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, STRIPPED_DARK_HYPHAE_ID);
+public static final RegistryKey<Block> STRIPPED_ENDER_HYPHAE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, STRIPPED_ENDER_HYPHAE_ID);
 
-public static final RegistryKey<Item> STRIPPED_DARK_HYPHAE_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, STRIPPED_DARK_HYPHAE_ID);
+public static final RegistryKey<Item> STRIPPED_ENDER_HYPHAE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, STRIPPED_ENDER_HYPHAE_ID);
 
-public static final Block STRIPPED_DARK_HYPHAE = Registry.register(
+public static final Block STRIPPED_ENDER_HYPHAE = Registry.register(
         Registries.BLOCK,
-        STRIPPED_DARK_HYPHAE_ID,
+        STRIPPED_ENDER_HYPHAE_ID,
         new PillarBlock(
                 AbstractBlock.Settings.copy(Blocks.STRIPPED_CRIMSON_HYPHAE)
-                        .registryKey(STRIPPED_DARK_HYPHAE_KEY)
+                        .registryKey(STRIPPED_ENDER_HYPHAE_KEY)
         )
 );
 
-public static final Item STRIPPED_DARK_HYPHAE_ITEM = Registry.register(
+public static final Item STRIPPED_ENDER_HYPHAE_ITEM = Registry.register(
         Registries.ITEM,
-        STRIPPED_DARK_HYPHAE_ID,
-        new BlockItem(STRIPPED_DARK_HYPHAE, new Item.Settings()
-                .registryKey(STRIPPED_DARK_HYPHAE_ITEM_KEY))
+        STRIPPED_ENDER_HYPHAE_ID,
+        new BlockItem(STRIPPED_ENDER_HYPHAE, new Item.Settings()
+                .registryKey(STRIPPED_ENDER_HYPHAE_ITEM_KEY))
 );
 
 // DARK SLAB
 
-private static final Identifier DARK_SLAB_ID =
-        Identifier.of(MOD_ID, "dark_slab");
+private static final Identifier ENDER_SLAB_ID =
+        Identifier.of(MOD_ID, "ender_slab");
 
-public static final RegistryKey<Block> DARK_SLAB_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_SLAB_ID);
+public static final RegistryKey<Block> ENDER_SLAB_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_SLAB_ID);
 
-public static final RegistryKey<Item> DARK_SLAB_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_SLAB_ID);
+public static final RegistryKey<Item> ENDER_SLAB_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_SLAB_ID);
 
-public static final Block DARK_SLAB = Registry.register(
+public static final Block ENDER_SLAB = Registry.register(
         Registries.BLOCK,
-        DARK_SLAB_ID,
+        ENDER_SLAB_ID,
         new SlabBlock(
                 AbstractBlock.Settings.copy(Blocks.OAK_SLAB)
-                        .registryKey(DARK_SLAB_KEY)
+                        .registryKey(ENDER_SLAB_KEY)
         )
 );
 
-public static final Item DARK_SLAB_ITEM = Registry.register(
+public static final Item ENDER_SLAB_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_SLAB_ID,
+        ENDER_SLAB_ID,
         new BlockItem(
-                DARK_SLAB,
-                new Item.Settings().registryKey(DARK_SLAB_ITEM_KEY)
+                ENDER_SLAB,
+                new Item.Settings().registryKey(ENDER_SLAB_ITEM_KEY)
         )
 );
 
 // DARK FENCE
 
-private static final Identifier DARK_FENCE_ID =
-        Identifier.of(MOD_ID, "dark_fence");
+private static final Identifier ENDER_FENCE_ID =
+        Identifier.of(MOD_ID, "ender_fence");
 
-public static final RegistryKey<Block> DARK_FENCE_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_FENCE_ID);
+public static final RegistryKey<Block> ENDER_FENCE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_FENCE_ID);
 
-public static final RegistryKey<Item> DARK_FENCE_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_FENCE_ID);
+public static final RegistryKey<Item> ENDER_FENCE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_FENCE_ID);
 
-public static final Block DARK_FENCE = Registry.register(
+public static final Block ENDER_FENCE = Registry.register(
         Registries.BLOCK,
-        DARK_FENCE_ID,
+        ENDER_FENCE_ID,
         new FenceBlock(
                 AbstractBlock.Settings.copy(Blocks.OAK_FENCE)
-                        .registryKey(DARK_FENCE_KEY)
+                        .registryKey(ENDER_FENCE_KEY)
         )
 );
 
-public static final Item DARK_FENCE_ITEM = Registry.register(
+public static final Item ENDER_FENCE_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_FENCE_ID,
+        ENDER_FENCE_ID,
         new BlockItem(
-                DARK_FENCE,
-                new Item.Settings().registryKey(DARK_FENCE_ITEM_KEY)
+                ENDER_FENCE,
+                new Item.Settings().registryKey(ENDER_FENCE_ITEM_KEY)
         )
 );
 
 // DARK FENCE GATE
 
-private static final Identifier DARK_FENCE_GATE_ID =
-        Identifier.of(MOD_ID, "dark_fence_gate");
+private static final Identifier ENDER_FENCE_GATE_ID =
+        Identifier.of(MOD_ID, "ender_fence_gate");
 
-public static final RegistryKey<Block> DARK_FENCE_GATE_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_FENCE_GATE_ID);
+public static final RegistryKey<Block> ENDER_FENCE_GATE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_FENCE_GATE_ID);
 
-public static final RegistryKey<Item> DARK_FENCE_GATE_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_FENCE_GATE_ID);
+public static final RegistryKey<Item> ENDER_FENCE_GATE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_FENCE_GATE_ID);
 
-public static final Block DARK_FENCE_GATE = Registry.register(
+public static final Block ENDER_FENCE_GATE = Registry.register(
         Registries.BLOCK,
-        DARK_FENCE_GATE_ID,
+        ENDER_FENCE_GATE_ID,
         new FenceGateBlock(
                 WoodType.OAK,
                 AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE)
-                        .registryKey(DARK_FENCE_GATE_KEY)
+                        .registryKey(ENDER_FENCE_GATE_KEY)
         )
 );
 
-public static final Item DARK_FENCE_GATE_ITEM = Registry.register(
+public static final Item ENDER_FENCE_GATE_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_FENCE_GATE_ID,
+        ENDER_FENCE_GATE_ID,
         new BlockItem(
-                DARK_FENCE_GATE,
-                new Item.Settings().registryKey(DARK_FENCE_GATE_ITEM_KEY)
+                ENDER_FENCE_GATE,
+                new Item.Settings().registryKey(ENDER_FENCE_GATE_ITEM_KEY)
         )
 );
 
 // DARK BUTTON
-private static final Identifier DARK_BUTTON_ID =
-        Identifier.of(MOD_ID, "dark_button");
+private static final Identifier ENDER_BUTTON_ID =
+        Identifier.of(MOD_ID, "ender_button");
 
-public static final RegistryKey<Block> DARK_BUTTON_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_BUTTON_ID);
+public static final RegistryKey<Block> ENDER_BUTTON_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_BUTTON_ID);
 
-public static final RegistryKey<Item> DARK_BUTTON_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_BUTTON_ID);
+public static final RegistryKey<Item> ENDER_BUTTON_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_BUTTON_ID);
 
-public static final Block DARK_BUTTON = Registry.register(
+public static final Block ENDER_BUTTON = Registry.register(
         Registries.BLOCK,
-        DARK_BUTTON_ID,
+        ENDER_BUTTON_ID,
         new ButtonBlock(
                 BlockSetType.OAK,
                 30,
                 AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)
-                        .registryKey(DARK_BUTTON_KEY)
+                        .registryKey(ENDER_BUTTON_KEY)
         )
 );
 
-public static final Item DARK_BUTTON_ITEM = Registry.register(
+public static final Item ENDER_BUTTON_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_BUTTON_ID,
+        ENDER_BUTTON_ID,
         new BlockItem(
-                DARK_BUTTON,
-                new Item.Settings().registryKey(DARK_BUTTON_ITEM_KEY)
+                ENDER_BUTTON,
+                new Item.Settings().registryKey(ENDER_BUTTON_ITEM_KEY)
         )
 );
 
 // DARK PRESSURE PLATE
-private static final Identifier DARK_PRESSURE_PLATE_ID =
-        Identifier.of(MOD_ID, "dark_pressure_plate");
+private static final Identifier ENDER_PRESSURE_PLATE_ID =
+        Identifier.of(MOD_ID, "ender_pressure_plate");
 
-public static final RegistryKey<Block> DARK_PRESSURE_PLATE_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_PRESSURE_PLATE_ID);
+public static final RegistryKey<Block> ENDER_PRESSURE_PLATE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_PRESSURE_PLATE_ID);
 
-public static final RegistryKey<Item> DARK_PRESSURE_PLATE_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_PRESSURE_PLATE_ID);
+public static final RegistryKey<Item> ENDER_PRESSURE_PLATE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_PRESSURE_PLATE_ID);
 
-public static final Block DARK_PRESSURE_PLATE = Registry.register(
+public static final Block ENDER_PRESSURE_PLATE = Registry.register(
         Registries.BLOCK,
-        DARK_PRESSURE_PLATE_ID,
+        ENDER_PRESSURE_PLATE_ID,
         new PressurePlateBlock(
                 BlockSetType.OAK,
                 AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE)
-                        .registryKey(DARK_PRESSURE_PLATE_KEY)
+                        .registryKey(ENDER_PRESSURE_PLATE_KEY)
         )
 );
 
-public static final Item DARK_PRESSURE_PLATE_ITEM = Registry.register(
+public static final Item ENDER_PRESSURE_PLATE_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_PRESSURE_PLATE_ID,
+        ENDER_PRESSURE_PLATE_ID,
         new BlockItem(
-                DARK_PRESSURE_PLATE,
-                new Item.Settings().registryKey(DARK_PRESSURE_PLATE_ITEM_KEY)
+                ENDER_PRESSURE_PLATE,
+                new Item.Settings().registryKey(ENDER_PRESSURE_PLATE_ITEM_KEY)
         )
 );
 
 // DARK STAIRS
-private static final Identifier DARK_STAIRS_ID =
-        Identifier.of(MOD_ID, "dark_stairs");
+private static final Identifier ENDER_STAIRS_ID =
+        Identifier.of(MOD_ID, "ender_stairs");
 
-public static final RegistryKey<Block> DARK_STAIRS_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_STAIRS_ID);
+public static final RegistryKey<Block> ENDER_STAIRS_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_STAIRS_ID);
 
-public static final RegistryKey<Item> DARK_STAIRS_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_STAIRS_ID);
+public static final RegistryKey<Item> ENDER_STAIRS_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_STAIRS_ID);
 
-public static final Block DARK_STAIRS = Registry.register(
+public static final Block ENDER_STAIRS = Registry.register(
         Registries.BLOCK,
-        DARK_STAIRS_ID,
+        ENDER_STAIRS_ID,
         new StairsBlock(
-                DARK_PLANKS.getDefaultState(),
+                ENDER_PLANKS.getDefaultState(),
                 AbstractBlock.Settings.copy(Blocks.OAK_STAIRS)
-                        .registryKey(DARK_STAIRS_KEY)
+                        .registryKey(ENDER_STAIRS_KEY)
         )
 );
 
-public static final Item DARK_STAIRS_ITEM = Registry.register(
+public static final Item ENDER_STAIRS_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_STAIRS_ID,
+        ENDER_STAIRS_ID,
         new BlockItem(
-                DARK_STAIRS,
-                new Item.Settings().registryKey(DARK_STAIRS_ITEM_KEY)
+                ENDER_STAIRS,
+                new Item.Settings().registryKey(ENDER_STAIRS_ITEM_KEY)
         )
 );
 
 // DARK WOOD TYPE
-public static final WoodType DARK_WOOD_TYPE =
+public static final WoodType ENDER_WOOD_TYPE =
         new WoodTypeBuilder().register(
-                Identifier.of(MOD_ID, "dark"),
+                Identifier.of(MOD_ID, "ender"),
                 BlockSetType.OAK
         );
 
  // DARK SIGN
-private static final Identifier DARK_SIGN_ID =
-        Identifier.of(MOD_ID, "dark_sign");
+private static final Identifier ENDER_SIGN_ID =
+        Identifier.of(MOD_ID, "ender_sign");
 
-public static final RegistryKey<Block> DARK_SIGN_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_SIGN_ID);
+public static final RegistryKey<Block> ENDER_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_SIGN_ID);
 
-public static final Block DARK_SIGN = Registry.register(
+public static final Block ENDER_SIGN = Registry.register(
         Registries.BLOCK,
-        DARK_SIGN_ID,
+        ENDER_SIGN_ID,
         new SignBlock(
-                DARK_WOOD_TYPE,
+                ENDER_WOOD_TYPE,
                 AbstractBlock.Settings.copy(Blocks.OAK_SIGN)
-                        .registryKey(DARK_SIGN_KEY)
+                        .registryKey(ENDER_SIGN_KEY)
         )
 );
 
 // DARK WALL SIGN
-private static final Identifier DARK_WALL_SIGN_ID =
-        Identifier.of(MOD_ID, "dark_wall_sign");
+private static final Identifier ENDER_WALL_SIGN_ID =
+        Identifier.of(MOD_ID, "ender_wall_sign");
 
-public static final RegistryKey<Block> DARK_WALL_SIGN_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_WALL_SIGN_ID);
+public static final RegistryKey<Block> ENDER_WALL_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_WALL_SIGN_ID);
 
-public static final Block DARK_WALL_SIGN = Registry.register(
+public static final Block ENDER_WALL_SIGN = Registry.register(
         Registries.BLOCK,
-        DARK_WALL_SIGN_ID,
+        ENDER_WALL_SIGN_ID,
         new WallSignBlock(
-                DARK_WOOD_TYPE,
+                ENDER_WOOD_TYPE,
                 AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN)
-                        .registryKey(DARK_WALL_SIGN_KEY)
+                        .registryKey(ENDER_WALL_SIGN_KEY)
         )
 );
 
 // DARK SIGN ITEM
-private static final Identifier DARK_SIGN_ITEM_ID =
-        Identifier.of(MOD_ID, "dark_sign");
+private static final Identifier ENDER_SIGN_ITEM_ID =
+        Identifier.of(MOD_ID, "ender_sign");
 
-public static final RegistryKey<Item> DARK_SIGN_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_SIGN_ITEM_ID);
+public static final RegistryKey<Item> ENDER_SIGN_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_SIGN_ITEM_ID);
 
-public static final Item DARK_SIGN_ITEM = Registry.register(
+public static final Item ENDER_SIGN_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_SIGN_ITEM_ID,
+        ENDER_SIGN_ITEM_ID,
         new SignItem(
-                DARK_SIGN,
-                DARK_WALL_SIGN,
-                new Item.Settings().registryKey(DARK_SIGN_ITEM_KEY)
+                ENDER_SIGN,
+                ENDER_WALL_SIGN,
+                new Item.Settings().registryKey(ENDER_SIGN_ITEM_KEY)
         )
 );
 
 
 // DARK TRAPDOOR
-private static final Identifier DARK_TRAPDOOR_ID =
-        Identifier.of(MOD_ID, "dark_trapdoor");
+private static final Identifier ENDER_TRAPDOOR_ID =
+        Identifier.of(MOD_ID, "ender_trapdoor");
 
-public static final RegistryKey<Block> DARK_TRAPDOOR_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_TRAPDOOR_ID);
+public static final RegistryKey<Block> ENDER_TRAPDOOR_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_TRAPDOOR_ID);
 
-public static final RegistryKey<Item> DARK_TRAPDOOR_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_TRAPDOOR_ID);
+public static final RegistryKey<Item> ENDER_TRAPDOOR_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_TRAPDOOR_ID);
 
-public static final Block DARK_TRAPDOOR = Registry.register(
+public static final Block ENDER_TRAPDOOR = Registry.register(
         Registries.BLOCK,
-        DARK_TRAPDOOR_ID,
+        ENDER_TRAPDOOR_ID,
         new TrapdoorBlock(
                 BlockSetType.OAK,
                 AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR)
-                        .registryKey(DARK_TRAPDOOR_KEY)
+                        .registryKey(ENDER_TRAPDOOR_KEY)
         )
 );
 
-public static final Item DARK_TRAPDOOR_ITEM = Registry.register(
+public static final Item ENDER_TRAPDOOR_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_TRAPDOOR_ID,
+        ENDER_TRAPDOOR_ID,
         new BlockItem(
-                DARK_TRAPDOOR,
-                new Item.Settings().registryKey(DARK_TRAPDOOR_ITEM_KEY)
+                ENDER_TRAPDOOR,
+                new Item.Settings().registryKey(ENDER_TRAPDOOR_ITEM_KEY)
         )
 );
 
 // DARK HANGING SIGN
-private static final Identifier DARK_HANGING_SIGN_ID =
-        Identifier.of(MOD_ID, "dark_hanging_sign");
+private static final Identifier ENDER_HANGING_SIGN_ID =
+        Identifier.of(MOD_ID, "ender_hanging_sign");
 
-public static final RegistryKey<Block> DARK_HANGING_SIGN_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_HANGING_SIGN_ID);
+public static final RegistryKey<Block> ENDER_HANGING_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_HANGING_SIGN_ID);
 
-public static final RegistryKey<Item> DARK_HANGING_SIGN_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_HANGING_SIGN_ID);
+public static final RegistryKey<Item> ENDER_HANGING_SIGN_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_HANGING_SIGN_ID);
 
-public static final Block DARK_HANGING_SIGN = Registry.register(
+public static final Block ENDER_HANGING_SIGN = Registry.register(
         Registries.BLOCK,
-        DARK_HANGING_SIGN_ID,
+        ENDER_HANGING_SIGN_ID,
         new HangingSignBlock(
-                DARK_WOOD_TYPE,
+                ENDER_WOOD_TYPE,
                 AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN)
-                        .registryKey(DARK_HANGING_SIGN_KEY)
+                        .registryKey(ENDER_HANGING_SIGN_KEY)
         )
 );
 
 // DARK WALL HANGING SIGN
-private static final Identifier DARK_WALL_HANGING_SIGN_ID =
-        Identifier.of(MOD_ID, "dark_wall_hanging_sign");
+private static final Identifier ENDER_WALL_HANGING_SIGN_ID =
+        Identifier.of(MOD_ID, "ender_wall_hanging_sign");
 
-public static final RegistryKey<Block> DARK_WALL_HANGING_SIGN_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_WALL_HANGING_SIGN_ID);
+public static final RegistryKey<Block> ENDER_WALL_HANGING_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_WALL_HANGING_SIGN_ID);
 
-public static final Block DARK_WALL_HANGING_SIGN = Registry.register(
+public static final Block ENDER_WALL_HANGING_SIGN = Registry.register(
         Registries.BLOCK,
-        DARK_WALL_HANGING_SIGN_ID,
+        ENDER_WALL_HANGING_SIGN_ID,
         new WallHangingSignBlock(
-                DARK_WOOD_TYPE,
+                ENDER_WOOD_TYPE,
                 AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN)
-                        .registryKey(DARK_WALL_HANGING_SIGN_KEY)
+                        .registryKey(ENDER_WALL_HANGING_SIGN_KEY)
         )
 );
 
 // DARK HANGING SIGN ITEM
-public static final Item DARK_HANGING_SIGN_ITEM = Registry.register(
+public static final Item ENDER_HANGING_SIGN_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_HANGING_SIGN_ID,
+        ENDER_HANGING_SIGN_ID,
         new HangingSignItem(
-                DARK_HANGING_SIGN,
-                DARK_WALL_HANGING_SIGN,
-                new Item.Settings().registryKey(DARK_HANGING_SIGN_ITEM_KEY)
+                ENDER_HANGING_SIGN,
+                ENDER_WALL_HANGING_SIGN,
+                new Item.Settings().registryKey(ENDER_HANGING_SIGN_ITEM_KEY)
         )
 );
 
 // DARK DOOR
-private static final Identifier DARK_DOOR_ID =
-        Identifier.of(MOD_ID, "dark_door");
+private static final Identifier ENDER_DOOR_ID =
+        Identifier.of(MOD_ID, "ender_door");
 
-public static final RegistryKey<Block> DARK_DOOR_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_DOOR_ID);
+public static final RegistryKey<Block> ENDER_DOOR_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_DOOR_ID);
 
-public static final RegistryKey<Item> DARK_DOOR_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_DOOR_ID);
+public static final RegistryKey<Item> ENDER_DOOR_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_DOOR_ID);
 
-public static final Block DARK_DOOR = Registry.register(
+public static final Block ENDER_DOOR = Registry.register(
         Registries.BLOCK,
-        DARK_DOOR_ID,
+        ENDER_DOOR_ID,
         new DoorBlock(
                 BlockSetType.OAK,
                 AbstractBlock.Settings.copy(Blocks.OAK_DOOR)
-                        .registryKey(DARK_DOOR_KEY)
+                        .registryKey(ENDER_DOOR_KEY)
         )
 );
 
-public static final Item DARK_DOOR_ITEM = Registry.register(
+public static final Item ENDER_DOOR_ITEM = Registry.register(
         Registries.ITEM,
-        DARK_DOOR_ID,
+        ENDER_DOOR_ID,
         new BlockItem(
-                DARK_DOOR,
-                new Item.Settings().registryKey(DARK_DOOR_ITEM_KEY)
+                ENDER_DOOR,
+                new Item.Settings().registryKey(ENDER_DOOR_ITEM_KEY)
         )
 );
 
 // DARK BOAT
 
-private static final Identifier DARK_BOAT_ID =
-        Identifier.of(MOD_ID, "dark_boat");
+private static final Identifier ENDER_BOAT_ID =
+        Identifier.of(MOD_ID, "ender_boat");
 
-public static final RegistryKey<EntityType<?>> DARK_BOAT_ENTITY_KEY =
-        RegistryKey.of(RegistryKeys.ENTITY_TYPE, DARK_BOAT_ID);
+public static final RegistryKey<EntityType<?>> ENDER_BOAT_ENTITY_KEY =
+        RegistryKey.of(RegistryKeys.ENTITY_TYPE, ENDER_BOAT_ID);
 
-public static final EntityType<BoatEntity> DARK_BOAT_ENTITY = Registry.register(
+public static final EntityType<BoatEntity> ENDER_BOAT_ENTITY = Registry.register(
         Registries.ENTITY_TYPE,
-        DARK_BOAT_ID,
+        ENDER_BOAT_ID,
         EntityType.Builder.<BoatEntity>create(
                 (type, world) -> new BoatEntity(
                         type,
                         world,
-                        EndusMroku::getDarkBoatItem
+                        EndusMroku::getEnderBoatItem
                 ),
                 SpawnGroup.MISC
         )
                 .dimensions(1.375F, 0.5625F)
                 .maxTrackingRange(10)
                 .trackingTickInterval(3)
-                .build(DARK_BOAT_ENTITY_KEY)
+                .build(ENDER_BOAT_ENTITY_KEY)
 );
 
-public static final RegistryKey<Item> DARK_BOAT_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_BOAT_ID);
+public static final RegistryKey<Item> ENDER_BOAT_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_BOAT_ID);
 
-public static final Item DARK_BOAT = Registry.register(
+public static final Item ENDER_BOAT = Registry.register(
         Registries.ITEM,
-        DARK_BOAT_ID,
+        ENDER_BOAT_ID,
         new BoatItem(
-                DARK_BOAT_ENTITY,
-                new Item.Settings().registryKey(DARK_BOAT_ITEM_KEY)
+                ENDER_BOAT_ENTITY,
+                new Item.Settings().registryKey(ENDER_BOAT_ITEM_KEY)
         )
 );
 
-private static Item getDarkBoatItem() {
-    return DARK_BOAT;
+private static Item getEnderBoatItem() {
+    return ENDER_BOAT;
 }
 
 // DARK CHEST BOAT
 
-private static final Identifier DARK_CHEST_BOAT_ID =
-        Identifier.of(MOD_ID, "dark_chest_boat");
+private static final Identifier ENDER_CHEST_BOAT_ID =
+        Identifier.of(MOD_ID, "ender_chest_boat");
 
-public static final RegistryKey<EntityType<?>> DARK_CHEST_BOAT_ENTITY_KEY =
-        RegistryKey.of(RegistryKeys.ENTITY_TYPE, DARK_CHEST_BOAT_ID);
+public static final RegistryKey<EntityType<?>> ENDER_CHEST_BOAT_ENTITY_KEY =
+        RegistryKey.of(RegistryKeys.ENTITY_TYPE, ENDER_CHEST_BOAT_ID);
 
-public static final EntityType<ChestBoatEntity> DARK_CHEST_BOAT_ENTITY = Registry.register(
+public static final EntityType<ChestBoatEntity> ENDER_CHEST_BOAT_ENTITY = Registry.register(
         Registries.ENTITY_TYPE,
-        DARK_CHEST_BOAT_ID,
+        ENDER_CHEST_BOAT_ID,
         EntityType.Builder.<ChestBoatEntity>create(
                 (type, world) -> new ChestBoatEntity(
                         type,
                         world,
-                        EndusMroku::getDarkChestBoatItem
+                        EndusMroku::getEnderChestBoatItem
                 ),
                 SpawnGroup.MISC
         )
                 .dimensions(1.375F, 0.5625F)
                 .maxTrackingRange(10)
                 .trackingTickInterval(3)
-                .build(DARK_CHEST_BOAT_ENTITY_KEY)
+                .build(ENDER_CHEST_BOAT_ENTITY_KEY)
 );
 
-public static final RegistryKey<Item> DARK_CHEST_BOAT_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_CHEST_BOAT_ID);
+public static final RegistryKey<Item> ENDER_CHEST_BOAT_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_CHEST_BOAT_ID);
 
-public static final Item DARK_CHEST_BOAT = Registry.register(
+public static final Item ENDER_CHEST_BOAT = Registry.register(
         Registries.ITEM,
-        DARK_CHEST_BOAT_ID,
+        ENDER_CHEST_BOAT_ID,
         new BoatItem(
-                DARK_CHEST_BOAT_ENTITY,
-                new Item.Settings().registryKey(DARK_CHEST_BOAT_ITEM_KEY)
+                ENDER_CHEST_BOAT_ENTITY,
+                new Item.Settings().registryKey(ENDER_CHEST_BOAT_ITEM_KEY)
         )
 );
 
-private static Item getDarkChestBoatItem() {
-    return DARK_CHEST_BOAT;
+private static Item getEnderChestBoatItem() {
+    return ENDER_CHEST_BOAT;
 }
 
 // DARK TWISTING VINES
 
-public static final DarkTwistingVinesPlantBlock DARK_TWISTING_VINES_PLANT =
+public static final EnderTwistingVinesPlantBlock ENDER_TWISTING_VINES_PLANT =
         Registry.register(
                 Registries.BLOCK,
-                Identifier.of("endusmroku", "dark_twisting_vines_plant"),
-                new DarkTwistingVinesPlantBlock(
+                Identifier.of("endusmroku", "ender_twisting_vines_plant"),
+                new EnderTwistingVinesPlantBlock(
                         Block.Settings.copy(Blocks.TWISTING_VINES_PLANT)
                                 .registryKey(RegistryKey.of(
                                         RegistryKeys.BLOCK,
-                                        Identifier.of("endusmroku", "dark_twisting_vines_plant")
+                                        Identifier.of("endusmroku", "ender_twisting_vines_plant")
                                 ))
                 )
         );
 
-public static final DarkTwistingVinesBlock DARK_TWISTING_VINES =
+public static final EnderTwistingVinesBlock ENDER_TWISTING_VINES =
         Registry.register(
                 Registries.BLOCK,
-                Identifier.of("endusmroku", "dark_twisting_vines"),
-                new DarkTwistingVinesBlock(
+                Identifier.of("endusmroku", "ender_twisting_vines"),
+                new EnderTwistingVinesBlock(
                         Block.Settings.copy(Blocks.TWISTING_VINES)
                                 .registryKey(RegistryKey.of(
                                         RegistryKeys.BLOCK,
-                                        Identifier.of("endusmroku", "dark_twisting_vines")
+                                        Identifier.of("endusmroku", "ender_twisting_vines")
                                 ))
                 )
         );
 
-public static final BlockItem DARK_TWISTING_VINES_ITEM =
+public static final BlockItem ENDER_TWISTING_VINES_ITEM =
         Registry.register(
                 Registries.ITEM,
-                Identifier.of("endusmroku", "dark_twisting_vines"),
+                Identifier.of("endusmroku", "ender_twisting_vines"),
                 new BlockItem(
-                        DARK_TWISTING_VINES,
+                        ENDER_TWISTING_VINES,
                         new Item.Settings().registryKey(RegistryKey.of(
                                 RegistryKeys.ITEM,
-                                Identifier.of("endusmroku", "dark_twisting_vines")
+                                Identifier.of("endusmroku", "ender_twisting_vines")
                         ))
                 )
         );
 
 // DARK WEEPING VINES
 
-private static final Identifier DARK_WEEPING_VINES_ID =
-        Identifier.of(MOD_ID, "dark_weeping_vines");
+private static final Identifier ENDER_WEEPING_VINES_ID =
+        Identifier.of(MOD_ID, "ender_weeping_vines");
 
-private static final Identifier DARK_WEEPING_VINES_PLANT_ID =
-        Identifier.of(MOD_ID, "dark_weeping_vines_plant");
+private static final Identifier ENDER_WEEPING_VINES_PLANT_ID =
+        Identifier.of(MOD_ID, "ender_weeping_vines_plant");
 
-private static final RegistryKey<Block> DARK_WEEPING_VINES_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_WEEPING_VINES_ID);
+private static final RegistryKey<Block> ENDER_WEEPING_VINES_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_WEEPING_VINES_ID);
 
-private static final RegistryKey<Block> DARK_WEEPING_VINES_PLANT_KEY =
-        RegistryKey.of(RegistryKeys.BLOCK, DARK_WEEPING_VINES_PLANT_ID);
+private static final RegistryKey<Block> ENDER_WEEPING_VINES_PLANT_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ENDER_WEEPING_VINES_PLANT_ID);
 
-private static final RegistryKey<Item> DARK_WEEPING_VINES_ITEM_KEY =
-        RegistryKey.of(RegistryKeys.ITEM, DARK_WEEPING_VINES_ID);
+private static final RegistryKey<Item> ENDER_WEEPING_VINES_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ENDER_WEEPING_VINES_ID);
 
-public static final DarkWeepingVinesPlantBlock DARK_WEEPING_VINES_PLANT =
+public static final EnderWeepingVinesPlantBlock ENDER_WEEPING_VINES_PLANT =
         Registry.register(
                 Registries.BLOCK,
-                DARK_WEEPING_VINES_PLANT_ID,
-                new DarkWeepingVinesPlantBlock(
+                ENDER_WEEPING_VINES_PLANT_ID,
+                new EnderWeepingVinesPlantBlock(
                         AbstractBlock.Settings.copy(Blocks.WEEPING_VINES_PLANT)
-                                .registryKey(DARK_WEEPING_VINES_PLANT_KEY)
+                                .registryKey(ENDER_WEEPING_VINES_PLANT_KEY)
                 )
         );
 
-public static final DarkWeepingVinesBlock DARK_WEEPING_VINES =
+public static final EnderWeepingVinesBlock ENDER_WEEPING_VINES =
         Registry.register(
                 Registries.BLOCK,
-                DARK_WEEPING_VINES_ID,
-                new DarkWeepingVinesBlock(
+                ENDER_WEEPING_VINES_ID,
+                new EnderWeepingVinesBlock(
                         AbstractBlock.Settings.copy(Blocks.WEEPING_VINES)
-                                .registryKey(DARK_WEEPING_VINES_KEY)
+                                .registryKey(ENDER_WEEPING_VINES_KEY)
                 )
         );
 
-public static final Item DARK_WEEPING_VINES_ITEM =
+public static final Item ENDER_WEEPING_VINES_ITEM =
         Registry.register(
                 Registries.ITEM,
-                DARK_WEEPING_VINES_ID,
+                ENDER_WEEPING_VINES_ID,
                 new BlockItem(
-                        DARK_WEEPING_VINES,
+                        ENDER_WEEPING_VINES,
                         new Item.Settings()
-                                .registryKey(DARK_WEEPING_VINES_ITEM_KEY)
+                                .registryKey(ENDER_WEEPING_VINES_ITEM_KEY)
                 )
         );
 
@@ -844,25 +844,25 @@ public static final Item DARK_WEEPING_VINES_ITEM =
     @Override
 public void onInitialize() {
 
-    pl.endusmroku.worldgen.DarkVinesFeatures.register();
+    pl.endusmroku.worldgen.EnderVinesFeatures.register();
 
     // Okorowywanie Mrocznego Trzonu
     StrippableBlockRegistry.register(
-            DARK_STEM,
-            STRIPPED_DARK_STEM
+            ENDER_STEM,
+            STRIPPED_ENDER_STEM
     );
 
     // Okorowywanie Mrocznych Strzępków
     StrippableBlockRegistry.register(
-            DARK_HYPHAE,
-            STRIPPED_DARK_HYPHAE
+            ENDER_HYPHAE,
+            STRIPPED_ENDER_HYPHAE
     );
 
-    BlockEntityType.SIGN.addSupportedBlock(DARK_SIGN);
-    BlockEntityType.SIGN.addSupportedBlock(DARK_WALL_SIGN);
+    BlockEntityType.SIGN.addSupportedBlock(ENDER_SIGN);
+    BlockEntityType.SIGN.addSupportedBlock(ENDER_WALL_SIGN);
 
-    BlockEntityType.HANGING_SIGN.addSupportedBlock(DARK_HANGING_SIGN);
-    BlockEntityType.HANGING_SIGN.addSupportedBlock(DARK_WALL_HANGING_SIGN); 
+    BlockEntityType.HANGING_SIGN.addSupportedBlock(ENDER_HANGING_SIGN);
+    BlockEntityType.HANGING_SIGN.addSupportedBlock(ENDER_WALL_HANGING_SIGN); 
 
 }
 }

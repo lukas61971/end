@@ -13,12 +13,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import pl.endusmroku.EndusMroku;
 
 @Mixin(targets = "net.minecraft.world.gen.feature.HugeFungusFeature")
-public abstract class DarkFungusVinesMixin {
+public abstract class EnderFungusVinesMixin {
     @Inject(
             method = "generateHat(Lnet/minecraft/world/StructureWorldAccess;Lnet/minecraft/util/math/random/Random;Lnet/minecraft/world/gen/feature/HugeFungusFeatureConfig;Lnet/minecraft/util/math/BlockPos;IZ)V",
             at = @At("RETURN")
     )
-    private void endusmroku$addVinesToDarkFungusHat(
+    private void endusmroku$addVinesToEnderFungusHat(
             StructureWorldAccess world,
             Random random,
             HugeFungusFeatureConfig config,
@@ -28,7 +28,7 @@ public abstract class DarkFungusVinesMixin {
             CallbackInfo ci
     ) {
         // Only decorate our own fungus trees.
-        if (!config.hatState.isOf(EndusMroku.DARK_WART_BLOCK)) {
+        if (!config.hatState.isOf(EndusMroku.ENDER_WART_BLOCK)) {
             return;
         }
 
@@ -42,12 +42,12 @@ public abstract class DarkFungusVinesMixin {
                 for (int y = minY; y <= maxY; y++) {
                     capPos.set(x, y, z);
 
-                    if (!world.getBlockState(capPos).isOf(EndusMroku.DARK_WART_BLOCK)) {
+                    if (!world.getBlockState(capPos).isOf(EndusMroku.ENDER_WART_BLOCK)) {
                         continue;
                     }
 
                     // A block with another cap block above and air below is on the underside.
-                    if (!world.getBlockState(capPos.up()).isOf(EndusMroku.DARK_WART_BLOCK)
+                    if (!world.getBlockState(capPos.up()).isOf(EndusMroku.ENDER_WART_BLOCK)
                             || !world.getBlockState(capPos.down()).isAir()) {
                         continue;
                     }
@@ -65,8 +65,8 @@ public abstract class DarkFungusVinesMixin {
                         }
 
                         BlockState vineState = i == length
-                                ? EndusMroku.DARK_WEEPING_VINES.getDefaultState()
-                                : EndusMroku.DARK_WEEPING_VINES_PLANT.getDefaultState();
+                                ? EndusMroku.ENDER_WEEPING_VINES.getDefaultState()
+                                : EndusMroku.ENDER_WEEPING_VINES_PLANT.getDefaultState();
 
                         world.setBlockState(vinePos, vineState, Block.NOTIFY_ALL);
                     }

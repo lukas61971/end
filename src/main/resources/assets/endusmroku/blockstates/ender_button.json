@@ -6,7 +6,7 @@
         "powered": "false"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button",
+        "model": "endusmroku:block/ender_button",
         "x": 180
       }
     },
@@ -16,7 +16,7 @@
         "powered": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button_pressed",
+        "model": "endusmroku:block/ender_button_pressed",
         "x": 180
       }
     },
@@ -26,7 +26,7 @@
         "powered": "false"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button"
+        "model": "endusmroku:block/ender_button"
       }
     },
     {
@@ -35,7 +35,7 @@
         "powered": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button_pressed"
+        "model": "endusmroku:block/ender_button_pressed"
       }
     },
     {
@@ -45,7 +45,7 @@
         "powered": "false"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button",
+        "model": "endusmroku:block/ender_button",
         "x": 90
       }
     },
@@ -56,7 +56,7 @@
         "powered": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button_pressed",
+        "model": "endusmroku:block/ender_button_pressed",
         "x": 90
       }
     },
@@ -67,7 +67,7 @@
         "powered": "false"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button",
+        "model": "endusmroku:block/ender_button",
         "y": 180,
         "x": 90
       }
@@ -79,7 +79,7 @@
         "powered": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button_pressed",
+        "model": "endusmroku:block/ender_button_pressed",
         "y": 180,
         "x": 90
       }
@@ -91,7 +91,7 @@
         "powered": "false"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button",
+        "model": "endusmroku:block/ender_button",
         "y": 270,
         "x": 90
       }
@@ -103,7 +103,7 @@
         "powered": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button_pressed",
+        "model": "endusmroku:block/ender_button_pressed",
         "y": 270,
         "x": 90
       }
@@ -115,7 +115,7 @@
         "powered": "false"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button",
+        "model": "endusmroku:block/ender_button",
         "y": 90,
         "x": 90
       }
@@ -127,7 +127,7 @@
         "powered": "true"
       },
       "apply": {
-        "model": "endusmroku:block/dark_button_pressed",
+        "model": "endusmroku:block/ender_button_pressed",
         "y": 90,
         "x": 90
       }

@@ -6,7 +6,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "enderwilds:ciemne_nylium"
+          "name": "enderwilds:ender_nylium"
         }
       ],
       "conditions": [

@@ -1,6 +1,6 @@
 {
   "carvers": [
-    "enderwilds:dark_forest_caves"
+    "enderwilds:endergrove_caves"
   ],
   "downfall": 0.5,
   "effects": {
@@ -22,7 +22,7 @@
       "enderwilds:ender_roots_patch",
       "enderwilds:ender_sprouts_patch",
       "enderwilds:ender_twisting_vines_patch",
-      "enderwilds:dark_forest_huge_fungus"
+      "enderwilds:endergrove_huge_fungus"
     ],
     [],
     []

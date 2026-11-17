@@ -4,11 +4,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Deterministic, noise-shaped dark forest regions. Each patch has independently
+ * Deterministic, noise-shaped Endergrove regions. Each patch has independently
  * randomized dimensions and an irregular implicit boundary made from warped,
  * multi-scale noise rather than a polygon or a fixed radial outline.
  */
-public final class DarkForestRegion {
+public final class EndergroveRegion {
     private static final int PATCH_SPACING = 2000;
     private static final double CENTER_JITTER = 260.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
@@ -16,7 +16,7 @@ public final class DarkForestRegion {
 
     private static final ConcurrentMap<Long, Patch> PATCH_CACHE = new ConcurrentHashMap<>();
 
-    private DarkForestRegion() {
+    private EndergroveRegion() {
     }
 
     public static boolean isInside(double x, double z) {

@@ -5,7 +5,7 @@
   "mixins": [
     "TheEndBiomeSourceMixin",
     "DarkForestTerrainMixin",
-    "DarkFungusVinesMixin"
+    "EnderFungusVinesMixin"
   ],
   "injectors": {
     "defaultRequire": 1

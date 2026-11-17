@@ -1,5 +1,5 @@
 {
-  "feature": "endusmroku:dark_sprouts_patch",
+  "feature": "endusmroku:ender_sprouts_patch",
   "placement": [
     {
       "type": "minecraft:count",
@@ -17,7 +17,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "endusmroku:dark_sprouts"
+          "Name": "endusmroku:ender_sprouts"
         }
       }
     },

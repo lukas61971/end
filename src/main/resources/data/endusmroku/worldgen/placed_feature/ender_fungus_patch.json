@@ -1,5 +1,5 @@
 {
-  "feature": "endusmroku:dark_fungus_patch",
+  "feature": "endusmroku:ender_fungus_patch",
   "placement": [
     {
       "type": "minecraft:count",
@@ -17,7 +17,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "endusmroku:dark_fungus"
+          "Name": "endusmroku:ender_fungus"
         }
       }
     },

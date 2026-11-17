@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "enderwilds:block/mroczne_korzenie"
+      "model": "enderwilds:block/ender_roots"
     }
   }
 }

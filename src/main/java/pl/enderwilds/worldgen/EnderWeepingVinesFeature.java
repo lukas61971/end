@@ -40,7 +40,7 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
             if (!world.getBlockState(ceilingPos).isSolidBlock(world, ceilingPos)) {
                 continue;
             }
-                        int length = 1 + random.nextInt(4);
+            int length = 1 + random.nextInt(4);
             boolean clear = true;
             for (int i = 0; i < length; i++) {
                 if (!world.getBlockState(topVinePos.down(i)).isAir()) {
@@ -54,14 +54,16 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
 
             BlockState head = Enderwilds.ENDER_WEEPING_VINES.getDefaultState();
             BlockState plant = Enderwilds.ENDER_WEEPING_VINES_PLANT.getDefaultState();
-            if (!head.canPlaceAt(world, topVinePos)) {
+            BlockPos bottomVinePos = topVinePos.down(length - 1);
+            if (!head.canPlaceAt(world, bottomVinePos)) {
                 continue;
             }
 
-            world.setBlockState(topVinePos, head, Block.NOTIFY_LISTENERS);
-            for (int i = 1; i < length; i++) {
+            // The stem block is the lowest segment; plant blocks hang above it.
+            for (int i = 0; i < length - 1; i++) {
                 world.setBlockState(topVinePos.down(i), plant, Block.NOTIFY_LISTENERS);
             }
+            world.setBlockState(bottomVinePos, head, Block.NOTIFY_LISTENERS);
             placedAny = true;
         }
 

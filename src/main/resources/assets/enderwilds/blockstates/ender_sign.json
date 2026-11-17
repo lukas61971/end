@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "rotation=0": {"model": "enderwilds:block/ender_sign"},
+    "rotation=1": {"model": "enderwilds:block/ender_sign"},
+    "rotation=2": {"model": "enderwilds:block/ender_sign"},
+    "rotation=3": {"model": "enderwilds:block/ender_sign"},
+    "rotation=4": {"model": "enderwilds:block/ender_sign"},
+    "rotation=5": {"model": "enderwilds:block/ender_sign"},
+    "rotation=6": {"model": "enderwilds:block/ender_sign"},
+    "rotation=7": {"model": "enderwilds:block/ender_sign"},
+    "rotation=8": {"model": "enderwilds:block/ender_sign"},
+    "rotation=9": {"model": "enderwilds:block/ender_sign"},
+    "rotation=10": {"model": "enderwilds:block/ender_sign"},
+    "rotation=11": {"model": "enderwilds:block/ender_sign"},
+    "rotation=12": {"model": "enderwilds:block/ender_sign"},
+    "rotation=13": {"model": "enderwilds:block/ender_sign"},
+    "rotation=14": {"model": "enderwilds:block/ender_sign"},
+    "rotation=15": {"model": "enderwilds:block/ender_sign"}
+  }
+}

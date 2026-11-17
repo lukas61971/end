@@ -1,8 +1,8 @@
 {
   "parent": "minecraft:block/cube_bottom_top",
   "textures": {
-    "top": "enderwilds:block/ciemne_nylium_top",
+    "top": "enderwilds:block/ender_nylium_top",
     "bottom": "minecraft:block/end_stone",
-    "side": "enderwilds:block/ciemne_nylium_side"
+    "side": "enderwilds:block/ender_nylium_side"
   }
 }

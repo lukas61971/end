@@ -37,6 +37,6 @@ public class EnderSproutsBlock extends PlantBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isOf(Enderwilds.CIEMNE_NYLIUM);
+        return floor.isOf(Enderwilds.ENDER_NYLIUM);
     }
 }

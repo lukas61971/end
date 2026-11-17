@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.StructureWorldAccess;
+import net.minecraft.world.gen.Heightmap;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.util.FeatureContext;
@@ -18,28 +19,30 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
     public boolean generate(FeatureContext<DefaultFeatureConfig> context) {
         StructureWorldAccess world = context.getWorld();
         var random = context.getRandom();
-        int minY = world.getBottomY() + 12;
-        int maxY = world.getTopYInclusive() - 8;
-        if (maxY <= minY) {
-            return false;
-        }
-
-        boolean placedAny = false;
         BlockPos origin = context.getOrigin();
+        int minY = world.getBottomY() + 12;
 
-        // Search multiple positions in this chunk for real underground ceilings.
-        for (int attempt = 0; attempt < 48; attempt++) {
-            int chunkX = origin.getX() & ~15;
-            int chunkZ = origin.getZ() & ~15;
+        int chunkX = origin.getX() & ~15;
+        int chunkZ = origin.getZ() & ~15;
+
+        // Search enough positions in this chunk, using each column's surface
+        // as an upper limit so attempts are concentrated below ground.
+        for (int attempt = 0; attempt < 256; attempt++) {
             int x = chunkX + random.nextInt(16);
             int z = chunkZ + random.nextInt(16);
-            int y = minY + random.nextInt(maxY - minY);
-            BlockPos ceilingPos = new BlockPos(x, y, z);
-            BlockPos topVinePos = ceilingPos.down();
+            int surfaceY = world.getTopY(Heightmap.Type.WORLD_SURFACE_WG, x, z);
+            int maxY = surfaceY - 5;
+            if (maxY <= minY) {
+                continue;
+            }
 
+            int y = minY + random.nextInt(maxY - minY + 1);
+            BlockPos ceilingPos = new BlockPos(x, y, z);
             if (!world.getBlockState(ceilingPos).isSolidBlock(world, ceilingPos)) {
                 continue;
             }
+
+            BlockPos topVinePos = ceilingPos.down();
             int length = 1 + random.nextInt(4);
             boolean clear = true;
             for (int i = 0; i < length; i++) {
@@ -55,18 +58,16 @@ public class EnderWeepingVinesFeature extends Feature<DefaultFeatureConfig> {
             BlockState head = Enderwilds.ENDER_WEEPING_VINES.getDefaultState();
             BlockState plant = Enderwilds.ENDER_WEEPING_VINES_PLANT.getDefaultState();
             BlockPos bottomVinePos = topVinePos.down(length - 1);
-            if (!head.canPlaceAt(world, bottomVinePos)) {
-                continue;
-            }
 
-            // The stem block is the lowest segment; plant blocks hang above it.
+            // Match the proven placement used by the fungus-cap vine mixin:
+            // plant segments above, the vine head at the bottom.
             for (int i = 0; i < length - 1; i++) {
-                world.setBlockState(topVinePos.down(i), plant, Block.NOTIFY_LISTENERS);
+                world.setBlockState(topVinePos.down(i), plant, Block.NOTIFY_ALL);
             }
-            world.setBlockState(bottomVinePos, head, Block.NOTIFY_LISTENERS);
-            placedAny = true;
+            world.setBlockState(bottomVinePos, head, Block.NOTIFY_ALL);
+            return true;
         }
 
-        return placedAny;
+        return false;
     }
 }

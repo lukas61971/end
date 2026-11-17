@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "attached=false": {
+      "model": "enderwilds:block/ender_hanging_sign"
+    },
+    "attached=true": {
+      "model": "enderwilds:block/ender_hanging_sign"
+    }
+  }
+}

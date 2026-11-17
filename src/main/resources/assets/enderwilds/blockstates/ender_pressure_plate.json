@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "enderwilds:block/ender_pressure_plate"
+    },
+    "powered=true": {
+      "model": "enderwilds:block/ender_pressure_plate_down"
+    }
+  }
+}

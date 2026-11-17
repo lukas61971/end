@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "enderwilds:block/ender_hyphae",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "enderwilds:block/ender_hyphae"
+    },
+    "axis=z": {
+      "model": "enderwilds:block/ender_hyphae",
+      "x": 90
+    }
+  }
+}

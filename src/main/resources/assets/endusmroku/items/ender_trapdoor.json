@@ -1,7 +1,6 @@
-
 {
   "model": {
     "type": "minecraft:model",
-    "model": "endusmroku:item/dark_stem"
+    "model": "endusmroku:item/ender_trapdoor"
   }
 }

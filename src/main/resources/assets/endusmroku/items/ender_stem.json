@@ -1,6 +1,7 @@
+
 {
   "model": {
     "type": "minecraft:model",
-    "model": "endusmroku:item/dark_sprouts"
+    "model": "endusmroku:item/ender_stem"
   }
 }

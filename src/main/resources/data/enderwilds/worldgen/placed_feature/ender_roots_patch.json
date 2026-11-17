@@ -17,7 +17,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "enderwilds:mroczne_korzenie"
+          "Name": "enderwilds:ender_roots"
         }
       }
     },

@@ -16,46 +16,46 @@ public class EndusMrokuClient implements ClientModInitializer {
                 BlockRenderLayer.CUTOUT
         );
         BlockRenderLayerMap.putBlock(
-            EndusMroku.DARK_SPROUTS,
+            EndusMroku.ENDER_SPROUTS,
             BlockRenderLayer.CUTOUT
         );
         BlockRenderLayerMap.putBlock(
-            EndusMroku.DARK_FUNGUS,
+            EndusMroku.ENDER_FUNGUS,
             BlockRenderLayer.CUTOUT
         );
 
         BlockRenderLayerMap.putBlock(
-            EndusMroku.DARK_TRAPDOOR,
+            EndusMroku.ENDER_TRAPDOOR,
             BlockRenderLayer.CUTOUT
         );
 
         EntityRendererRegistry.register(
-            EndusMroku.DARK_BOAT_ENTITY,
-            DarkBoatEntityRenderer::new
+            EndusMroku.ENDER_BOAT_ENTITY,
+            EnderBoatEntityRenderer::new
         );
 
         EntityRendererRegistry.register(
-            EndusMroku.DARK_CHEST_BOAT_ENTITY,
-            DarkChestBoatEntityRenderer::new
+            EndusMroku.ENDER_CHEST_BOAT_ENTITY,
+            EnderChestBoatEntityRenderer::new
         );
 
         BlockRenderLayerMap.putBlock(
-           EndusMroku.DARK_TWISTING_VINES,
+           EndusMroku.ENDER_TWISTING_VINES,
            BlockRenderLayer.CUTOUT
         );
 
         BlockRenderLayerMap.putBlock(
-           EndusMroku.DARK_TWISTING_VINES_PLANT,
+           EndusMroku.ENDER_TWISTING_VINES_PLANT,
            BlockRenderLayer.CUTOUT
         );
 
         BlockRenderLayerMap.putBlock(
-           EndusMroku.DARK_WEEPING_VINES,
+           EndusMroku.ENDER_WEEPING_VINES,
            BlockRenderLayer.CUTOUT
         );
 
         BlockRenderLayerMap.putBlock(
-           EndusMroku.DARK_WEEPING_VINES_PLANT,
+           EndusMroku.ENDER_WEEPING_VINES_PLANT,
            BlockRenderLayer.CUTOUT
         );
     }

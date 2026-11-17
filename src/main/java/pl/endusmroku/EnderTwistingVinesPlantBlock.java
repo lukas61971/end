@@ -3,14 +3,14 @@ package pl.endusmroku.block;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.TwistingVinesPlantBlock;
 
-public class DarkTwistingVinesPlantBlock extends TwistingVinesPlantBlock {
+public class EnderTwistingVinesPlantBlock extends TwistingVinesPlantBlock {
 
-    public DarkTwistingVinesPlantBlock(Settings settings) {
+    public EnderTwistingVinesPlantBlock(Settings settings) {
         super(settings);
     }
 
     @Override
     protected AbstractPlantStemBlock getStem() {
-        return pl.endusmroku.EndusMroku.DARK_TWISTING_VINES;
+        return pl.endusmroku.EndusMroku.ENDER_TWISTING_VINES;
     }
 }

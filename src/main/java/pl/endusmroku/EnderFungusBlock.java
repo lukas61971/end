@@ -22,15 +22,15 @@ import net.minecraft.world.gen.feature.util.FeatureContext;
 
 import java.util.Optional;
 
-public class DarkFungusBlock extends PlantBlock implements Fertilizable {
+public class EnderFungusBlock extends PlantBlock implements Fertilizable {
 
-    public static final MapCodec<DarkFungusBlock> CODEC =
-            createCodec(DarkFungusBlock::new);
+    public static final MapCodec<EnderFungusBlock> CODEC =
+            createCodec(EnderFungusBlock::new);
 
     private static final VoxelShape SHAPE =
             createCuboidShape(4, 0, 4, 12, 8, 12);
 
-    public DarkFungusBlock(Settings settings) {
+    public EnderFungusBlock(Settings settings) {
         super(settings);
     }
 
@@ -105,8 +105,8 @@ public class DarkFungusBlock extends PlantBlock implements Fertilizable {
         HugeFungusFeatureConfig config =
                 new HugeFungusFeatureConfig(
                         EndusMroku.CIEMNE_NYLIUM.getDefaultState(),
-                        EndusMroku.DARK_STEM.getDefaultState(),
-                        EndusMroku.DARK_WART_BLOCK.getDefaultState(),
+                        EndusMroku.ENDER_STEM.getDefaultState(),
+                        EndusMroku.ENDER_WART_BLOCK.getDefaultState(),
                         Blocks.AIR.getDefaultState(),
                         BlockPredicate.replaceable(),
                         true

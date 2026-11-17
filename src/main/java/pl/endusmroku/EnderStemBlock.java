@@ -4,12 +4,12 @@ package pl.endusmroku;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.block.PillarBlock;
 
-public class DarkStemBlock extends PillarBlock {
+public class EnderStemBlock extends PillarBlock {
 
-    public static final MapCodec<DarkStemBlock> CODEC =
-            createCodec(DarkStemBlock::new);
+    public static final MapCodec<EnderStemBlock> CODEC =
+            createCodec(EnderStemBlock::new);
 
-    public DarkStemBlock(Settings settings) {
+    public EnderStemBlock(Settings settings) {
         super(settings);
     }
 

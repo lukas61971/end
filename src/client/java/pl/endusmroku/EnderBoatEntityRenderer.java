@@ -7,17 +7,17 @@ import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.util.Identifier;
 
-public class DarkBoatEntityRenderer extends BoatEntityRenderer {
+public class EnderBoatEntityRenderer extends BoatEntityRenderer {
 
-    private static final Identifier DARK_BOAT_TEXTURE =
-            Identifier.of("endusmroku", "textures/entity/boat/dark_boat.png");
+    private static final Identifier ENDER_BOAT_TEXTURE =
+            Identifier.of("endusmroku", "textures/entity/boat/ender_boat.png");
 
-    public DarkBoatEntityRenderer(EntityRendererFactory.Context context) {
-        super(context, EntityModelLayers.DARK_OAK_BOAT);
+    public EnderBoatEntityRenderer(EntityRendererFactory.Context context) {
+        super(context, EntityModelLayers.ENDER_OAK_BOAT);
     }
 
     @Override
 protected RenderLayer getRenderLayer() {
-    return RenderLayers.entityCutout(DARK_BOAT_TEXTURE);
+    return RenderLayers.entityCutout(ENDER_BOAT_TEXTURE);
 }
 }

@@ -8,15 +8,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
-public class DarkSproutsBlock extends PlantBlock {
+public class EnderSproutsBlock extends PlantBlock {
 
-    public static final MapCodec<DarkSproutsBlock> CODEC =
-            createCodec(DarkSproutsBlock::new);
+    public static final MapCodec<EnderSproutsBlock> CODEC =
+            createCodec(EnderSproutsBlock::new);
 
     private static final VoxelShape SHAPE =
             createCuboidShape(2, 0, 2, 14, 3, 14);
 
-    public DarkSproutsBlock(Settings settings) {
+    public EnderSproutsBlock(Settings settings) {
         super(settings);
     }
 

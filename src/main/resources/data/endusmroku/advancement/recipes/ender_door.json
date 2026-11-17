@@ -1,36 +1,32 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chest": {
+    "has_ender_planks": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [
           {
-            "items": "minecraft:chest"
+            "items": "endusmroku:ender_planks"
           }
         ]
       }
     },
-    "has_dark_boat": {
-      "trigger": "minecraft:inventory_changed",
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
       "conditions": {
-        "items": [
-          {
-            "items": "endusmroku:dark_boat"
-          }
-        ]
+        "recipe": "endusmroku:ender_door"
       }
     }
   },
   "requirements": [
     [
-      "has_chest",
-      "has_dark_boat"
+      "has_ender_planks",
+      "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "endusmroku:dark_chest_boat"
+      "endusmroku:ender_door"
     ]
   }
 }

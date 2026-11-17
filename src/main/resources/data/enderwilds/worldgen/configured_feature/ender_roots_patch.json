@@ -4,7 +4,7 @@
     "to_place": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "enderwilds:mroczne_korzenie"
+        "Name": "enderwilds:ender_roots"
       }
     }
   }

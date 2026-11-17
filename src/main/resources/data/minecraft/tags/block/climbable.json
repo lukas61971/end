@@ -1,9 +1,9 @@
 {
   "replace": false,
   "values": [
-    "endusmroku:dark_twisting_vines",
-    "endusmroku:dark_twisting_vines_plant",
-    "endusmroku:dark_weeping_vines",
-    "endusmroku:dark_weeping_vines_plant"
+    "endusmroku:ender_twisting_vines",
+    "endusmroku:ender_twisting_vines_plant",
+    "endusmroku:ender_weeping_vines",
+    "endusmroku:ender_weeping_vines_plant"
   ]
 }

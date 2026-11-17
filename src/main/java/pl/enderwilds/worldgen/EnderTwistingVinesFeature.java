@@ -20,7 +20,7 @@ public class EnderTwistingVinesFeature extends Feature<DefaultFeatureConfig> {
         BlockPos base = context.getOrigin();
         var random = context.getRandom();
 
-        if (!world.getBlockState(base.down()).isOf(Enderwilds.CIEMNE_NYLIUM)) {
+        if (!world.getBlockState(base.down()).isOf(Enderwilds.ENDER_NYLIUM)) {
             return false;
         }
 

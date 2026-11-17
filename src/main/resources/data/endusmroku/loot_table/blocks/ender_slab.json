@@ -9,11 +9,11 @@
           "children": [
             {
               "type": "minecraft:item",
-              "name": "endusmroku:dark_slab",
+              "name": "endusmroku:ender_slab",
               "conditions": [
                 {
                   "condition": "minecraft:block_state_property",
-                  "block": "endusmroku:dark_slab",
+                  "block": "endusmroku:ender_slab",
                   "properties": {
                     "type": "double"
                   }
@@ -28,7 +28,7 @@
             },
             {
               "type": "minecraft:item",
-              "name": "endusmroku:dark_slab"
+              "name": "endusmroku:ender_slab"
             }
           ]
         }

@@ -11,11 +11,11 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "endusmroku:dark_hanging_sign"
+          "name": "endusmroku:ender_hanging_sign"
         }
       ],
       "rolls": 1.0
     }
   ],
-  "random_sequence": "endusmroku:blocks/dark_hanging_sign"
+  "random_sequence": "endusmroku:blocks/ender_hanging_sign"
 }

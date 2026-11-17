@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "endusmroku:block/dark_twisting_vines"
+    "cross": "endusmroku:block/ender_weeping_vines_plant"
   }
-}d
+}

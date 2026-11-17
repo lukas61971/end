@@ -2,6 +2,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "endusmroku:block/dark_wart_block"
+    "all": "endusmroku:block/ender_wart_block"
   }
 }

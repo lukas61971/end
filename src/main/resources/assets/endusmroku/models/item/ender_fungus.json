@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "endusmroku:block/dark_fungus"
+    "layer0": "endusmroku:block/ender_fungus"
   },
   "display": {
     "ground": {

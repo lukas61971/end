@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "endusmroku:item/dark_sign"
+    "layer0": "endusmroku:item/ender_sign"
   }
 }

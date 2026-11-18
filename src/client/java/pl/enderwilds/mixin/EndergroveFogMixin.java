@@ -33,7 +33,7 @@ public abstract class EndergroveFogMixin {
     ) {
         if (world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS_ENDERGROVE)) {
             Vector4f original = cir.getReturnValue();
-            cir.setReturnValue(new Vector4f(0.31f, 0.14f, 0.40f, original.w));
+            cir.setReturnValue(new Vector4f(0.12f, 0.025f, 0.19f, original.w));
         }
     }
 }

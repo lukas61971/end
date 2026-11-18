@@ -839,6 +839,34 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
 
 
 
+    // DARK END STONE
+
+    private static final Identifier DARK_END_STONE_ID =
+            Identifier.of(MOD_ID, "dark_end_stone");
+
+    public static final RegistryKey<Block> DARK_END_STONE_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, DARK_END_STONE_ID);
+
+    public static final RegistryKey<Item> DARK_END_STONE_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, DARK_END_STONE_ID);
+
+    public static final Block DARK_END_STONE = Registry.register(
+            Registries.BLOCK,
+            DARK_END_STONE_ID,
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.END_STONE)
+                            .registryKey(DARK_END_STONE_KEY)
+                            .mapColor(MapColor.PURPLE)
+            )
+    );
+
+    public static final Item DARK_END_STONE_ITEM = Registry.register(
+            Registries.ITEM,
+            DARK_END_STONE_ID,
+            new BlockItem(DARK_END_STONE, new Item.Settings()
+                    .registryKey(DARK_END_STONE_ITEM_KEY))
+    );
+
     // ENDERIUM ORE AND SHARD
 
     private static final Identifier ENDERIUM_ORE_ID =

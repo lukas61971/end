@@ -839,6 +839,48 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
 
 
 
+    // ENDERIUM ORE AND SHARD
+
+    private static final Identifier ENDERIUM_ORE_ID =
+            Identifier.of(MOD_ID, "enderium_ore");
+
+    public static final RegistryKey<Block> ENDERIUM_ORE_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ENDERIUM_ORE_ID);
+
+    public static final RegistryKey<Item> ENDERIUM_ORE_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDERIUM_ORE_ID);
+
+    public static final Block ENDERIUM_ORE = Registry.register(
+            Registries.BLOCK,
+            ENDERIUM_ORE_ID,
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
+                            .strength(3.0F, 3.0F)
+                            .requiresTool()
+                            .mapColor(MapColor.PURPLE)
+                            .registryKey(ENDERIUM_ORE_KEY)
+            )
+    );
+
+    public static final Item ENDERIUM_ORE_ITEM = Registry.register(
+            Registries.ITEM,
+            ENDERIUM_ORE_ID,
+            new BlockItem(ENDERIUM_ORE, new Item.Settings()
+                    .registryKey(ENDERIUM_ORE_ITEM_KEY))
+    );
+
+    private static final Identifier ENDERIUM_SHARD_ID =
+            Identifier.of(MOD_ID, "enderium_shard");
+
+    public static final RegistryKey<Item> ENDERIUM_SHARD_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDERIUM_SHARD_ID);
+
+    public static final Item ENDERIUM_SHARD = Registry.register(
+            Registries.ITEM,
+            ENDERIUM_SHARD_ID,
+            new Item(new Item.Settings().registryKey(ENDERIUM_SHARD_KEY))
+    );
+
     @Override
 public void onInitialize() {
 

@@ -52,7 +52,7 @@ public abstract class EndergroveFogMixin {
     ) {
         if (world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS_ENDERGROVE)) {
             Vector4f original = cir.getReturnValue();
-            cir.setReturnValue(new Vector4f(0.12f, 0.025f, 0.19f, original.w));
+            cir.setReturnValue(new Vector4f(0.30f, 0.23f, 0.36f, original.w));
         }
     }
 
@@ -63,11 +63,11 @@ public abstract class EndergroveFogMixin {
                     target = "Lnet/minecraft/client/render/fog/FogRenderer;applyFog(Ljava/nio/ByteBuffer;ILorg/joml/Vector4f;FFFFFF)V"
             )
     )
-    private void enderwilds$shortenFogDistance(Args args) {
+    private void enderwilds$adjustFogDistance(Args args) {
         if (this.enderwilds$inEndergrove) {
-            args.set(3, 0.0f);
+            args.set(3, 80.0f);
             args.set(4, 200.0f);
-            args.set(5, 0.0f);
+            args.set(5, 80.0f);
             args.set(6, 200.0f);
         }
     }

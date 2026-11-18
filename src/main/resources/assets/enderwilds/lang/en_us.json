@@ -52,5 +52,8 @@
   "block.enderwilds.ender_weeping_vines": "Ender Weeping Vines",
   "block.enderwilds.ender_weeping_vines_plant": "Ender Weeping Vines",
   "item.enderwilds.ender_weeping_vines": "Ender Weeping Vines",
-  "item.enderwilds.ender_weeping_vines_plant": "Ender Weeping Vines"
+  "item.enderwilds.ender_weeping_vines_plant": "Ender Weeping Vines",
+  "block.enderwilds.enderium_ore": "Enderium Ore",
+  "item.enderwilds.enderium_ore": "Enderium Ore",
+  "item.enderwilds.enderium_shard": "Enderium Shard"
 }

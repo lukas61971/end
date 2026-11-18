@@ -17,8 +17,6 @@ import org.spongepowered.asm.mixin.injection.ModifyArgs;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.invoke.arg.Args;
 
-import java.nio.ByteBuffer;
-
 @Mixin(FogRenderer.class)
 public abstract class EndergroveFogMixin {
     @Unique

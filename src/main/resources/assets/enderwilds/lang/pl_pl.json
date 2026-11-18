@@ -55,5 +55,7 @@
   "item.enderwilds.ender_fence_gate": "Endowa furtka",
   "block.enderwilds.enderium_ore": "Ruda enderium",
   "item.enderwilds.enderium_ore": "Ruda enderium",
-  "item.enderwilds.enderium_shard": "Odłamek enderium"
+  "item.enderwilds.enderium_shard": "Odłamek enderium",
+  "block.enderwilds.dark_end_stone": "Ciemny kamień Endu",
+  "item.enderwilds.dark_end_stone": "Ciemny kamień Endu"
 }

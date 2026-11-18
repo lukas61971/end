@@ -2,6 +2,7 @@
   "replace": false,
   "values": [
     "enderwilds:enderium_ore",
-    "enderwilds:ender_nylium"
+    "enderwilds:ender_nylium",
+    "enderwilds:dark_end_stone"
   ]
 }

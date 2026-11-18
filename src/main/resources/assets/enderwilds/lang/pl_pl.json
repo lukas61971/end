@@ -52,5 +52,8 @@
   "block.enderwilds.ender_weeping_vines_plant": "Endowe płaczące pnącza",
   "item.enderwilds.ender_weeping_vines": "Endowe płaczące pnącza",
   "item.enderwilds.ender_weeping_vines_plant": "Endowe płaczące pnącza",
-  "item.enderwilds.ender_fence_gate": "Endowa furtka"
+  "item.enderwilds.ender_fence_gate": "Endowa furtka",
+  "block.enderwilds.enderium_ore": "Ruda enderium",
+  "item.enderwilds.enderium_ore": "Ruda enderium",
+  "item.enderwilds.enderium_shard": "Odłamek enderium"
 }

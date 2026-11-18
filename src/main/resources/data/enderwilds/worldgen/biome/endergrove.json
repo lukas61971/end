@@ -8,7 +8,7 @@
         "probability": 0.025
       }
     ],
-    "minecraft:visual/fog_color": "#1f0630"
+    "minecraft:visual/fog_color": "#4d3b5c"
   },
   "carvers": [
     "enderwilds:endergrove_caves"
@@ -28,6 +28,7 @@
     [
       "enderwilds:ender_weeping_vines_patch"
     ],
+    [],
     [],
     [],
     [],

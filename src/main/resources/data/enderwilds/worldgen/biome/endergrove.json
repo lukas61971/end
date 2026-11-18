@@ -3,7 +3,7 @@
     "minecraft:visual/ambient_particles": [
       {
         "particle": {
-          "type": "minecraft:portal"
+          "type": "minecraft:crimson_spore"
         },
         "probability": 0.025
       }

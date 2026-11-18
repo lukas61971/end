@@ -89,7 +89,7 @@ public abstract class EndergroveTerrainMixin {
                 if (newSurfaceY > surfaceY) {
                     for (int y = surfaceY + 1; y <= newSurfaceY; y++) {
                         pos.set(x, y, z);
-                        chunk.setBlockState(pos, Blocks.END_STONE.getDefaultState());
+                        chunk.setBlockState(pos, Enderwilds.DARK_END_STONE.getDefaultState());
                     }
                 } else if (newSurfaceY < surfaceY) {
                     for (int y = surfaceY; y > newSurfaceY; y--) {
@@ -99,8 +99,17 @@ public abstract class EndergroveTerrainMixin {
                 }
 
                 pos.set(x, newSurfaceY, z);
-                if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
+                if (chunk.getBlockState(pos).isOf(Enderwilds.DARK_END_STONE)) {
                     chunk.setBlockState(pos, Enderwilds.ENDER_NYLIUM.getDefaultState());
+                }
+
+                // Replace all remaining End Stone in this Endergrove column,
+                // including underground layers, with Dark End Stone.
+                for (int y = bottomY; y < topY; y++) {
+                    pos.set(x, y, z);
+                    if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
+                        chunk.setBlockState(pos, Enderwilds.DARK_END_STONE.getDefaultState());
+                    }
                 }
             }
         }
@@ -114,7 +123,8 @@ public abstract class EndergroveTerrainMixin {
     ) {
         for (int y = topY - 1; y >= bottomY; y--) {
             pos.set(x, y, z);
-            if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
+            if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)
+                    || chunk.getBlockState(pos).isOf(Enderwilds.DARK_END_STONE)) {
                 return y;
             }
         }

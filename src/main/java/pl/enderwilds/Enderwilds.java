@@ -62,7 +62,7 @@ public class Enderwilds implements ModInitializer {
             ENDER_NYLIUM_ID,
             new EnderNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
                     .ticksRandomly()
-                    .strength(3.0F, 9.0F)
+                    .strength(1.5F, 6.0F)
                     .requiresTool()
                     .registryKey(ENDER_NYLIUM_KEY)
                     .mapColor(MapColor.PURPLE))

@@ -1,6 +1,7 @@
 {
-    "replace": false,
-    "values": [
-      "enderwilds:ciemne_nylium"
-    ]
-  }
+  "replace": false,
+  "values": [
+    "enderwilds:ciemne_nylium",
+    "enderwilds:enderium_ore"
+  ]
+}

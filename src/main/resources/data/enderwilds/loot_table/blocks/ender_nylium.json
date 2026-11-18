@@ -8,11 +8,6 @@
           "type": "minecraft:item",
           "name": "enderwilds:ender_nylium"
         }
-      ],
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
       ]
     }
   ]

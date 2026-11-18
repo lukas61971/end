@@ -1,16 +1,20 @@
 {
+  "attributes": {
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:crimson_spore"
+        },
+        "probability": 0.025
+      }
+    ],
+    "minecraft:visual/fog_color": "#1f0630"
+  },
   "carvers": [
     "enderwilds:endergrove_caves"
   ],
   "downfall": 0.5,
   "effects": {
-    "fog_color": 3282498,
-    "particle": {
-      "options": {
-        "type": "minecraft:crimson_spore"
-      },
-      "probability": 0.025
-    },
     "water_color": "#3f76e4"
   },
   "features": [

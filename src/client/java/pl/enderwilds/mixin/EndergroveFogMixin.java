@@ -66,9 +66,9 @@ public abstract class EndergroveFogMixin {
     private void enderwilds$shortenFogDistance(Args args) {
         if (this.enderwilds$inEndergrove) {
             args.set(3, 0.0f);
-            args.set(4, 18.0f);
+            args.set(4, 200.0f);
             args.set(5, 0.0f);
-            args.set(6, 26.0f);
+            args.set(6, 200.0f);
         }
     }
 }

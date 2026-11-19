@@ -64,7 +64,7 @@ public class Enderwilds implements ModInitializer {
     public static final Block ENDER_NYLIUM = Registry.register(
             Registries.BLOCK,
             ENDER_NYLIUM_ID,
-            new AshenNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
+            new EnderNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
                     .ticksRandomly()
                     .strength(1.5F, 6.0F)
                     .requiresTool()
@@ -859,7 +859,7 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
     public static final Block ASHEN_NYLIUM = Registry.register(
             Registries.BLOCK,
             ASHEN_NYLIUM_ID,
-            new EnderNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
+            new AshenNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
                     .ticksRandomly()
                     .strength(1.5F, 6.0F)
                     .requiresTool()

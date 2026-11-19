@@ -24,6 +24,9 @@ public abstract class EndergroveHorizonFogMixin {
     @Unique
     private static final RegistryKey<net.minecraft.world.biome.Biome> ENDERWILDS$ENDERGROVE =
             RegistryKey.of(RegistryKeys.BIOME, Identifier.of("enderwilds", "endergrove"));
+    @Unique
+    private static final RegistryKey<net.minecraft.world.biome.Biome> ENDERWILDS$ASHENWOOD =
+            RegistryKey.of(RegistryKeys.BIOME, Identifier.of("enderwilds", "ashenwood"));
 
     @Inject(method = "getFogColor", at = @At("RETURN"))
     private void enderwilds$tintHorizonFog(
@@ -34,7 +37,8 @@ public abstract class EndergroveHorizonFogMixin {
             float skyDarkness,
             CallbackInfoReturnable<Vector4f> cir
     ) {
-        boolean inEndergrove = world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS$ENDERGROVE);
+        boolean inEndergrove = world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS$ENDERGROVE)
+                || world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS$ASHENWOOD);
         float target = inEndergrove ? 0.78f : 0.0f;
 
         // Smoothly ease the tint in and out over several rendered frames.

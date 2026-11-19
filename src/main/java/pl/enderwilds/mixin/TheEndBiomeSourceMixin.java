@@ -16,11 +16,14 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import pl.enderwilds.worldgen.EndergroveRegion;
+import pl.enderwilds.worldgen.AshenwoodRegion;
 
 @Mixin(TheEndBiomeSource.class)
 public abstract class TheEndBiomeSourceMixin {
     @Unique
     private static RegistryEntry<Biome> enderwilds$enderGroveBiome;
+    @Unique
+    private static RegistryEntry<Biome> enderwilds$ashenwoodBiome;
 
     @Inject(method = "createVanilla", at = @At("RETURN"))
     private static void enderwilds$loadEndergrove(
@@ -32,6 +35,8 @@ public abstract class TheEndBiomeSourceMixin {
                 Identifier.of("enderwilds", "endergrove")
         );
         enderwilds$enderGroveBiome = biomeLookup.getOrThrow(key);
+        RegistryKey<Biome> ashenKey = RegistryKey.of(RegistryKeys.BIOME, Identifier.of("enderwilds", "ashenwood"));
+        enderwilds$ashenwoodBiome = biomeLookup.getOrThrow(ashenKey);
     }
 
     @Inject(method = "biomeStream", at = @At("RETURN"), cancellable = true)
@@ -39,7 +44,7 @@ public abstract class TheEndBiomeSourceMixin {
             CallbackInfoReturnable<Stream<RegistryEntry<Biome>>> cir
     ) {
         if (enderwilds$enderGroveBiome != null) {
-            cir.setReturnValue(Stream.concat(cir.getReturnValue(), Stream.of(enderwilds$enderGroveBiome)));
+            cir.setReturnValue(Stream.concat(cir.getReturnValue(), Stream.of(enderwilds$enderGroveBiome, enderwilds$ashenwoodBiome)));
         }
     }
 
@@ -51,7 +56,9 @@ public abstract class TheEndBiomeSourceMixin {
             MultiNoiseUtil.MultiNoiseSampler noise,
             CallbackInfoReturnable<RegistryEntry<Biome>> cir
     ) {
-        if (enderwilds$enderGroveBiome != null && EndergroveRegion.isInside(x * 4.0, z * 4.0)) {
+        if (enderwilds$ashenwoodBiome != null && AshenwoodRegion.isInside(x * 4.0, z * 4.0)) {
+            cir.setReturnValue(enderwilds$ashenwoodBiome);
+        } else if (enderwilds$enderGroveBiome != null && EndergroveRegion.isInside(x * 4.0, z * 4.0)) {
             cir.setReturnValue(enderwilds$enderGroveBiome);
         }
     }

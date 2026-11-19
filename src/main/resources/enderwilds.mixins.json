@@ -5,6 +5,7 @@
   "mixins": [
     "TheEndBiomeSourceMixin",
     "EndergroveTerrainMixin",
+    "AshenwoodTerrainMixin",
     "EnderFungusVinesMixin"
   ],
   "injectors": {

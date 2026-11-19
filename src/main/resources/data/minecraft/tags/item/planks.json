@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "enderwilds:ender_planks"
+    "enderwilds:ender_planks",
+    "enderwilds:ashen_planks"
   ]
 }

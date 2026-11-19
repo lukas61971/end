@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ashen_wood": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "tag": "enderwilds:ashen_wood_sources"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ashen_wood"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:ashen_planks_from_any_ashen_wood"
+    ]
+  }
+}

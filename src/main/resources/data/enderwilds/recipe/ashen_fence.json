@@ -3,8 +3,8 @@
   "category": "misc",
   "group": "wooden_fence",
   "key": {
-    "#": "enderwilds:ashen_planks",
-    "W": "minecraft:oak_planks"
+    "#": "minecraft:stick",
+    "W": "enderwilds:ashen_planks"
   },
   "pattern": [
     "W#W",

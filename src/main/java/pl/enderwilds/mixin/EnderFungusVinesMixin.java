@@ -28,7 +28,9 @@ public abstract class EnderFungusVinesMixin {
             CallbackInfo ci
     ) {
         // Only decorate our own fungus trees.
-        if (!config.hatState.isOf(Enderwilds.ENDER_WART_BLOCK)) {
+        boolean isEnderFungus = config.hatState.isOf(Enderwilds.ENDER_WART_BLOCK);
+        boolean isAshenFungus = config.hatState.isOf(Enderwilds.ASHEN_WART_BLOCK);
+        if (!isEnderFungus && !isAshenFungus) {
             return;
         }
 
@@ -64,9 +66,16 @@ public abstract class EnderFungusVinesMixin {
                             break;
                         }
 
-                        BlockState vineState = i == length
-                                ? Enderwilds.ENDER_WEEPING_VINES.getDefaultState()
-                                : Enderwilds.ENDER_WEEPING_VINES_PLANT.getDefaultState();
+                        BlockState vineState;
+                        if (isAshenFungus) {
+                            vineState = i == length
+                                    ? Enderwilds.ASHEN_WEEPING_VINES.getDefaultState()
+                                    : Enderwilds.ASHEN_WEEPING_VINES_PLANT.getDefaultState();
+                        } else {
+                            vineState = i == length
+                                    ? Enderwilds.ENDER_WEEPING_VINES.getDefaultState()
+                                    : Enderwilds.ENDER_WEEPING_VINES_PLANT.getDefaultState();
+                        }
 
                         world.setBlockState(vinePos, vineState, Block.NOTIFY_ALL);
                     }

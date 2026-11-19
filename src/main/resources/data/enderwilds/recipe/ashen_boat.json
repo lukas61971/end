@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": "enderwilds:ashen_planks"
+  },
+  "result": {
+    "id": "enderwilds:ashen_boat",
+    "count": 1
+  }
+}

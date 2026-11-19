@@ -55,7 +55,7 @@ public class AshenFungusBlock extends PlantBlock implements Fertilizable {
             BlockView world,
             BlockPos pos
     ) {
-        return floor.isOf(Ashenwilds.ASHEN_NYLIUM);
+        return floor.isOf(Enderwilds.ASHEN_NYLIUM);
     }
 
     // MĄCZKA KOSTNA
@@ -67,7 +67,7 @@ public class AshenFungusBlock extends PlantBlock implements Fertilizable {
             BlockState state
     ) {
         return world.getBlockState(pos.down())
-                .isOf(Ashenwilds.ASHEN_NYLIUM);
+                .isOf(Enderwilds.ASHEN_NYLIUM);
     }
 
     @Override
@@ -104,9 +104,9 @@ public class AshenFungusBlock extends PlantBlock implements Fertilizable {
 
         HugeFungusFeatureConfig config =
                 new HugeFungusFeatureConfig(
-                        Ashenwilds.ASHEN_NYLIUM.getDefaultState(),
-                        Ashenwilds.ASHEN_STEM.getDefaultState(),
-                        Ashenwilds.ASHEN_WART_BLOCK.getDefaultState(),
+                        Enderwilds.ASHEN_NYLIUM.getDefaultState(),
+                        Enderwilds.ASHEN_STEM.getDefaultState(),
+                        Enderwilds.ASHEN_WART_BLOCK.getDefaultState(),
                         Blocks.AIR.getDefaultState(),
                         BlockPredicate.replaceable(),
                         true

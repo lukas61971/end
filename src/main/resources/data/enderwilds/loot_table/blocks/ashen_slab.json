@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "enderwilds:ashen_slab",
+              "conditions": [
+                {
+                  "condition": "minecraft:block_state_property",
+                  "block": "enderwilds:ashen_slab",
+                  "properties": {
+                    "type": "double"
+                  }
+                }
+              ],
+              "functions": [
+                {
+                  "function": "minecraft:set_count",
+                  "count": 2
+                }
+              ]
+            },
+            {
+              "type": "minecraft:item",
+              "name": "enderwilds:ashen_slab"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

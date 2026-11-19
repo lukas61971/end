@@ -51,7 +51,9 @@ public abstract class EnderFungusVinesMixin {
                     }
 
                     // A block with another cap block above and air below is on the underside.
-                    if (!world.getBlockState(capPos.up()).isOf(Enderwilds.ENDER_WART_BLOCK)
+                    if (!world.getBlockState(capPos.up()).isOf(isAshenFungus
+                            ? Enderwilds.ASHEN_WART_BLOCK
+                            : Enderwilds.ENDER_WART_BLOCK)
                             || !world.getBlockState(capPos.down()).isAir()) {
                         continue;
                     }

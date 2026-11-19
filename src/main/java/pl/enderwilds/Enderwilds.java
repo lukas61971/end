@@ -888,7 +888,7 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
     public static final Block ASHEN_ROOTS = Registry.register(
             Registries.BLOCK,
             ASHEN_ROOTS_ID,
-            new EnderRootsBlock(
+            new AshenRootsBlock(
                     AbstractBlock.Settings.copy(Blocks.WARPED_ROOTS)
                             .nonOpaque()
                             .registryKey(ASHEN_ROOTS_KEY)
@@ -917,7 +917,7 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
     public static final Block ASHEN_SPROUTS = Registry.register(
             Registries.BLOCK,
             ASHEN_SPROUTS_ID,
-            new EnderSproutsBlock(
+            new AshenSproutsBlock(
                     AbstractBlock.Settings.copy(Blocks.NETHER_SPROUTS)
                             .nonOpaque()
                             .registryKey(ASHEN_SPROUTS_KEY)
@@ -945,7 +945,7 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
     public static final Block ASHEN_FUNGUS = Registry.register(
             Registries.BLOCK,
             ASHEN_FUNGUS_ID,
-            new EnderFungusBlock(
+            new AshenFungusBlock(
                     AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM)
                             .nonOpaque()
                             .registryKey(ASHEN_FUNGUS_KEY)

@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_stripped_ashen_hyphae": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ashen_planks"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_stripped_ashen_hyphae"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:stripped_ashen_hyphae"
+    ]
+  }
+}

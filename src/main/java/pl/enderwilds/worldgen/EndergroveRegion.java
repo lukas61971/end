@@ -54,6 +54,32 @@ public final class EndergroveRegion {
         return best;
     }
 
+    /**
+     * Checks whether an Ashenwood candidate center is far enough from every
+     * actual Endergrove patch center to keep the two irregular landmasses apart.
+     */
+    public static boolean isCenterClearOfEndergrove(double x, double z, double minDistance) {
+        int cellX = (int) Math.floor(x / PATCH_SPACING);
+        int cellZ = (int) Math.floor(z / PATCH_SPACING);
+        double minDistanceSquared = minDistance * minDistance;
+
+        for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
+            for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
+                Patch candidate = patch(gx, gz);
+                if (candidate.empty) {
+                    continue;
+                }
+
+                double dx = x - candidate.centerX;
+                double dz = z - candidate.centerZ;
+                if (dx * dx + dz * dz < minDistanceSquared) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     private static Patch patch(int gx, int gz) {
         long key = ((long) gx << 32) ^ (gz & 0xffffffffL);
         return PATCH_CACHE.computeIfAbsent(key, ignored -> createPatch(gx, gz));

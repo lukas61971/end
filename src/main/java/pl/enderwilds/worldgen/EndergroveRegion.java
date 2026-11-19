@@ -63,7 +63,8 @@ public final class EndergroveRegion {
     ) {
         int cellX = (int) Math.floor(x / PATCH_SPACING);
         int cellZ = (int) Math.floor(z / PATCH_SPACING);
-        double candidateExtent = Math.max(halfWidth, halfHeight) * 1.775;
+        // 1.89 bounds the full warped/noise-shaped patch, including diagonal reach.
+        double candidateExtent = Math.max(halfWidth, halfHeight) * 1.89;
 
         for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
             for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
@@ -75,7 +76,7 @@ public final class EndergroveRegion {
                 double dx = x - existing.centerX;
                 double dz = z - existing.centerZ;
                 double minimumDistance = candidateExtent
-                        + Math.max(existing.halfWidth, existing.halfHeight) * 1.775;
+                        + Math.max(existing.halfWidth, existing.halfHeight) * 1.89;
                 if (dx * dx + dz * dz < minimumDistance * minimumDistance) {
                     return false;
                 }

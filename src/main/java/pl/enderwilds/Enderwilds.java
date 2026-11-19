@@ -1709,6 +1709,51 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
             new Item(new Item.Settings().registryKey(ENDERIUM_SHARD_KEY))
     );
 
+    // ASHENIUM ORE AND SHARD
+
+    // ASHENIUM ORE AND SHARD
+
+    private static final Identifier ASHENIUM_ORE_ID =
+            Identifier.of(MOD_ID, "ashenium_ore");
+
+    public static final RegistryKey<Block> ASHENIUM_ORE_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHENIUM_ORE_ID);
+
+    public static final RegistryKey<Item> ASHENIUM_ORE_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHENIUM_ORE_ID);
+
+    public static final Block ASHENIUM_ORE = Registry.register(
+            Registries.BLOCK,
+            ASHENIUM_ORE_ID,
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.DIAMOND_ORE)
+                            .strength(3.0F, 3.0F)
+                            .requiresTool()
+                            .mapColor(MapColor.PURPLE)
+                            .registryKey(ASHENIUM_ORE_KEY)
+            )
+    );
+
+    public static final Item ASHENIUM_ORE_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHENIUM_ORE_ID,
+            new BlockItem(ASHENIUM_ORE, new Item.Settings()
+                    .registryKey(ASHENIUM_ORE_ITEM_KEY))
+    );
+
+    private static final Identifier ASHENIUM_SHARD_ID =
+            Identifier.of(MOD_ID, "ashenium_shard");
+
+    public static final RegistryKey<Item> ASHENIUM_SHARD_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHENIUM_SHARD_ID);
+
+    public static final Item ASHENIUM_SHARD = Registry.register(
+            Registries.ITEM,
+            ASHENIUM_SHARD_ID,
+            new Item(new Item.Settings().registryKey(ASHENIUM_SHARD_KEY))
+    );
+
+
     @Override
 public void onInitialize() {
 

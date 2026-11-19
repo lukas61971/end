@@ -101,6 +101,15 @@ public abstract class AshenwoodTerrainMixin {
                 pos.set(x, newSurfaceY, z);
                 if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
                     chunk.setBlockState(pos, Enderwilds.ASHEN_NYLIUM.getDefaultState());
+
+                    // Give Ashen Nylium a Dark End Stone substrate without
+                    // changing deeper terrain or End Stone outside Ashenwood.
+                    if (newSurfaceY > bottomY) {
+                        pos.set(x, newSurfaceY - 1, z);
+                        if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
+                            chunk.setBlockState(pos, Enderwilds.DARK_END_STONE.getDefaultState());
+                        }
+                    }
                 }
             }
         }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "enderwilds:block/ashen_planks"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/crimson_stem",
+  "textures": {
+    "side": "enderwilds:block/ashen_stem",
+    "end": "enderwilds:block/ashen_stem_top"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "enderwilds:block/ashen_twisting_vines_plant"
+  }
+}

@@ -90,13 +90,13 @@ public class AshenNyliumBlock extends Block implements Fertilizable {
             Block plant;
 
             if (choice <= 1) {
-                plant = Ashenwilds.ASHEN_FUNGUS;
+                plant = Enderwilds.ASHEN_FUNGUS;
 
             } else if (choice <= 11) {
-                plant = Ashenwilds.ASHEN_ROOTS;
+                plant = Enderwilds.ASHEN_ROOTS;
 
             } else if (choice <= 21) {
-                plant = Ashenwilds.ASHEN_SPROUTS;
+                plant = Enderwilds.ASHEN_SPROUTS;
 
             } else {
                 // Pnącze wymaga dwóch wolnych bloków
@@ -107,13 +107,13 @@ public class AshenNyliumBlock extends Block implements Fertilizable {
                 // Dolna część pnącza
                 world.setBlockState(
                         target,
-                        Ashenwilds.ASHEN_TWISTING_VINES_PLANT.getDefaultState()
+                        Enderwilds.ASHEN_TWISTING_VINES_PLANT.getDefaultState()
                 );
 
                 // Górna część pnącza
                 world.setBlockState(
                         top,
-                        Ashenwilds.ASHEN_TWISTING_VINES.getDefaultState()
+                        Enderwilds.ASHEN_TWISTING_VINES.getDefaultState()
                 );
 
                 continue;

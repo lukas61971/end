@@ -1,0 +1,9 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "enderwilds:block/ashen_twisting_vines"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "enderwilds:block/ashen_slab"
+    },
+    "type=top": {
+      "model": "enderwilds:block/ashen_slab_top"
+    },
+    "type=double": {
+      "model": "enderwilds:block/ashen_slab_double"
+    }
+  }
+}

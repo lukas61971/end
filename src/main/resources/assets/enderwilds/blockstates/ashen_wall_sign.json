@@ -1,0 +1,20 @@
+{
+  "multipart": [
+    {
+      "when": {"facing": "north"},
+      "apply": {"model": "enderwilds:block/ashen_wall_sign"}
+    },
+    {
+      "when": {"facing": "south"},
+      "apply": {"model": "enderwilds:block/ashen_wall_sign"}
+    },
+    {
+      "when": {"facing": "east"},
+      "apply": {"model": "enderwilds:block/ashen_wall_sign"}
+    },
+    {
+      "when": {"facing": "west"},
+      "apply": {"model": "enderwilds:block/ashen_wall_sign"}
+    }
+  ]
+}

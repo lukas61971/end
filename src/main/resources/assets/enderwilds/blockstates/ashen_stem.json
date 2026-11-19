@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "enderwilds:block/ashen_stem",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "enderwilds:block/ashen_stem"
+    },
+    "axis=z": {
+      "model": "enderwilds:block/ashen_stem",
+      "x": 90
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "enderwilds:block/ashen_wall_hanging_sign"
+    },
+    "facing=east": {
+      "model": "enderwilds:block/ashen_wall_hanging_sign"
+    },
+    "facing=south": {
+      "model": "enderwilds:block/ashen_wall_hanging_sign"
+    },
+    "facing=west": {
+      "model": "enderwilds:block/ashen_wall_hanging_sign"
+    }
+  }
+}

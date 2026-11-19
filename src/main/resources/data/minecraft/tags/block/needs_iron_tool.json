@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "enderwilds:enderium_ore"
+    "enderwilds:enderium_ore",
+    "enderwilds:ashenium_ore"
   ]
 }

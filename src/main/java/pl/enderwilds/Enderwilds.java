@@ -42,6 +42,10 @@ import pl.enderwilds.block.EnderTwistingVinesBlock;
 import pl.enderwilds.block.EnderTwistingVinesPlantBlock;
 import pl.enderwilds.block.EnderWeepingVinesBlock;
 import pl.enderwilds.block.EnderWeepingVinesPlantBlock;
+import pl.enderwilds.block.AshenTwistingVinesBlock;
+import pl.enderwilds.block.AshenTwistingVinesPlantBlock;
+import pl.enderwilds.block.AshenWeepingVinesBlock;
+import pl.enderwilds.block.AshenWeepingVinesPlantBlock;
 
 public class Enderwilds implements ModInitializer {
     public static final String MOD_ID = "enderwilds";
@@ -1726,7 +1730,14 @@ public void onInitialize() {
     BlockEntityType.SIGN.addSupportedBlock(ENDER_WALL_SIGN);
 
     BlockEntityType.HANGING_SIGN.addSupportedBlock(ENDER_HANGING_SIGN);
-    BlockEntityType.HANGING_SIGN.addSupportedBlock(ENDER_WALL_HANGING_SIGN); 
+    BlockEntityType.HANGING_SIGN.addSupportedBlock(ENDER_WALL_HANGING_SIGN);
+
+    StrippableBlockRegistry.register(ASHEN_STEM, STRIPPED_ASHEN_STEM);
+    StrippableBlockRegistry.register(ASHEN_HYPHAE, STRIPPED_ASHEN_HYPHAE);
+    BlockEntityType.SIGN.addSupportedBlock(ASHEN_SIGN);
+    BlockEntityType.SIGN.addSupportedBlock(ASHEN_WALL_SIGN);
+    BlockEntityType.HANGING_SIGN.addSupportedBlock(ASHEN_HANGING_SIGN);
+    BlockEntityType.HANGING_SIGN.addSupportedBlock(ASHEN_WALL_HANGING_SIGN);
 
 }
 }

@@ -44,7 +44,9 @@ public abstract class EnderFungusVinesMixin {
                 for (int y = minY; y <= maxY; y++) {
                     capPos.set(x, y, z);
 
-                    if (!world.getBlockState(capPos).isOf(Enderwilds.ENDER_WART_BLOCK)) {
+                    if (!world.getBlockState(capPos).isOf(isAshenFungus
+                            ? Enderwilds.ASHEN_WART_BLOCK
+                            : Enderwilds.ENDER_WART_BLOCK)) {
                         continue;
                     }
 

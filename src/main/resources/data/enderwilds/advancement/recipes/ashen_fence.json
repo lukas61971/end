@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ashen_fence": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ashen_planks"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ashen_fence"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:ashen_fence"
+    ]
+  }
+}

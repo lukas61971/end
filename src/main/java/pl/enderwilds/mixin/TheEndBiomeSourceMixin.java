@@ -56,10 +56,10 @@ public abstract class TheEndBiomeSourceMixin {
             MultiNoiseUtil.MultiNoiseSampler noise,
             CallbackInfoReturnable<RegistryEntry<Biome>> cir
     ) {
-        if (enderwilds$ashenwoodBiome != null && AshenwoodRegion.isInside(x * 4.0, z * 4.0)) {
-            cir.setReturnValue(enderwilds$ashenwoodBiome);
-        } else if (enderwilds$enderGroveBiome != null && EndergroveRegion.isInside(x * 4.0, z * 4.0)) {
+        if (enderwilds$enderGroveBiome != null && EndergroveRegion.isInside(x * 4.0, z * 4.0)) {
             cir.setReturnValue(enderwilds$enderGroveBiome);
+        } else if (enderwilds$ashenwoodBiome != null && AshenwoodRegion.isInside(x * 4.0, z * 4.0)) {
+            cir.setReturnValue(enderwilds$ashenwoodBiome);
         }
     }
 }

@@ -15,6 +15,15 @@ public class EnderwildsClient implements ClientModInitializer {
                 Enderwilds.ENDER_ROOTS,
                 BlockRenderLayer.CUTOUT
         );
+
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_ROOTS, BlockRenderLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_SPROUTS, BlockRenderLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_FUNGUS, BlockRenderLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_TWISTING_VINES, BlockRenderLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_TWISTING_VINES_PLANT, BlockRenderLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_WEEPING_VINES, BlockRenderLayer.CUTOUT);
+        BlockRenderLayerMap.putBlock(Enderwilds.ASHEN_WEEPING_VINES_PLANT, BlockRenderLayer.CUTOUT);
+
         BlockRenderLayerMap.putBlock(
             Enderwilds.ENDER_SPROUTS,
             BlockRenderLayer.CUTOUT
@@ -37,6 +46,16 @@ public class EnderwildsClient implements ClientModInitializer {
         EntityRendererRegistry.register(
             Enderwilds.ENDER_CHEST_BOAT_ENTITY,
             EnderChestBoatEntityRenderer::new
+        );
+
+        EntityRendererRegistry.register(
+            Enderwilds.ASHEN_BOAT_ENTITY,
+            AshenBoatEntityRenderer::new
+        );
+
+        EntityRendererRegistry.register(
+            Enderwilds.ASHEN_CHEST_BOAT_ENTITY,
+            AshenChestBoatEntityRenderer::new
         );
 
         BlockRenderLayerMap.putBlock(

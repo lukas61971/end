@@ -37,6 +37,6 @@ public class AshenSproutsBlock extends PlantBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isOf(Ashenwilds.ASHEN_NYLIUM);
+        return floor.isOf(Enderwilds.ASHEN_NYLIUM);
     }
 }

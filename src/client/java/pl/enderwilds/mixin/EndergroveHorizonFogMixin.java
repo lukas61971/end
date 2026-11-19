@@ -7,8 +7,6 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.BlockPos;
 import org.joml.Vector4f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -20,6 +18,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public abstract class EndergroveHorizonFogMixin {
     @Unique
     private static float enderwilds$purpleFogBlend = 0.0f;
+
+    @Unique
+    private static float enderwilds$grayFogBlend = 0.0f;
 
     @Unique
     private static final RegistryKey<net.minecraft.world.biome.Biome> ENDERWILDS$ENDERGROVE =
@@ -37,20 +38,32 @@ public abstract class EndergroveHorizonFogMixin {
             float skyDarkness,
             CallbackInfoReturnable<Vector4f> cir
     ) {
-        boolean inEndergrove = world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS$ENDERGROVE)
-                || world.getBiome(camera.getBlockPos()).matchesKey(ENDERWILDS$ASHENWOOD);
-        float target = inEndergrove ? 0.78f : 0.0f;
+        var biome = world.getBiome(camera.getBlockPos());
+        boolean inEndergrove = biome.matchesKey(ENDERWILDS$ENDERGROVE);
+        boolean inAshenwood = biome.matchesKey(ENDERWILDS$ASHENWOOD);
 
-        // Smoothly ease the tint in and out over several rendered frames.
-        enderwilds$purpleFogBlend = MathHelper.lerp(0.055f, enderwilds$purpleFogBlend, target);
+        // Keep the original purple Endergrove tint, but give Ashenwood a neutral gray tint.
+        enderwilds$purpleFogBlend = MathHelper.lerp(0.055f, enderwilds$purpleFogBlend,
+                inEndergrove ? 0.78f : 0.0f);
+        enderwilds$grayFogBlend = MathHelper.lerp(0.055f, enderwilds$grayFogBlend,
+                inAshenwood ? 0.78f : 0.0f);
 
+        Vector4f fogColor = cir.getReturnValue();
         if (enderwilds$purpleFogBlend > 0.001f) {
-            Vector4f fogColor = cir.getReturnValue();
             float blend = enderwilds$purpleFogBlend;
             fogColor.set(
                     MathHelper.lerp(blend, fogColor.x, 0.14f),
                     MathHelper.lerp(blend, fogColor.y, 0.045f),
                     MathHelper.lerp(blend, fogColor.z, 0.22f),
+                    fogColor.w
+            );
+        }
+        if (enderwilds$grayFogBlend > 0.001f) {
+            float blend = enderwilds$grayFogBlend;
+            fogColor.set(
+                    MathHelper.lerp(blend, fogColor.x, 0.32f),
+                    MathHelper.lerp(blend, fogColor.y, 0.32f),
+                    MathHelper.lerp(blend, fogColor.z, 0.34f),
                     fogColor.w
             );
         }

@@ -1,0 +1,28 @@
+{
+  "feature": "enderwilds:ashen_sprouts_patch",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 55
+    },
+    {
+      "type": "minecraft:in_square"
+    },
+    {
+      "type": "minecraft:heightmap",
+      "heightmap": "WORLD_SURFACE_WG"
+    },
+    {
+      "type": "minecraft:block_predicate_filter",
+      "predicate": {
+        "type": "minecraft:would_survive",
+        "state": {
+          "Name": "enderwilds:ashen_sprouts"
+        }
+      }
+    },
+    {
+      "type": "minecraft:biome"
+    }
+  ]
+}

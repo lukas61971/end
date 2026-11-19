@@ -101,11 +101,21 @@ public abstract class AshenwoodTerrainMixin {
                 pos.set(x, newSurfaceY, z);
                 if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
                     chunk.setBlockState(pos, Enderwilds.ASHEN_NYLIUM.getDefaultState());
+                }
 
-                    // Give Ashen Nylium a Dark End Stone substrate without
-                    // changing deeper terrain or End Stone outside Ashenwood.
-                    if (newSurfaceY > bottomY) {
-                        pos.set(x, newSurfaceY - 1, z);
+                // Replace End Stone throughout the Ashenwood column. Near the
+                // biome edge, a broad noise-driven threshold creates an
+                // irregular, naturally interspersed transition instead of a
+                // straight border between the two stone types.
+                double edgeNoise = enderwilds$valueNoise2D(
+                        x * 0.022 + 317.0, z * 0.022 - 593.0
+                ) * 0.72 + enderwilds$valueNoise2D(
+                        x * 0.061 - 811.0, z * 0.061 + 227.0
+                ) * 0.28;
+                double conversionThreshold = 0.50 + edgeNoise * 0.30;
+                if (fade >= conversionThreshold) {
+                    for (int y = bottomY; y < topY; y++) {
+                        pos.set(x, y, z);
                         if (chunk.getBlockState(pos).isOf(Blocks.END_STONE)) {
                             chunk.setBlockState(pos, Enderwilds.DARK_END_STONE.getDefaultState());
                         }

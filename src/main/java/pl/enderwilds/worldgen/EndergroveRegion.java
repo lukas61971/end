@@ -54,37 +54,6 @@ public final class EndergroveRegion {
         return best;
     }
 
-    /**
-     * Checks whether an Ashenwood candidate patch can fit without intersecting
-     * the conservative bounds of nearby Endergrove patches.
-     */
-    public static boolean isPatchClearOfEndergrove(
-            double x, double z, double halfWidth, double halfHeight
-    ) {
-        int cellX = (int) Math.floor(x / PATCH_SPACING);
-        int cellZ = (int) Math.floor(z / PATCH_SPACING);
-        // 1.89 bounds the full warped/noise-shaped patch, including diagonal reach.
-        double candidateExtent = Math.max(halfWidth, halfHeight) * 1.89;
-
-        for (int gx = cellX - 1; gx <= cellX + 1; gx++) {
-            for (int gz = cellZ - 1; gz <= cellZ + 1; gz++) {
-                Patch existing = patch(gx, gz);
-                if (existing.empty) {
-                    continue;
-                }
-
-                double dx = x - existing.centerX;
-                double dz = z - existing.centerZ;
-                double minimumDistance = candidateExtent
-                        + Math.max(existing.halfWidth, existing.halfHeight) * 1.89;
-                if (dx * dx + dz * dz < minimumDistance * minimumDistance) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
     private static Patch patch(int gx, int gz) {
         long key = ((long) gx << 32) ^ (gz & 0xffffffffL);
         return PATCH_CACHE.computeIfAbsent(key, ignored -> createPatch(gx, gz));

@@ -1,4 +1,3 @@
-
 {
   "replace": false,
   "values": [
@@ -18,6 +17,15 @@
     "enderwilds:ender_trapdoor",
     "enderwilds:ender_door",
     "enderwilds:ender_hanging_sign",
-    "enderwilds:ender_wall_hanging_sign"
+    "enderwilds:ender_wall_hanging_sign",
+    "enderwilds:ashen_stem",
+    "enderwilds:stripped_ashen_stem",
+    "enderwilds:ashen_hyphae",
+    "enderwilds:stripped_ashen_hyphae",
+    "enderwilds:ashen_planks",
+    "enderwilds:ashen_door",
+    "enderwilds:ashen_trapdoor",
+    "enderwilds:ashen_sign",
+    "enderwilds:ashen_hanging_sign"
   ]
 }

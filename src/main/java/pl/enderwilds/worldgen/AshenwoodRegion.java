@@ -4,9 +4,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 /**
- * Deterministic, noise-shaped Endergrove regions. Each patch has independently
- * randomized dimensions and an irregular implicit boundary made from warped,
- * multi-scale noise rather than a polygon or a fixed radial outline.
+ * Deterministic, independently placed Ashenwood regions. Patches use the same
+ * dimensions and boundary style as Endergrove, but occupy offset cells so the
+ * two biome families form separate, non-overlapping areas.
  */
 public final class AshenwoodRegion {
     private static final int PATCH_SPACING = 2000;
@@ -82,11 +82,11 @@ public final class AshenwoodRegion {
     }
 
     private static double centerX(int gx, int gz) {
-        return gx * (double) PATCH_SPACING + hash(gx + 17, gz - 31) * CENTER_JITTER;
+        return (gx + 0.5) * PATCH_SPACING + hash(gx + 17, gz - 31) * CENTER_JITTER;
     }
 
     private static double centerZ(int gx, int gz) {
-        return gz * (double) PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
+        return (gz + 0.5) * PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
     }
 
     private static double valueNoise2D(double x, double z, int seedX, int seedZ) {

@@ -22,6 +22,11 @@ public final class EnderVinesFeatures {
                     new EnderWeepingVinesFeature()
             );
 
+    public static final Feature<DefaultFeatureConfig> ASHEN_TWISTING_VINES =
+            Registry.register(Registries.FEATURE, Identifier.of(Enderwilds.MOD_ID, "ashen_twisting_vines"), new AshenTwistingVinesFeature());
+    public static final Feature<DefaultFeatureConfig> ASHEN_WEEPING_VINES =
+            Registry.register(Registries.FEATURE, Identifier.of(Enderwilds.MOD_ID, "ashen_weeping_vines"), new AshenWeepingVinesFeature());
+
     public static void register() {
         // Calling this method initializes and registers both feature entries.
     }

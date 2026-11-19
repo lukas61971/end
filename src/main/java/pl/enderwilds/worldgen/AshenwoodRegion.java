@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentMap;
  * and candidate centers.
  */
 public final class AshenwoodRegion {
-    private static final int PATCH_SPACING = 2000;
+    private static final int PATCH_SPACING = 1630;
     private static final double CENTER_JITTER = 700.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
     private static final double EDGE_BLEND_WIDTH = 128.0;

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "enderwilds:ender_slab"
+    "enderwilds:ender_slab",
+    "enderwilds:ashen_slab"
   ]
 }

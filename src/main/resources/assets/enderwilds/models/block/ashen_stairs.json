@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "enderwilds:block/ashen_planks",
+    "top": "enderwilds:block/ashen_planks",
+    "side": "enderwilds:block/ashen_planks"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:huge_fungus",
+  "config": {
+    "planted": false,
+    "valid_base_block": {
+      "Name": "enderwilds:ashen_nylium"
+    },
+    "stem_state": {
+      "Name": "enderwilds:ashen_stem",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "hat_state": {
+      "Name": "enderwilds:ashen_wart_block"
+    },
+    "decor_state": {
+      "Name": "enderwilds:ashen_wart_block"
+    },
+    "replaceable_blocks": {
+      "type": "minecraft:matching_blocks",
+      "blocks": [
+        "minecraft:air",
+        "minecraft:end_stone",
+        "enderwilds:ashen_fungus",
+        "enderwilds:ashen_twisting_vines",
+        "enderwilds:ashen_twisting_vines_plant"
+      ]
+    }
+  }
+}

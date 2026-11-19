@@ -13,7 +13,6 @@
   },
   "client": [
     "EndergroveSporeColorMixin",
-    "EndergroveHorizonFogMixin",
-    "AshenwoodColorGradeMixin"
+    "EndergroveHorizonFogMixin"
   ]
 }

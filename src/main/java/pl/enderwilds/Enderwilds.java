@@ -1784,5 +1784,66 @@ public void onInitialize() {
     BlockEntityType.HANGING_SIGN.addSupportedBlock(ASHEN_HANGING_SIGN);
     BlockEntityType.HANGING_SIGN.addSupportedBlock(ASHEN_WALL_HANGING_SIGN);
 
+    // Wszystkie przedmioty moda w jednej zakładce kreatywnej
+    net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.modifyEntriesEvent(
+            net.minecraft.item.ItemGroups.BUILDING_BLOCKS
+    ).register(entries -> {
+        entries.add(ENDER_NYLIUM_ITEM);
+        entries.add(ENDER_ROOTS_ITEM);
+        entries.add(ENDER_SPROUTS_ITEM);
+        entries.add(ENDER_FUNGUS_ITEM);
+        entries.add(ENDER_STEM_ITEM);
+        entries.add(ENDER_WART_BLOCK_ITEM);
+        entries.add(STRIPPED_ENDER_STEM_ITEM);
+        entries.add(ENDER_PLANKS_ITEM);
+        entries.add(ENDER_HYPHAE_ITEM);
+        entries.add(STRIPPED_ENDER_HYPHAE_ITEM);
+        entries.add(ENDER_SLAB_ITEM);
+        entries.add(ENDER_FENCE_ITEM);
+        entries.add(ENDER_FENCE_GATE_ITEM);
+        entries.add(ENDER_BUTTON_ITEM);
+        entries.add(ENDER_PRESSURE_PLATE_ITEM);
+        entries.add(ENDER_STAIRS_ITEM);
+        entries.add(ENDER_SIGN_ITEM);
+        entries.add(ENDER_TRAPDOOR_ITEM);
+        entries.add(ENDER_HANGING_SIGN_ITEM);
+        entries.add(ENDER_DOOR_ITEM);
+        entries.add(ENDER_BOAT);
+        entries.add(ENDER_CHEST_BOAT);
+        entries.add(ENDER_TWISTING_VINES_ITEM);
+        entries.add(ENDER_WEEPING_VINES_ITEM);
+
+        entries.add(ASHEN_NYLIUM_ITEM);
+        entries.add(ASHEN_ROOTS_ITEM);
+        entries.add(ASHEN_SPROUTS_ITEM);
+        entries.add(ASHEN_FUNGUS_ITEM);
+        entries.add(ASHEN_STEM_ITEM);
+        entries.add(ASHEN_WART_BLOCK_ITEM);
+        entries.add(STRIPPED_ASHEN_STEM_ITEM);
+        entries.add(ASHEN_PLANKS_ITEM);
+        entries.add(ASHEN_HYPHAE_ITEM);
+        entries.add(STRIPPED_ASHEN_HYPHAE_ITEM);
+        entries.add(ASHEN_SLAB_ITEM);
+        entries.add(ASHEN_FENCE_ITEM);
+        entries.add(ASHEN_FENCE_GATE_ITEM);
+        entries.add(ASHEN_BUTTON_ITEM);
+        entries.add(ASHEN_PRESSURE_PLATE_ITEM);
+        entries.add(ASHEN_STAIRS_ITEM);
+        entries.add(ASHEN_SIGN_ITEM);
+        entries.add(ASHEN_TRAPDOOR_ITEM);
+        entries.add(ASHEN_HANGING_SIGN_ITEM);
+        entries.add(ASHEN_DOOR_ITEM);
+        entries.add(ASHEN_BOAT);
+        entries.add(ASHEN_CHEST_BOAT);
+        entries.add(ASHEN_TWISTING_VINES_ITEM);
+        entries.add(ASHEN_WEEPING_VINES_ITEM);
+
+        entries.add(DARK_END_STONE_ITEM);
+        entries.add(ENDERIUM_ORE_ITEM);
+        entries.add(ENDERIUM_SHARD);
+        entries.add(ASHENIUM_ORE_ITEM);
+        entries.add(ASHENIUM_SHARD);
+    });
+
 }
 }

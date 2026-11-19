@@ -5,12 +5,12 @@ import java.util.concurrent.ConcurrentMap;
 
 /**
  * Deterministic, independently placed Ashenwood regions. Patches use the same
- * dimensions and boundary style as Endergrove, but occupy offset cells so the
- * two biome families form separate, non-overlapping areas.
+ * dimensions and boundary style as Endergrove, but use independently jittered
+ * candidate centers and reject centers that would overlap Endergrove patches.
  */
 public final class AshenwoodRegion {
     private static final int PATCH_SPACING = 2000;
-    private static final double CENTER_JITTER = 20.0;
+    private static final double CENTER_JITTER = 450.0;
     private static final double MIN_CENTER_DISTANCE_FROM_ORIGIN = 1100.0;
     private static final double EDGE_BLEND_WIDTH = 128.0;
 
@@ -64,7 +64,8 @@ public final class AshenwoodRegion {
         double cz = centerZ(gx, gz);
 
         if (cx * cx + cz * cz
-                < MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN) {
+                < MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN
+                || !EndergroveRegion.isCenterClearOfEndergrove(cx, cz, 1050.0)) {
             return Patch.EMPTY;
         }
 
@@ -78,15 +79,15 @@ public final class AshenwoodRegion {
 
     private static double dimension(int gx, int gz, boolean width) {
         double value = width ? hash(gx + 307, gz + 419) : hash(gx - 521, gz + 613);
-        return 200.0 + (value + 1.0) * 225.0;
+        return 240.0 + (value + 1.0) * 230.0;
     }
 
     private static double centerX(int gx, int gz) {
-        return (gx + 0.5) * PATCH_SPACING + hash(gx + 17, gz - 31) * CENTER_JITTER;
+        return (gx + 0.5) * PATCH_SPACING + hash(gx + 211, gz - 431) * CENTER_JITTER;
     }
 
     private static double centerZ(int gx, int gz) {
-        return (gz + 0.5) * PATCH_SPACING + hash(gx - 47, gz + 11) * CENTER_JITTER;
+        return (gz + 0.5) * PATCH_SPACING + hash(gx - 547, gz + 613) * CENTER_JITTER;
     }
 
     private static double valueNoise2D(double x, double z, int seedX, int seedZ) {

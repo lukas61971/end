@@ -31,7 +31,9 @@ public abstract class EndergroveSporeColorMixin {
                 .matchesKey(net.minecraft.registry.RegistryKey.of(
                         net.minecraft.registry.RegistryKeys.BIOME,
                         net.minecraft.util.Identifier.of("enderwilds", "endergrove")
-                ))) {
+                )) || world.getBiome(BlockPos.ofFloored(x, y, z)).matchesKey(
+                        net.minecraft.registry.RegistryKey.of(net.minecraft.registry.RegistryKeys.BIOME,
+                                net.minecraft.util.Identifier.of("enderwilds", "ashenwood")))) {
             ((BillboardParticle) cir.getReturnValue()).setColor(0.58f, 0.22f, 0.88f);
         }
     }

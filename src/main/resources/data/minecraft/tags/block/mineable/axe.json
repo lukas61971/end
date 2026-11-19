@@ -26,6 +26,14 @@
     "enderwilds:ashen_door",
     "enderwilds:ashen_trapdoor",
     "enderwilds:ashen_sign",
-    "enderwilds:ashen_hanging_sign"
+    "enderwilds:ashen_hanging_sign",
+    "enderwilds:ashen_slab",
+    "enderwilds:ashen_fence",
+    "enderwilds:ashen_fence_gate",
+    "enderwilds:ashen_button",
+    "enderwilds:ashen_pressure_plate",
+    "enderwilds:ashen_stairs",
+    "enderwilds:ashen_wall_sign",
+    "enderwilds:ashen_wall_hanging_sign"
   ]
 }

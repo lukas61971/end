@@ -64,13 +64,16 @@ public final class AshenwoodRegion {
         double cz = centerZ(gx, gz);
 
         if (cx * cx + cz * cz
-                < MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN
-                || !EndergroveRegion.isCenterClearOfEndergrove(cx, cz, 1050.0)) {
+                < MIN_CENTER_DISTANCE_FROM_ORIGIN * MIN_CENTER_DISTANCE_FROM_ORIGIN) {
             return Patch.EMPTY;
         }
 
         double width = dimension(gx, gz, true);
         double height = dimension(gx, gz, false);
+        if (!EndergroveRegion.isPatchClearOfEndergrove(
+                cx, cz, width * 0.5, height * 0.5)) {
+            return Patch.EMPTY;
+        }
         int seedX = gx * 734287 + gz * 912931 + 173;
         int seedZ = gz * 438289 - gx * 651731 - 419;
 

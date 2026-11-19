@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "enderwilds:ender_fence_gate"
+    "enderwilds:ender_fence_gate",
+    "enderwilds:ashen_fence_gate"
   ]
 }

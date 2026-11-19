@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_ashen_hanging_sign": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:ashen_planks"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_ashen_hanging_sign"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:ashen_hanging_sign"
+    ]
+  }
+}

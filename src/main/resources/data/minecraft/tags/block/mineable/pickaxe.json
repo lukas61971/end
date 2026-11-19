@@ -3,6 +3,8 @@
   "values": [
     "enderwilds:enderium_ore",
     "enderwilds:ender_nylium",
-    "enderwilds:dark_end_stone"
+    "enderwilds:dark_end_stone",
+    "enderwilds:ashenium_ore",
+    "enderwilds:ashen_nylium"
   ]
 }

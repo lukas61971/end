@@ -839,6 +839,802 @@ public static final Item ENDER_WEEPING_VINES_ITEM =
 
 
 
+    // ASHENWOOD - osobny zestaw bloków, przedmiotów i pojazdów
+
+    // CIEMNE NYLIUM
+
+    private static final Identifier ASHEN_NYLIUM_ID =
+            Identifier.of(MOD_ID, "ashen_nylium");
+
+    public static final RegistryKey<Block> ASHEN_NYLIUM_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHEN_NYLIUM_ID);
+
+    public static final RegistryKey<Item> ASHEN_NYLIUM_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHEN_NYLIUM_ID);
+
+    public static final Block ASHEN_NYLIUM = Registry.register(
+            Registries.BLOCK,
+            ASHEN_NYLIUM_ID,
+            new EnderNyliumBlock(AbstractBlock.Settings.copy(Blocks.END_STONE)
+                    .ticksRandomly()
+                    .strength(1.5F, 6.0F)
+                    .requiresTool()
+                    .registryKey(ASHEN_NYLIUM_KEY)
+                    .mapColor(MapColor.PURPLE))
+    );
+
+    public static final Item ASHEN_NYLIUM_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHEN_NYLIUM_ID,
+            new BlockItem(ASHEN_NYLIUM, new Item.Settings()
+                    .registryKey(ASHEN_NYLIUM_ITEM_KEY))
+    );
+
+    // MROCZNE KORZENIE
+
+    private static final Identifier ASHEN_ROOTS_ID =
+            Identifier.of(MOD_ID, "ashen_roots");
+
+    public static final RegistryKey<Block> ASHEN_ROOTS_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHEN_ROOTS_ID);
+
+    public static final RegistryKey<Item> ASHEN_ROOTS_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHEN_ROOTS_ID);
+
+    public static final Block ASHEN_ROOTS = Registry.register(
+            Registries.BLOCK,
+            ASHEN_ROOTS_ID,
+            new EnderRootsBlock(
+                    AbstractBlock.Settings.copy(Blocks.WARPED_ROOTS)
+                            .nonOpaque()
+                            .registryKey(ASHEN_ROOTS_KEY)
+                            .mapColor(MapColor.PURPLE)
+            )
+    );
+
+    public static final Item ASHEN_ROOTS_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHEN_ROOTS_ID,
+            new BlockItem(ASHEN_ROOTS, new Item.Settings()
+                    .registryKey(ASHEN_ROOTS_ITEM_KEY))
+    );
+
+    // DARK SPROUTS
+
+    private static final Identifier ASHEN_SPROUTS_ID =
+            Identifier.of(MOD_ID, "ashen_sprouts");
+
+    public static final RegistryKey<Block> ASHEN_SPROUTS_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHEN_SPROUTS_ID);
+
+    public static final RegistryKey<Item> ASHEN_SPROUTS_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHEN_SPROUTS_ID);
+
+    public static final Block ASHEN_SPROUTS = Registry.register(
+            Registries.BLOCK,
+            ASHEN_SPROUTS_ID,
+            new EnderSproutsBlock(
+                    AbstractBlock.Settings.copy(Blocks.NETHER_SPROUTS)
+                            .nonOpaque()
+                            .registryKey(ASHEN_SPROUTS_KEY)
+            )
+    );
+
+    public static final Item ASHEN_SPROUTS_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHEN_SPROUTS_ID,
+            new BlockItem(ASHEN_SPROUTS, new Item.Settings()
+                    .registryKey(ASHEN_SPROUTS_ITEM_KEY))
+    );
+
+    // DARK FUNGUS
+
+    private static final Identifier ASHEN_FUNGUS_ID =
+            Identifier.of(MOD_ID, "ashen_fungus");
+
+    public static final RegistryKey<Block> ASHEN_FUNGUS_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHEN_FUNGUS_ID);
+
+    public static final RegistryKey<Item> ASHEN_FUNGUS_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHEN_FUNGUS_ID);
+
+    public static final Block ASHEN_FUNGUS = Registry.register(
+            Registries.BLOCK,
+            ASHEN_FUNGUS_ID,
+            new EnderFungusBlock(
+                    AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM)
+                            .nonOpaque()
+                            .registryKey(ASHEN_FUNGUS_KEY)
+            )
+    );
+
+    public static final Item ASHEN_FUNGUS_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHEN_FUNGUS_ID,
+            new BlockItem(ASHEN_FUNGUS, new Item.Settings()
+                    .registryKey(ASHEN_FUNGUS_ITEM_KEY))
+    );
+
+    // DARK STEM
+
+    private static final Identifier ASHEN_STEM_ID =
+            Identifier.of(MOD_ID, "ashen_stem");
+
+    public static final RegistryKey<Block> ASHEN_STEM_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHEN_STEM_ID);
+
+    public static final RegistryKey<Item> ASHEN_STEM_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHEN_STEM_ID);
+
+    public static final Block ASHEN_STEM = Registry.register(
+            Registries.BLOCK,
+            ASHEN_STEM_ID,
+            new EnderStemBlock(
+                    AbstractBlock.Settings.copy(Blocks.CRIMSON_STEM)
+                            .registryKey(ASHEN_STEM_KEY)
+            )
+    );
+
+    public static final Item ASHEN_STEM_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHEN_STEM_ID,
+            new BlockItem(ASHEN_STEM, new Item.Settings()
+                    .registryKey(ASHEN_STEM_ITEM_KEY))
+    );
+
+
+    // DARK WART BLOCK
+
+    private static final Identifier ASHEN_WART_BLOCK_ID =
+            Identifier.of(MOD_ID, "ashen_wart_block");
+
+    public static final RegistryKey<Block> ASHEN_WART_BLOCK_KEY =
+            RegistryKey.of(RegistryKeys.BLOCK, ASHEN_WART_BLOCK_ID);
+
+    public static final RegistryKey<Item> ASHEN_WART_BLOCK_ITEM_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ASHEN_WART_BLOCK_ID);
+
+    public static final Block ASHEN_WART_BLOCK = Registry.register(
+            Registries.BLOCK,
+            ASHEN_WART_BLOCK_ID,
+            new Block(
+                    AbstractBlock.Settings.copy(Blocks.WARPED_WART_BLOCK)
+                            .registryKey(ASHEN_WART_BLOCK_KEY)
+            )
+    );
+
+    public static final Item ASHEN_WART_BLOCK_ITEM = Registry.register(
+            Registries.ITEM,
+            ASHEN_WART_BLOCK_ID,
+            new BlockItem(ASHEN_WART_BLOCK, new Item.Settings()
+                    .registryKey(ASHEN_WART_BLOCK_ITEM_KEY))
+    );
+
+    // STRIPPED DARK STEM
+
+private static final Identifier STRIPPED_ASHEN_STEM_ID =
+        Identifier.of(MOD_ID, "stripped_ashen_stem");
+
+public static final RegistryKey<Block> STRIPPED_ASHEN_STEM_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, STRIPPED_ASHEN_STEM_ID);
+
+public static final RegistryKey<Item> STRIPPED_ASHEN_STEM_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, STRIPPED_ASHEN_STEM_ID);
+
+public static final Block STRIPPED_ASHEN_STEM = Registry.register(
+        Registries.BLOCK,
+        STRIPPED_ASHEN_STEM_ID,
+        new EnderStemBlock(
+                AbstractBlock.Settings.copy(Blocks.STRIPPED_CRIMSON_STEM)
+                        .registryKey(STRIPPED_ASHEN_STEM_KEY)
+        )
+);
+
+public static final Item STRIPPED_ASHEN_STEM_ITEM = Registry.register(
+        Registries.ITEM,
+        STRIPPED_ASHEN_STEM_ID,
+        new BlockItem(STRIPPED_ASHEN_STEM, new Item.Settings()
+                .registryKey(STRIPPED_ASHEN_STEM_ITEM_KEY))
+);
+
+
+// DARK PLANKS
+
+private static final Identifier ASHEN_PLANKS_ID =
+        Identifier.of(MOD_ID, "ashen_planks");
+
+public static final RegistryKey<Block> ASHEN_PLANKS_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_PLANKS_ID);
+
+public static final RegistryKey<Item> ASHEN_PLANKS_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_PLANKS_ID);
+
+public static final Block ASHEN_PLANKS = Registry.register(
+        Registries.BLOCK,
+        ASHEN_PLANKS_ID,
+        new Block(
+                AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)
+                        .registryKey(ASHEN_PLANKS_KEY)
+        )
+);
+
+public static final Item ASHEN_PLANKS_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_PLANKS_ID,
+        new BlockItem(ASHEN_PLANKS, new Item.Settings()
+                .registryKey(ASHEN_PLANKS_ITEM_KEY))
+);
+
+
+// DARK HYPHAE
+
+private static final Identifier ASHEN_HYPHAE_ID =
+        Identifier.of(MOD_ID, "ashen_hyphae");
+
+public static final RegistryKey<Block> ASHEN_HYPHAE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_HYPHAE_ID);
+
+public static final RegistryKey<Item> ASHEN_HYPHAE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_HYPHAE_ID);
+
+public static final Block ASHEN_HYPHAE = Registry.register(
+        Registries.BLOCK,
+        ASHEN_HYPHAE_ID,
+        new PillarBlock(
+                AbstractBlock.Settings.copy(Blocks.CRIMSON_HYPHAE)
+                        .registryKey(ASHEN_HYPHAE_KEY)
+        )
+);
+
+public static final Item ASHEN_HYPHAE_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_HYPHAE_ID,
+        new BlockItem(ASHEN_HYPHAE, new Item.Settings()
+                .registryKey(ASHEN_HYPHAE_ITEM_KEY))
+);
+
+// STRIPPED DARK HYPHAE
+
+private static final Identifier STRIPPED_ASHEN_HYPHAE_ID =
+        Identifier.of(MOD_ID, "stripped_ashen_hyphae");
+
+public static final RegistryKey<Block> STRIPPED_ASHEN_HYPHAE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, STRIPPED_ASHEN_HYPHAE_ID);
+
+public static final RegistryKey<Item> STRIPPED_ASHEN_HYPHAE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, STRIPPED_ASHEN_HYPHAE_ID);
+
+public static final Block STRIPPED_ASHEN_HYPHAE = Registry.register(
+        Registries.BLOCK,
+        STRIPPED_ASHEN_HYPHAE_ID,
+        new PillarBlock(
+                AbstractBlock.Settings.copy(Blocks.STRIPPED_CRIMSON_HYPHAE)
+                        .registryKey(STRIPPED_ASHEN_HYPHAE_KEY)
+        )
+);
+
+public static final Item STRIPPED_ASHEN_HYPHAE_ITEM = Registry.register(
+        Registries.ITEM,
+        STRIPPED_ASHEN_HYPHAE_ID,
+        new BlockItem(STRIPPED_ASHEN_HYPHAE, new Item.Settings()
+                .registryKey(STRIPPED_ASHEN_HYPHAE_ITEM_KEY))
+);
+
+// DARK SLAB
+
+private static final Identifier ASHEN_SLAB_ID =
+        Identifier.of(MOD_ID, "ashen_slab");
+
+public static final RegistryKey<Block> ASHEN_SLAB_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_SLAB_ID);
+
+public static final RegistryKey<Item> ASHEN_SLAB_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_SLAB_ID);
+
+public static final Block ASHEN_SLAB = Registry.register(
+        Registries.BLOCK,
+        ASHEN_SLAB_ID,
+        new SlabBlock(
+                AbstractBlock.Settings.copy(Blocks.OAK_SLAB)
+                        .registryKey(ASHEN_SLAB_KEY)
+        )
+);
+
+public static final Item ASHEN_SLAB_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_SLAB_ID,
+        new BlockItem(
+                ASHEN_SLAB,
+                new Item.Settings().registryKey(ASHEN_SLAB_ITEM_KEY)
+        )
+);
+
+// DARK FENCE
+
+private static final Identifier ASHEN_FENCE_ID =
+        Identifier.of(MOD_ID, "ashen_fence");
+
+public static final RegistryKey<Block> ASHEN_FENCE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_FENCE_ID);
+
+public static final RegistryKey<Item> ASHEN_FENCE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_FENCE_ID);
+
+public static final Block ASHEN_FENCE = Registry.register(
+        Registries.BLOCK,
+        ASHEN_FENCE_ID,
+        new FenceBlock(
+                AbstractBlock.Settings.copy(Blocks.OAK_FENCE)
+                        .registryKey(ASHEN_FENCE_KEY)
+        )
+);
+
+public static final Item ASHEN_FENCE_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_FENCE_ID,
+        new BlockItem(
+                ASHEN_FENCE,
+                new Item.Settings().registryKey(ASHEN_FENCE_ITEM_KEY)
+        )
+);
+
+// DARK FENCE GATE
+
+private static final Identifier ASHEN_FENCE_GATE_ID =
+        Identifier.of(MOD_ID, "ashen_fence_gate");
+
+public static final RegistryKey<Block> ASHEN_FENCE_GATE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_FENCE_GATE_ID);
+
+public static final RegistryKey<Item> ASHEN_FENCE_GATE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_FENCE_GATE_ID);
+
+public static final Block ASHEN_FENCE_GATE = Registry.register(
+        Registries.BLOCK,
+        ASHEN_FENCE_GATE_ID,
+        new FenceGateBlock(
+                WoodType.OAK,
+                AbstractBlock.Settings.copy(Blocks.OAK_FENCE_GATE)
+                        .registryKey(ASHEN_FENCE_GATE_KEY)
+        )
+);
+
+public static final Item ASHEN_FENCE_GATE_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_FENCE_GATE_ID,
+        new BlockItem(
+                ASHEN_FENCE_GATE,
+                new Item.Settings().registryKey(ASHEN_FENCE_GATE_ITEM_KEY)
+        )
+);
+
+// DARK BUTTON
+private static final Identifier ASHEN_BUTTON_ID =
+        Identifier.of(MOD_ID, "ashen_button");
+
+public static final RegistryKey<Block> ASHEN_BUTTON_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_BUTTON_ID);
+
+public static final RegistryKey<Item> ASHEN_BUTTON_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_BUTTON_ID);
+
+public static final Block ASHEN_BUTTON = Registry.register(
+        Registries.BLOCK,
+        ASHEN_BUTTON_ID,
+        new ButtonBlock(
+                BlockSetType.OAK,
+                30,
+                AbstractBlock.Settings.copy(Blocks.OAK_BUTTON)
+                        .registryKey(ASHEN_BUTTON_KEY)
+        )
+);
+
+public static final Item ASHEN_BUTTON_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_BUTTON_ID,
+        new BlockItem(
+                ASHEN_BUTTON,
+                new Item.Settings().registryKey(ASHEN_BUTTON_ITEM_KEY)
+        )
+);
+
+// DARK PRESSURE PLATE
+private static final Identifier ASHEN_PRESSURE_PLATE_ID =
+        Identifier.of(MOD_ID, "ashen_pressure_plate");
+
+public static final RegistryKey<Block> ASHEN_PRESSURE_PLATE_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_PRESSURE_PLATE_ID);
+
+public static final RegistryKey<Item> ASHEN_PRESSURE_PLATE_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_PRESSURE_PLATE_ID);
+
+public static final Block ASHEN_PRESSURE_PLATE = Registry.register(
+        Registries.BLOCK,
+        ASHEN_PRESSURE_PLATE_ID,
+        new PressurePlateBlock(
+                BlockSetType.OAK,
+                AbstractBlock.Settings.copy(Blocks.OAK_PRESSURE_PLATE)
+                        .registryKey(ASHEN_PRESSURE_PLATE_KEY)
+        )
+);
+
+public static final Item ASHEN_PRESSURE_PLATE_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_PRESSURE_PLATE_ID,
+        new BlockItem(
+                ASHEN_PRESSURE_PLATE,
+                new Item.Settings().registryKey(ASHEN_PRESSURE_PLATE_ITEM_KEY)
+        )
+);
+
+// DARK STAIRS
+private static final Identifier ASHEN_STAIRS_ID =
+        Identifier.of(MOD_ID, "ashen_stairs");
+
+public static final RegistryKey<Block> ASHEN_STAIRS_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_STAIRS_ID);
+
+public static final RegistryKey<Item> ASHEN_STAIRS_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_STAIRS_ID);
+
+public static final Block ASHEN_STAIRS = Registry.register(
+        Registries.BLOCK,
+        ASHEN_STAIRS_ID,
+        new StairsBlock(
+                ASHEN_PLANKS.getDefaultState(),
+                AbstractBlock.Settings.copy(Blocks.OAK_STAIRS)
+                        .registryKey(ASHEN_STAIRS_KEY)
+        )
+);
+
+public static final Item ASHEN_STAIRS_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_STAIRS_ID,
+        new BlockItem(
+                ASHEN_STAIRS,
+                new Item.Settings().registryKey(ASHEN_STAIRS_ITEM_KEY)
+        )
+);
+
+// DARK WOOD TYPE
+public static final WoodType ASHEN_WOOD_TYPE =
+        new WoodTypeBuilder().register(
+                Identifier.of(MOD_ID, "ashen"),
+                BlockSetType.OAK
+        );
+
+ // DARK SIGN
+private static final Identifier ASHEN_SIGN_ID =
+        Identifier.of(MOD_ID, "ashen_sign");
+
+public static final RegistryKey<Block> ASHEN_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_SIGN_ID);
+
+public static final Block ASHEN_SIGN = Registry.register(
+        Registries.BLOCK,
+        ASHEN_SIGN_ID,
+        new SignBlock(
+                ASHEN_WOOD_TYPE,
+                AbstractBlock.Settings.copy(Blocks.OAK_SIGN)
+                        .registryKey(ASHEN_SIGN_KEY)
+        )
+);
+
+// DARK WALL SIGN
+private static final Identifier ASHEN_WALL_SIGN_ID =
+        Identifier.of(MOD_ID, "ashen_wall_sign");
+
+public static final RegistryKey<Block> ASHEN_WALL_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_WALL_SIGN_ID);
+
+public static final Block ASHEN_WALL_SIGN = Registry.register(
+        Registries.BLOCK,
+        ASHEN_WALL_SIGN_ID,
+        new WallSignBlock(
+                ASHEN_WOOD_TYPE,
+                AbstractBlock.Settings.copy(Blocks.OAK_WALL_SIGN)
+                        .registryKey(ASHEN_WALL_SIGN_KEY)
+        )
+);
+
+// DARK SIGN ITEM
+private static final Identifier ASHEN_SIGN_ITEM_ID =
+        Identifier.of(MOD_ID, "ashen_sign");
+
+public static final RegistryKey<Item> ASHEN_SIGN_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_SIGN_ITEM_ID);
+
+public static final Item ASHEN_SIGN_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_SIGN_ITEM_ID,
+        new SignItem(
+                ASHEN_SIGN,
+                ASHEN_WALL_SIGN,
+                new Item.Settings().registryKey(ASHEN_SIGN_ITEM_KEY)
+        )
+);
+
+
+// DARK TRAPDOOR
+private static final Identifier ASHEN_TRAPDOOR_ID =
+        Identifier.of(MOD_ID, "ashen_trapdoor");
+
+public static final RegistryKey<Block> ASHEN_TRAPDOOR_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_TRAPDOOR_ID);
+
+public static final RegistryKey<Item> ASHEN_TRAPDOOR_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_TRAPDOOR_ID);
+
+public static final Block ASHEN_TRAPDOOR = Registry.register(
+        Registries.BLOCK,
+        ASHEN_TRAPDOOR_ID,
+        new TrapdoorBlock(
+                BlockSetType.OAK,
+                AbstractBlock.Settings.copy(Blocks.OAK_TRAPDOOR)
+                        .registryKey(ASHEN_TRAPDOOR_KEY)
+        )
+);
+
+public static final Item ASHEN_TRAPDOOR_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_TRAPDOOR_ID,
+        new BlockItem(
+                ASHEN_TRAPDOOR,
+                new Item.Settings().registryKey(ASHEN_TRAPDOOR_ITEM_KEY)
+        )
+);
+
+// DARK HANGING SIGN
+private static final Identifier ASHEN_HANGING_SIGN_ID =
+        Identifier.of(MOD_ID, "ashen_hanging_sign");
+
+public static final RegistryKey<Block> ASHEN_HANGING_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_HANGING_SIGN_ID);
+
+public static final RegistryKey<Item> ASHEN_HANGING_SIGN_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_HANGING_SIGN_ID);
+
+public static final Block ASHEN_HANGING_SIGN = Registry.register(
+        Registries.BLOCK,
+        ASHEN_HANGING_SIGN_ID,
+        new HangingSignBlock(
+                ASHEN_WOOD_TYPE,
+                AbstractBlock.Settings.copy(Blocks.OAK_HANGING_SIGN)
+                        .registryKey(ASHEN_HANGING_SIGN_KEY)
+        )
+);
+
+// DARK WALL HANGING SIGN
+private static final Identifier ASHEN_WALL_HANGING_SIGN_ID =
+        Identifier.of(MOD_ID, "ashen_wall_hanging_sign");
+
+public static final RegistryKey<Block> ASHEN_WALL_HANGING_SIGN_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_WALL_HANGING_SIGN_ID);
+
+public static final Block ASHEN_WALL_HANGING_SIGN = Registry.register(
+        Registries.BLOCK,
+        ASHEN_WALL_HANGING_SIGN_ID,
+        new WallHangingSignBlock(
+                ASHEN_WOOD_TYPE,
+                AbstractBlock.Settings.copy(Blocks.OAK_WALL_HANGING_SIGN)
+                        .registryKey(ASHEN_WALL_HANGING_SIGN_KEY)
+        )
+);
+
+// DARK HANGING SIGN ITEM
+public static final Item ASHEN_HANGING_SIGN_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_HANGING_SIGN_ID,
+        new HangingSignItem(
+                ASHEN_HANGING_SIGN,
+                ASHEN_WALL_HANGING_SIGN,
+                new Item.Settings().registryKey(ASHEN_HANGING_SIGN_ITEM_KEY)
+        )
+);
+
+// DARK DOOR
+private static final Identifier ASHEN_DOOR_ID =
+        Identifier.of(MOD_ID, "ashen_door");
+
+public static final RegistryKey<Block> ASHEN_DOOR_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_DOOR_ID);
+
+public static final RegistryKey<Item> ASHEN_DOOR_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_DOOR_ID);
+
+public static final Block ASHEN_DOOR = Registry.register(
+        Registries.BLOCK,
+        ASHEN_DOOR_ID,
+        new DoorBlock(
+                BlockSetType.OAK,
+                AbstractBlock.Settings.copy(Blocks.OAK_DOOR)
+                        .registryKey(ASHEN_DOOR_KEY)
+        )
+);
+
+public static final Item ASHEN_DOOR_ITEM = Registry.register(
+        Registries.ITEM,
+        ASHEN_DOOR_ID,
+        new BlockItem(
+                ASHEN_DOOR,
+                new Item.Settings().registryKey(ASHEN_DOOR_ITEM_KEY)
+        )
+);
+
+// DARK BOAT
+
+private static final Identifier ASHEN_BOAT_ID =
+        Identifier.of(MOD_ID, "ashen_boat");
+
+public static final RegistryKey<EntityType<?>> ASHEN_BOAT_ENTITY_KEY =
+        RegistryKey.of(RegistryKeys.ENTITY_TYPE, ASHEN_BOAT_ID);
+
+public static final EntityType<BoatEntity> ASHEN_BOAT_ENTITY = Registry.register(
+        Registries.ENTITY_TYPE,
+        ASHEN_BOAT_ID,
+        EntityType.Builder.<BoatEntity>create(
+                (type, world) -> new BoatEntity(
+                        type,
+                        world,
+                        Enderwilds::getAshenBoatItem
+                ),
+                SpawnGroup.MISC
+        )
+                .dimensions(1.375F, 0.5625F)
+                .maxTrackingRange(10)
+                .trackingTickInterval(3)
+                .build(ASHEN_BOAT_ENTITY_KEY)
+);
+
+public static final RegistryKey<Item> ASHEN_BOAT_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_BOAT_ID);
+
+public static final Item ASHEN_BOAT = Registry.register(
+        Registries.ITEM,
+        ASHEN_BOAT_ID,
+        new BoatItem(
+                ASHEN_BOAT_ENTITY,
+                new Item.Settings().registryKey(ASHEN_BOAT_ITEM_KEY)
+        )
+);
+
+private static Item getAshenBoatItem() {
+    return ASHEN_BOAT;
+}
+
+// DARK CHEST BOAT
+
+private static final Identifier ASHEN_CHEST_BOAT_ID =
+        Identifier.of(MOD_ID, "ashen_chest_boat");
+
+public static final RegistryKey<EntityType<?>> ASHEN_CHEST_BOAT_ENTITY_KEY =
+        RegistryKey.of(RegistryKeys.ENTITY_TYPE, ASHEN_CHEST_BOAT_ID);
+
+public static final EntityType<ChestBoatEntity> ASHEN_CHEST_BOAT_ENTITY = Registry.register(
+        Registries.ENTITY_TYPE,
+        ASHEN_CHEST_BOAT_ID,
+        EntityType.Builder.<ChestBoatEntity>create(
+                (type, world) -> new ChestBoatEntity(
+                        type,
+                        world,
+                        Enderwilds::getAshenChestBoatItem
+                ),
+                SpawnGroup.MISC
+        )
+                .dimensions(1.375F, 0.5625F)
+                .maxTrackingRange(10)
+                .trackingTickInterval(3)
+                .build(ASHEN_CHEST_BOAT_ENTITY_KEY)
+);
+
+public static final RegistryKey<Item> ASHEN_CHEST_BOAT_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_CHEST_BOAT_ID);
+
+public static final Item ASHEN_CHEST_BOAT = Registry.register(
+        Registries.ITEM,
+        ASHEN_CHEST_BOAT_ID,
+        new BoatItem(
+                ASHEN_CHEST_BOAT_ENTITY,
+                new Item.Settings().registryKey(ASHEN_CHEST_BOAT_ITEM_KEY)
+        )
+);
+
+private static Item getAshenChestBoatItem() {
+    return ASHEN_CHEST_BOAT;
+}
+
+// DARK TWISTING VINES
+
+public static final AshenTwistingVinesPlantBlock ASHEN_TWISTING_VINES_PLANT =
+        Registry.register(
+                Registries.BLOCK,
+                Identifier.of("enderwilds", "ashen_twisting_vines_plant"),
+                new AshenTwistingVinesPlantBlock(
+                        Block.Settings.copy(Blocks.TWISTING_VINES_PLANT)
+                                .registryKey(RegistryKey.of(
+                                        RegistryKeys.BLOCK,
+                                        Identifier.of("enderwilds", "ashen_twisting_vines_plant")
+                                ))
+                )
+        );
+
+public static final AshenTwistingVinesBlock ASHEN_TWISTING_VINES =
+        Registry.register(
+                Registries.BLOCK,
+                Identifier.of("enderwilds", "ashen_twisting_vines"),
+                new AshenTwistingVinesBlock(
+                        Block.Settings.copy(Blocks.TWISTING_VINES)
+                                .registryKey(RegistryKey.of(
+                                        RegistryKeys.BLOCK,
+                                        Identifier.of("enderwilds", "ashen_twisting_vines")
+                                ))
+                )
+        );
+
+public static final BlockItem ASHEN_TWISTING_VINES_ITEM =
+        Registry.register(
+                Registries.ITEM,
+                Identifier.of("enderwilds", "ashen_twisting_vines"),
+                new BlockItem(
+                        ASHEN_TWISTING_VINES,
+                        new Item.Settings().registryKey(RegistryKey.of(
+                                RegistryKeys.ITEM,
+                                Identifier.of("enderwilds", "ashen_twisting_vines")
+                        ))
+                )
+        );
+
+// DARK WEEPING VINES
+
+private static final Identifier ASHEN_WEEPING_VINES_ID =
+        Identifier.of(MOD_ID, "ashen_weeping_vines");
+
+private static final Identifier ASHEN_WEEPING_VINES_PLANT_ID =
+        Identifier.of(MOD_ID, "ashen_weeping_vines_plant");
+
+private static final RegistryKey<Block> ASHEN_WEEPING_VINES_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_WEEPING_VINES_ID);
+
+private static final RegistryKey<Block> ASHEN_WEEPING_VINES_PLANT_KEY =
+        RegistryKey.of(RegistryKeys.BLOCK, ASHEN_WEEPING_VINES_PLANT_ID);
+
+private static final RegistryKey<Item> ASHEN_WEEPING_VINES_ITEM_KEY =
+        RegistryKey.of(RegistryKeys.ITEM, ASHEN_WEEPING_VINES_ID);
+
+public static final AshenWeepingVinesPlantBlock ASHEN_WEEPING_VINES_PLANT =
+        Registry.register(
+                Registries.BLOCK,
+                ASHEN_WEEPING_VINES_PLANT_ID,
+                new AshenWeepingVinesPlantBlock(
+                        AbstractBlock.Settings.copy(Blocks.WEEPING_VINES_PLANT)
+                                .registryKey(ASHEN_WEEPING_VINES_PLANT_KEY)
+                )
+        );
+
+public static final AshenWeepingVinesBlock ASHEN_WEEPING_VINES =
+        Registry.register(
+                Registries.BLOCK,
+                ASHEN_WEEPING_VINES_ID,
+                new AshenWeepingVinesBlock(
+                        AbstractBlock.Settings.copy(Blocks.WEEPING_VINES)
+                                .registryKey(ASHEN_WEEPING_VINES_KEY)
+                )
+        );
+
+public static final Item ASHEN_WEEPING_VINES_ITEM =
+        Registry.register(
+                Registries.ITEM,
+                ASHEN_WEEPING_VINES_ID,
+                new BlockItem(
+                        ASHEN_WEEPING_VINES,
+                        new Item.Settings()
+                                .registryKey(ASHEN_WEEPING_VINES_ITEM_KEY)
+                )
+        );
+
+
+
+
     // DARK END STONE
 
     private static final Identifier DARK_END_STONE_ID =

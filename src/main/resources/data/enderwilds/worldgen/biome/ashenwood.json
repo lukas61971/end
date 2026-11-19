@@ -1,0 +1,64 @@
+{
+  "attributes": {
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:crimson_spore"
+        },
+        "probability": 0.025
+      }
+    ]
+  },
+  "carvers": [
+    "enderwilds:ashenwood_caves"
+  ],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#3f76e4"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "enderwilds:ashen_weeping_vines_patch"
+    ],
+    [],
+    [],
+    [],
+    [],
+    [
+      "enderwilds:ashen_fungus_patch",
+      "enderwilds:ashen_roots_patch",
+      "enderwilds:ashen_sprouts_patch",
+      "enderwilds:ashen_twisting_vines_patch",
+      "enderwilds:ashenwood_huge_fungus"
+    ],
+    [],
+    []
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "minecraft:enderman",
+        "maxCount": 4,
+        "minCount": 4,
+        "weight": 10
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.5
+}

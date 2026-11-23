@@ -1782,6 +1782,15 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
         return Registry.register(Registries.ITEM, id, new Item(settings));
     }
 
+    public static final Item ENDERITE_SPEAR = registerEnderiteGear(
+            "enderite_spear", settings -> settings.spear(
+                    ToolMaterial.DIAMOND,
+                    1.1F, 1.0F, 0.5F,
+                    80.0F, 7.5F,
+                    130.0F, 1.0F,
+                    130.0F, 0.5F
+            ));
+
     public static final Item ENDERITE_SWORD = registerEnderiteGear(
             "enderite_sword", settings -> settings.sword(ToolMaterial.DIAMOND, 3.0F, -2.4F));
     public static final Item ENDERITE_PICKAXE = registerEnderiteGear(
@@ -1908,6 +1917,7 @@ public void onInitialize() {
             net.minecraft.item.ItemGroups.COMBAT
     ).register(entries -> {
         entries.add(ENDERITE_SWORD);
+        entries.add(ENDERITE_SPEAR);
         entries.add(ENDERITE_HELMET);
         entries.add(ENDERITE_CHESTPLATE);
         entries.add(ENDERITE_LEGGINGS);

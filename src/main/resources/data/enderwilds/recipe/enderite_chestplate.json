@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "E E",
+    "EEE",
+    "EEE"
+  ],
+  "key": {
+    "E": "enderwilds:enderite_ingot"
+  },
+  "result": {
+    "id": "enderwilds:enderite_chestplate",
+    "count": 1
+  }
+}

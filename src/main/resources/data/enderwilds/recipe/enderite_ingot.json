@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    { "item": "enderwilds:ashenium_shard" },
+    { "item": "enderwilds:ashenium_shard" },
+    { "item": "enderwilds:ashenium_shard" },
+    { "item": "enderwilds:ashenium_shard" },
+    { "item": "enderwilds:enderium_shard" },
+    { "item": "enderwilds:enderium_shard" },
+    { "item": "enderwilds:enderium_shard" },
+    { "item": "enderwilds:enderium_shard" }
+  ],
+  "result": {
+    "id": "enderwilds:enderite_ingot",
+    "count": 1
+  }
+}

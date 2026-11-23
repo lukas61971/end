@@ -23,7 +23,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "enderwilds:enderium_ore"
+    ],
     [
       "enderwilds:ender_weeping_vines_patch"
     ],

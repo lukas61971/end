@@ -12,6 +12,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.equipment.ArmorMaterials;
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentAsset;
+import net.minecraft.item.equipment.EquipmentAssetKeys;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -1805,7 +1806,7 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
             "enderite_hoe", settings -> settings.hoe(ToolMaterial.DIAMOND, -3.0F, 0.0F));
 
     private static final RegistryKey<EquipmentAsset> ENDERITE_EQUIPMENT_ASSET_KEY =
-            RegistryKey.of(RegistryKeys.EQUIPMENT_ASSET, Identifier.of(MOD_ID, "enderite"));
+            RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(MOD_ID, "enderite"));
 
     private static final ArmorMaterial ENDERITE_ARMOR_MATERIAL = new ArmorMaterial(
             ArmorMaterials.DIAMOND.durability(),

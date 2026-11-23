@@ -8,7 +8,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.equipment.ArmorMaterials;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -1778,12 +1778,12 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
             java.util.function.Function<Item.Settings, Item.Settings> configure) {
         Identifier id = Identifier.of(MOD_ID, name);
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
-        Item.Settings settings = configure.apply(new Item.Settings().registryKey(key));
+        Item.Settings settings = configure.apply(new Item.Settings().registryKey(key)).repairable(ENDERITE_INGOT);
         return Registry.register(Registries.ITEM, id, new Item(settings));
     }
 
     public static final Item ENDERITE_SWORD = registerEnderiteGear(
-            "enderite_sword", settings -> settings.sword(ToolMaterials.DIAMOND, 3.0F, -2.4F));
+            "enderite_sword", settings -> settings.sword(ToolMaterial.DIAMOND, 3.0F, -2.4F));
     public static final Item ENDERITE_PICKAXE = registerEnderiteGear(
             "enderite_pickaxe", settings -> settings.pickaxe(ToolMaterials.DIAMOND, 1.0F, -2.8F));
     public static final Item ENDERITE_AXE = registerEnderiteGear(

@@ -116,5 +116,14 @@
   "item.enderwilds.ashenium_ore": "Ashenium Ore",
   "item.enderwilds.ashen_shard": "Ashen Shard",
   "item.enderwilds.ashenium_shard": "Ashenium Shard",
-  "item.enderwilds.enderite_ingot": "Enderite Ingot"
+  "item.enderwilds.enderite_ingot": "Enderite Ingot",
+  "item.enderwilds.enderite_sword": "Enderite Sword",
+  "item.enderwilds.enderite_pickaxe": "Enderite Pickaxe",
+  "item.enderwilds.enderite_axe": "Enderite Axe",
+  "item.enderwilds.enderite_shovel": "Enderite Shovel",
+  "item.enderwilds.enderite_hoe": "Enderite Hoe",
+  "item.enderwilds.enderite_helmet": "Enderite Helmet",
+  "item.enderwilds.enderite_chestplate": "Enderite Chestplate",
+  "item.enderwilds.enderite_leggings": "Enderite Leggings",
+  "item.enderwilds.enderite_boots": "Enderite Boots"
 }

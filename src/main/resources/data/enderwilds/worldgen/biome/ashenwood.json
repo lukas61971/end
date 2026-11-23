@@ -23,7 +23,9 @@
     [],
     [],
     [],
-    [],
+    [
+      "enderwilds:ashenium_ore"
+    ],
     [
       "enderwilds:ashen_weeping_vines_patch"
     ],

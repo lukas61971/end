@@ -115,5 +115,14 @@
   "block.enderwilds.ashenium_ore": "Ruda ashenium",
   "item.enderwilds.ashenium_ore": "Ruda ashenium",
   "item.enderwilds.ashenium_shard": "Odłamek ashenium",
-  "item.enderwilds.enderite_ingot": "Sztabka enderytu"
+  "item.enderwilds.enderite_ingot": "Sztabka enderytu",
+  "item.enderwilds.enderite_sword": "Miecz enderytu",
+  "item.enderwilds.enderite_pickaxe": "Kilof enderytu",
+  "item.enderwilds.enderite_axe": "Siekiera enderytu",
+  "item.enderwilds.enderite_shovel": "Łopata enderytu",
+  "item.enderwilds.enderite_hoe": "Motyka enderytu",
+  "item.enderwilds.enderite_helmet": "Hełm enderytu",
+  "item.enderwilds.enderite_chestplate": "Napierśnik enderytu",
+  "item.enderwilds.enderite_leggings": "Nogawice enderytu",
+  "item.enderwilds.enderite_boots": "Buty enderytu"
 }

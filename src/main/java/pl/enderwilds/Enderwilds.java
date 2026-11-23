@@ -10,6 +10,8 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.item.equipment.ArmorMaterials;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentAsset;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -1802,14 +1804,28 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
     public static final Item ENDERITE_HOE = registerEnderiteGear(
             "enderite_hoe", settings -> settings.hoe(ToolMaterial.DIAMOND, -3.0F, 0.0F));
 
+    private static final RegistryKey<EquipmentAsset> ENDERITE_EQUIPMENT_ASSET_KEY =
+            RegistryKey.of(RegistryKeys.EQUIPMENT_ASSET, Identifier.of(MOD_ID, "enderite"));
+
+    private static final ArmorMaterial ENDERITE_ARMOR_MATERIAL = new ArmorMaterial(
+            ArmorMaterials.DIAMOND.durability(),
+            ArmorMaterials.DIAMOND.defense(),
+            ArmorMaterials.DIAMOND.enchantmentValue(),
+            ArmorMaterials.DIAMOND.equipSound(),
+            ArmorMaterials.DIAMOND.toughness(),
+            ArmorMaterials.DIAMOND.knockbackResistance(),
+            ArmorMaterials.DIAMOND.repairIngredient(),
+            ENDERITE_EQUIPMENT_ASSET_KEY
+    );
+
     public static final Item ENDERITE_HELMET = registerEnderiteGear(
-            "enderite_helmet", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.HELMET));
+            "enderite_helmet", settings -> settings.armor(ENDERITE_ARMOR_MATERIAL, EquipmentType.HELMET));
     public static final Item ENDERITE_CHESTPLATE = registerEnderiteGear(
-            "enderite_chestplate", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.CHESTPLATE));
+            "enderite_chestplate", settings -> settings.armor(ENDERITE_ARMOR_MATERIAL, EquipmentType.CHESTPLATE));
     public static final Item ENDERITE_LEGGINGS = registerEnderiteGear(
-            "enderite_leggings", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.LEGGINGS));
+            "enderite_leggings", settings -> settings.armor(ENDERITE_ARMOR_MATERIAL, EquipmentType.LEGGINGS));
     public static final Item ENDERITE_BOOTS = registerEnderiteGear(
-            "enderite_boots", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.BOOTS));
+            "enderite_boots", settings -> settings.armor(ENDERITE_ARMOR_MATERIAL, EquipmentType.BOOTS));
 
     @Override
 public void onInitialize() {

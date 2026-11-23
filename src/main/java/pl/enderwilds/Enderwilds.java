@@ -8,6 +8,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ToolMaterials;
+import net.minecraft.item.equipment.ArmorMaterials;
+import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -1769,6 +1772,36 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
 
 
 
+
+    // ENDERITE TOOLS AND ARMOR
+    private static Item registerEnderiteGear(String name,
+            java.util.function.Function<Item.Settings, Item.Settings> configure) {
+        Identifier id = Identifier.of(MOD_ID, name);
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, id);
+        Item.Settings settings = configure.apply(new Item.Settings().registryKey(key));
+        return Registry.register(Registries.ITEM, id, new Item(settings));
+    }
+
+    public static final Item ENDERITE_SWORD = registerEnderiteGear(
+            "enderite_sword", settings -> settings.sword(ToolMaterials.DIAMOND, 3.0F, -2.4F));
+    public static final Item ENDERITE_PICKAXE = registerEnderiteGear(
+            "enderite_pickaxe", settings -> settings.pickaxe(ToolMaterials.DIAMOND, 1.0F, -2.8F));
+    public static final Item ENDERITE_AXE = registerEnderiteGear(
+            "enderite_axe", settings -> settings.axe(ToolMaterials.DIAMOND, 6.0F, -3.1F));
+    public static final Item ENDERITE_SHOVEL = registerEnderiteGear(
+            "enderite_shovel", settings -> settings.shovel(ToolMaterials.DIAMOND, 1.5F, -3.0F));
+    public static final Item ENDERITE_HOE = registerEnderiteGear(
+            "enderite_hoe", settings -> settings.hoe(ToolMaterials.DIAMOND, -3.0F, 0.0F));
+
+    public static final Item ENDERITE_HELMET = registerEnderiteGear(
+            "enderite_helmet", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.HELMET));
+    public static final Item ENDERITE_CHESTPLATE = registerEnderiteGear(
+            "enderite_chestplate", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.CHESTPLATE));
+    public static final Item ENDERITE_LEGGINGS = registerEnderiteGear(
+            "enderite_leggings", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.LEGGINGS));
+    public static final Item ENDERITE_BOOTS = registerEnderiteGear(
+            "enderite_boots", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.BOOTS));
+
     @Override
 public void onInitialize() {
 
@@ -1859,6 +1892,26 @@ public void onInitialize() {
         entries.add(ASHENIUM_ORE_ITEM);
         entries.add(ASHENIUM_SHARD);
         entries.add(ENDERITE_INGOT);
+    });
+
+
+    net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.modifyEntriesEvent(
+            net.minecraft.item.ItemGroups.TOOLS
+    ).register(entries -> {
+        entries.add(ENDERITE_PICKAXE);
+        entries.add(ENDERITE_AXE);
+        entries.add(ENDERITE_SHOVEL);
+        entries.add(ENDERITE_HOE);
+    });
+
+    net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.modifyEntriesEvent(
+            net.minecraft.item.ItemGroups.COMBAT
+    ).register(entries -> {
+        entries.add(ENDERITE_SWORD);
+        entries.add(ENDERITE_HELMET);
+        entries.add(ENDERITE_CHESTPLATE);
+        entries.add(ENDERITE_LEGGINGS);
+        entries.add(ENDERITE_BOOTS);
     });
 
 }

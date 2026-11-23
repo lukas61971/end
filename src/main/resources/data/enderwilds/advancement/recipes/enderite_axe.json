@@ -1,0 +1,25 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_enderite_ingot": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:enderite_ingot"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "has_enderite_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "enderwilds:enderite_axe"
+    ]
+  }
+}

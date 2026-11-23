@@ -1785,13 +1785,13 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
     public static final Item ENDERITE_SWORD = registerEnderiteGear(
             "enderite_sword", settings -> settings.sword(ToolMaterial.DIAMOND, 3.0F, -2.4F));
     public static final Item ENDERITE_PICKAXE = registerEnderiteGear(
-            "enderite_pickaxe", settings -> settings.pickaxe(ToolMaterials.DIAMOND, 1.0F, -2.8F));
+            "enderite_pickaxe", settings -> settings.pickaxe(ToolMaterial.DIAMOND, 1.0F, -2.8F));
     public static final Item ENDERITE_AXE = registerEnderiteGear(
-            "enderite_axe", settings -> settings.axe(ToolMaterials.DIAMOND, 6.0F, -3.1F));
+            "enderite_axe", settings -> settings.axe(ToolMaterial.DIAMOND, 6.0F, -3.1F));
     public static final Item ENDERITE_SHOVEL = registerEnderiteGear(
-            "enderite_shovel", settings -> settings.shovel(ToolMaterials.DIAMOND, 1.5F, -3.0F));
+            "enderite_shovel", settings -> settings.shovel(ToolMaterial.DIAMOND, 1.5F, -3.0F));
     public static final Item ENDERITE_HOE = registerEnderiteGear(
-            "enderite_hoe", settings -> settings.hoe(ToolMaterials.DIAMOND, -3.0F, 0.0F));
+            "enderite_hoe", settings -> settings.hoe(ToolMaterial.DIAMOND, -3.0F, 0.0F));
 
     public static final Item ENDERITE_HELMET = registerEnderiteGear(
             "enderite_helmet", settings -> settings.armor(ArmorMaterials.DIAMOND, EquipmentType.HELMET));

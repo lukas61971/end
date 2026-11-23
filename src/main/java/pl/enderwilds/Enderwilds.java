@@ -1753,6 +1753,21 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
             new Item(new Item.Settings().registryKey(ASHENIUM_SHARD_KEY))
     );
 
+    // ENDERITE INGOT
+
+    private static final Identifier ENDERITE_INGOT_ID =
+            Identifier.of(MOD_ID, "enderite_ingot");
+
+    public static final RegistryKey<Item> ENDERITE_INGOT_KEY =
+            RegistryKey.of(RegistryKeys.ITEM, ENDERITE_INGOT_ID);
+
+    public static final Item ENDERITE_INGOT = Registry.register(
+            Registries.ITEM,
+            ENDERITE_INGOT_ID,
+            new Item(new Item.Settings().registryKey(ENDERITE_INGOT_KEY))
+    );
+
+
 
     @Override
 public void onInitialize() {
@@ -1843,6 +1858,7 @@ public void onInitialize() {
         entries.add(ENDERIUM_SHARD);
         entries.add(ASHENIUM_ORE_ITEM);
         entries.add(ASHENIUM_SHARD);
+        entries.add(ENDERITE_INGOT);
     });
 
 }

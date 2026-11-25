@@ -5,6 +5,10 @@
     "enderwilds:ender_nylium",
     "enderwilds:dark_end_stone",
     "enderwilds:ashenium_ore",
-    "enderwilds:ashen_nylium"
+    "enderwilds:ashen_nylium",
+    "enderwilds:dark_end_stone_bricks",
+    "enderwilds:dark_end_stone_brick_stairs",
+    "enderwilds:dark_end_stone_brick_slab",
+    "enderwilds:dark_end_stone_brick_wall"
   ]
 }

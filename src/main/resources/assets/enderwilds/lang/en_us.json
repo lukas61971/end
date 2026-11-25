@@ -126,5 +126,13 @@
   "item.enderwilds.enderite_chestplate": "Enderite Chestplate",
   "item.enderwilds.enderite_leggings": "Enderite Leggings",
   "item.enderwilds.enderite_boots": "Enderite Boots",
-  "item.enderwilds.enderite_spear": "Enderite Spear"
+  "item.enderwilds.enderite_spear": "Enderite Spear",
+  "block.enderwilds.dark_end_stone_bricks": "Dark End Stone Bricks",
+  "item.enderwilds.dark_end_stone_bricks": "Dark End Stone Bricks",
+  "block.enderwilds.dark_end_stone_brick_stairs": "Dark End Stone Brick Stairs",
+  "item.enderwilds.dark_end_stone_brick_stairs": "Dark End Stone Brick Stairs",
+  "block.enderwilds.dark_end_stone_brick_slab": "Dark End Stone Brick Slab",
+  "item.enderwilds.dark_end_stone_brick_slab": "Dark End Stone Brick Slab",
+  "block.enderwilds.dark_end_stone_brick_wall": "Dark End Stone Brick Wall",
+  "item.enderwilds.dark_end_stone_brick_wall": "Dark End Stone Brick Wall"
 }

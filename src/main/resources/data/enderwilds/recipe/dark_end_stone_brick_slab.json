@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dark_end_stone_brick_slab",
+  "key": {
+    "B": "enderwilds:dark_end_stone_bricks"
+  },
+  "pattern": [
+    "BBB"
+  ],
+  "result": {
+    "id": "enderwilds:dark_end_stone_brick_slab",
+    "count": 6
+  }
+}

@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "enderwilds:block/dark_end_stone_brick_slab_inventory"
+    "model": "enderwilds:block/dark_end_stone_brick_slab"
   }
 }

@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:stonecutting",
+  "ingredient": "enderwilds:dark_end_stone_bricks",
+  "result": "enderwilds:dark_end_stone_brick_slab",
+  "count": 1
+}

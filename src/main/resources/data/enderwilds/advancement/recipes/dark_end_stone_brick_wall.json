@@ -1,0 +1,19 @@
+{
+  "criteria": {
+    "has_dark_end_stone_bricks": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": "enderwilds:dark_end_stone_bricks"
+          }
+        ]
+      }
+    }
+  },
+  "rewards": {
+    "recipes": [
+      "enderwilds:dark_end_stone_brick_wall"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "dark_end_stone_bricks",
+  "key": {
+    "D": "enderwilds:dark_end_stone"
+  },
+  "pattern": [
+    "DD",
+    "DD"
+  ],
+  "result": {
+    "id": "enderwilds:dark_end_stone_bricks",
+    "count": 4
+  }
+}

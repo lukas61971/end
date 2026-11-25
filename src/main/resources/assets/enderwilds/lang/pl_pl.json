@@ -125,5 +125,13 @@
   "item.enderwilds.enderite_chestplate": "Napierśnik enderytu",
   "item.enderwilds.enderite_leggings": "Nogawice enderytu",
   "item.enderwilds.enderite_boots": "Buty enderytu",
-  "item.enderwilds.enderite_spear": "Włócznia enderytu"
+  "item.enderwilds.enderite_spear": "Włócznia enderytu",
+  "block.enderwilds.dark_end_stone_bricks": "Ciemne cegły kamienia Endu",
+  "item.enderwilds.dark_end_stone_bricks": "Ciemne cegły kamienia Endu",
+  "block.enderwilds.dark_end_stone_brick_stairs": "Schody z ciemnych cegieł kamienia Endu",
+  "item.enderwilds.dark_end_stone_brick_stairs": "Schody z ciemnych cegieł kamienia Endu",
+  "block.enderwilds.dark_end_stone_brick_slab": "Płyta z ciemnych cegieł kamienia Endu",
+  "item.enderwilds.dark_end_stone_brick_slab": "Płyta z ciemnych cegieł kamienia Endu",
+  "block.enderwilds.dark_end_stone_brick_wall": "Mur z ciemnych cegieł kamienia Endu",
+  "item.enderwilds.dark_end_stone_brick_wall": "Mur z ciemnych cegieł kamienia Endu"
 }

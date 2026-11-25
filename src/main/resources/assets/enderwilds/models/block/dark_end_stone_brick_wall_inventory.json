@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/wall_inventory",
+  "textures": {
+    "wall": "enderwilds:block/dark_end_stone_bricks"
+  }
+}

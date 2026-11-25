@@ -29,6 +29,7 @@ import net.minecraft.block.ButtonBlock;
 import net.minecraft.block.BlockSetType;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.block.StairsBlock;
+import net.minecraft.block.WallBlock;
 import net.minecraft.block.SignBlock;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.entity.BlockEntityType;
@@ -1673,6 +1674,41 @@ public static final Item ASHEN_WEEPING_VINES_ITEM =
                     .registryKey(DARK_END_STONE_ITEM_KEY))
     );
 
+
+
+    // DARK END STONE BRICK BUILDING BLOCKS
+    private static final Identifier DARK_END_STONE_BRICKS_ID = Identifier.of(MOD_ID, "dark_end_stone_bricks");
+    public static final RegistryKey<Block> DARK_END_STONE_BRICKS_KEY = RegistryKey.of(RegistryKeys.BLOCK, DARK_END_STONE_BRICKS_ID);
+    public static final RegistryKey<Item> DARK_END_STONE_BRICKS_ITEM_KEY = RegistryKey.of(RegistryKeys.ITEM, DARK_END_STONE_BRICKS_ID);
+    public static final Block DARK_END_STONE_BRICKS = Registry.register(Registries.BLOCK, DARK_END_STONE_BRICKS_ID,
+            new Block(AbstractBlock.Settings.copy(Blocks.STONE_BRICKS).mapColor(MapColor.PURPLE).registryKey(DARK_END_STONE_BRICKS_KEY)));
+    public static final Item DARK_END_STONE_BRICKS_ITEM = Registry.register(Registries.ITEM, DARK_END_STONE_BRICKS_ID,
+            new BlockItem(DARK_END_STONE_BRICKS, new Item.Settings().registryKey(DARK_END_STONE_BRICKS_ITEM_KEY)));
+
+    private static final Identifier DARK_END_STONE_BRICK_STAIRS_ID = Identifier.of(MOD_ID, "dark_end_stone_brick_stairs");
+    public static final RegistryKey<Block> DARK_END_STONE_BRICK_STAIRS_KEY = RegistryKey.of(RegistryKeys.BLOCK, DARK_END_STONE_BRICK_STAIRS_ID);
+    public static final RegistryKey<Item> DARK_END_STONE_BRICK_STAIRS_ITEM_KEY = RegistryKey.of(RegistryKeys.ITEM, DARK_END_STONE_BRICK_STAIRS_ID);
+    public static final Block DARK_END_STONE_BRICK_STAIRS = Registry.register(Registries.BLOCK, DARK_END_STONE_BRICK_STAIRS_ID,
+            new StairsBlock(DARK_END_STONE_BRICKS.getDefaultState(), AbstractBlock.Settings.copy(Blocks.STONE_BRICK_STAIRS).mapColor(MapColor.PURPLE).registryKey(DARK_END_STONE_BRICK_STAIRS_KEY)));
+    public static final Item DARK_END_STONE_BRICK_STAIRS_ITEM = Registry.register(Registries.ITEM, DARK_END_STONE_BRICK_STAIRS_ID,
+            new BlockItem(DARK_END_STONE_BRICK_STAIRS, new Item.Settings().registryKey(DARK_END_STONE_BRICK_STAIRS_ITEM_KEY)));
+
+    private static final Identifier DARK_END_STONE_BRICK_SLAB_ID = Identifier.of(MOD_ID, "dark_end_stone_brick_slab");
+    public static final RegistryKey<Block> DARK_END_STONE_BRICK_SLAB_KEY = RegistryKey.of(RegistryKeys.BLOCK, DARK_END_STONE_BRICK_SLAB_ID);
+    public static final RegistryKey<Item> DARK_END_STONE_BRICK_SLAB_ITEM_KEY = RegistryKey.of(RegistryKeys.ITEM, DARK_END_STONE_BRICK_SLAB_ID);
+    public static final Block DARK_END_STONE_BRICK_SLAB = Registry.register(Registries.BLOCK, DARK_END_STONE_BRICK_SLAB_ID,
+            new SlabBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_SLAB).mapColor(MapColor.PURPLE).registryKey(DARK_END_STONE_BRICK_SLAB_KEY)));
+    public static final Item DARK_END_STONE_BRICK_SLAB_ITEM = Registry.register(Registries.ITEM, DARK_END_STONE_BRICK_SLAB_ID,
+            new BlockItem(DARK_END_STONE_BRICK_SLAB, new Item.Settings().registryKey(DARK_END_STONE_BRICK_SLAB_ITEM_KEY)));
+
+    private static final Identifier DARK_END_STONE_BRICK_WALL_ID = Identifier.of(MOD_ID, "dark_end_stone_brick_wall");
+    public static final RegistryKey<Block> DARK_END_STONE_BRICK_WALL_KEY = RegistryKey.of(RegistryKeys.BLOCK, DARK_END_STONE_BRICK_WALL_ID);
+    public static final RegistryKey<Item> DARK_END_STONE_BRICK_WALL_ITEM_KEY = RegistryKey.of(RegistryKeys.ITEM, DARK_END_STONE_BRICK_WALL_ID);
+    public static final Block DARK_END_STONE_BRICK_WALL = Registry.register(Registries.BLOCK, DARK_END_STONE_BRICK_WALL_ID,
+            new WallBlock(AbstractBlock.Settings.copy(Blocks.STONE_BRICK_WALL).mapColor(MapColor.PURPLE).registryKey(DARK_END_STONE_BRICK_WALL_KEY)));
+    public static final Item DARK_END_STONE_BRICK_WALL_ITEM = Registry.register(Registries.ITEM, DARK_END_STONE_BRICK_WALL_ID,
+            new BlockItem(DARK_END_STONE_BRICK_WALL, new Item.Settings().registryKey(DARK_END_STONE_BRICK_WALL_ITEM_KEY)));
+
     // ENDERIUM ORE AND SHARD
 
     private static final Identifier ENDERIUM_ORE_ID =
@@ -1920,6 +1956,15 @@ public void onInitialize() {
         entries.add(ENDERITE_INGOT);
     });
 
+
+    net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.modifyEntriesEvent(
+            net.minecraft.item.ItemGroups.NATURAL
+    ).register(entries -> {
+        entries.add(DARK_END_STONE_BRICKS_ITEM);
+        entries.add(DARK_END_STONE_BRICK_STAIRS_ITEM);
+        entries.add(DARK_END_STONE_BRICK_SLAB_ITEM);
+        entries.add(DARK_END_STONE_BRICK_WALL_ITEM);
+    });
 
     net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents.modifyEntriesEvent(
             net.minecraft.item.ItemGroups.TOOLS

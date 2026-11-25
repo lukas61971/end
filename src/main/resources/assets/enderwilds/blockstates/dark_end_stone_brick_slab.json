@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "enderwilds:block/dark_end_stone_brick_slab"
+    },
+    "type=top": {
+      "model": "enderwilds:block/dark_end_stone_brick_slab_top"
+    },
+    "type=double": {
+      "model": "enderwilds:block/dark_end_stone_brick_slab_double"
+    }
+  }
+}
